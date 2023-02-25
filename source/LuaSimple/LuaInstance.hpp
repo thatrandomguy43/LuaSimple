@@ -3,6 +3,7 @@
 #include <iostream>
 #include "SetGlobal.hpp"
 #include "PushVariable.hpp"
+#include "GetGlobal.hpp"
 #include <vector>
 #include <any>
 
@@ -22,7 +23,7 @@ class LuaInstance{
     };
 
     PushVariable PushVariable{this->pointer_to_lua_state};
-
+    GetGlobal GetGlobal{this->pointer_to_lua_state};
     SetGlobal SetGlobal{this->pointer_to_lua_state, &PushVariable};
 
 
