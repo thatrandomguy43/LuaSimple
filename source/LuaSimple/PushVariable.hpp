@@ -7,12 +7,12 @@
 #include <any>
 #include <optional>
 #pragma once
-class VariableMaker{
+class PushVariable{
 private:
 std::shared_ptr<lua_State*> pointer_to_lua_state;
 
 public:
-VariableMaker(std::shared_ptr<lua_State*> pointer_to_lua_state){
+PushVariable(std::shared_ptr<lua_State*> pointer_to_lua_state){
     this->pointer_to_lua_state = pointer_to_lua_state;
 }
 
@@ -77,10 +77,15 @@ void Table(std::unordered_map<std::variant<std::string,lua_Integer>,std::any> ta
             }
             //string
             else if (itr->second.type() == typeid(std::string)){
-                lua_pushlstring(*(this->pointer_to_lua_state), (std::any_cast<std::string>(itr->second)).c_str(), (std::any_cast<std::string>(itr->second)).size());
+                String(std::any_cast<std::string>(itr->second));
                 TableKeyAdder(itr->first);
+            }
+            else if (itr->second.type() == typeid(lua_CFunction)){
+                Function(std::any_cast<lua_CFunction>(itr->second));
+                TableKeyAdder(itr->first);
+            }
             //nil
-            } else {
+             else {
                 lua_pushnil(*(this->pointer_to_lua_state));
                 TableKeyAdder(itr->first);
             };

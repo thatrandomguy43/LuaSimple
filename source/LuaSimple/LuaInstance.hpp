@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 #include "SetGlobal.hpp"
-#include "VariableMaker.hpp"
+#include "PushVariable.hpp"
 #include <vector>
 #include <any>
 
@@ -21,25 +21,19 @@ class LuaInstance{
         lua_close(*(this->pointer_to_lua_state));
     };
 
-    VariableMaker MakeLuaVariable{this->pointer_to_lua_state};
+    PushVariable PushVariable{this->pointer_to_lua_state};
 
-    GlobalAdder AddGlobalVariable{this->pointer_to_lua_state, &MakeLuaVariable};
+    SetGlobal SetGlobal{this->pointer_to_lua_state, &PushVariable};
 
 
-    int DoString(std::string code){
-        int response_code = luaL_dostring(*(this->pointer_to_lua_state),code.c_str());
-        if (response_code != 0){
-            if (lua_type(*(this->pointer_to_lua_state), 1) == LUA_TTABLE){
-                std::cerr << "DoString produced a Lua error:" << std::endl;
-                lua_setglobal(*(this->pointer_to_lua_state), "error_table");
-                luaL_dostring(*(this->pointer_to_lua_state), "for k,v in pairs(error_table) do print(tostring(k) .. \" = \" .. tostring(v)) end");
-            } else {
-            std::string error_message = luaL_tolstring(*(this->pointer_to_lua_state), 1, NULL);
-            std::cerr << error_message;
-            };
-        };
-        return response_code;
-    }
+int DoString(std::string code){
+    int response_code = luaL_dostring(*(this->pointer_to_lua_state),code.c_str());
+    if (response_code != 0){
+        std::string error_message = luaL_tolstring(*(this->pointer_to_lua_state), -1, NULL);
+        std::cerr << error_message;
+    };
+    return response_code;
+};
 
     std::vector<std::any> GetArguments(std::vector<int> types){
         std::vector<std::any> argument_values;
@@ -89,7 +83,7 @@ class LuaInstance{
          
             case LUA_TTABLE:
             {
-                std::unordered_map<std::variant<std::string,lua_Integer>,std::any> value = MakeLuaVariable.ParseTable();
+                std::unordered_map<std::variant<std::string,lua_Integer>,std::any> value = PushVariable.ParseTable();
                 argument_values[argument] =(std::make_any<std::unordered_map<std::variant<std::string,lua_Integer>,std::any>>(value));
             }
             break;

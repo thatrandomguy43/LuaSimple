@@ -1,5 +1,5 @@
 #include "luainclude/lua.hpp"
-#include "VariableMaker.hpp"
+#include "PushVariable.hpp"
 #include <string>
 #include <iostream>
 #include <unordered_map>
@@ -9,16 +9,16 @@
 #include <memory>
 #include <optional>
 #pragma once
-class GlobalAdder
+class SetGlobal
 {
 private:
 std::shared_ptr<lua_State*> pointer_to_lua_state;
-VariableMaker* variable_maker;
+PushVariable* variable_maker;
 
 
 
 public:
-GlobalAdder(std::shared_ptr<lua_State*> pointer_to_lua_state, VariableMaker* variable_maker){
+SetGlobal(std::shared_ptr<lua_State*> pointer_to_lua_state, PushVariable* variable_maker){
     this->pointer_to_lua_state = pointer_to_lua_state;
     this->variable_maker = variable_maker;
 }
