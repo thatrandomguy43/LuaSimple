@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Asger\Mit drev\lua api again but not with a dumbass library\source\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\Asger\Mit drev\lua api again but not with a dumbass library\source\LuaSimple\LuaInstance.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Asger\Mit drev\lua api again but not with a dumbass library\source\LuaSimple\SetGlobal.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Asger\Mit drev\lua api again but not with a dumbass library\source\LuaSimple\VariableMaker.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Asger\Mit drev\lua api again but not with a dumbass library\source\LuaSimple\luainclude\lua.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Asger\Mit drev\lua api again but not with a dumbass library\source\LuaSimple\luainclude\lua.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Asger\Mit drev\lua api again but not with a dumbass library\source\LuaSimple\luainclude\lualib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Asger\Mit drev\lua api again but not with a dumbass library\source\LuaSimple\luainclude\lauxlib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Asger\Mit drev\lua api again but not with a dumbass library\source\LuaSimple\luainclude\luaconf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Asger\Mit drev\lua api again but not with a dumbass library\source\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{D4942D2F-29E6-3D8C-AC0E-349D4D8C705F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{8C49971E-11FC-354F-A5CA-7DE8CD65460E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,3 @@
+C:/Users/Asger/Mit drev/lua api again but not with a dumbass library/build/_deps/lua-subbuild/CMakeFiles/lua-populate.dir
+C:/Users/Asger/Mit drev/lua api again but not with a dumbass library/build/_deps/lua-subbuild/CMakeFiles/ALL_BUILD.dir
+C:/Users/Asger/Mit drev/lua api again but not with a dumbass library/build/_deps/lua-subbuild/CMakeFiles/ZERO_CHECK.dir

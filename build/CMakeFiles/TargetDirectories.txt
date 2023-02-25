@@ -1,0 +1,3 @@
+C:/Users/Asger/Mit drev/lua api again but not with a dumbass library/build/CMakeFiles/example_project.dir
+C:/Users/Asger/Mit drev/lua api again but not with a dumbass library/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Asger/Mit drev/lua api again but not with a dumbass library/build/CMakeFiles/ZERO_CHECK.dir

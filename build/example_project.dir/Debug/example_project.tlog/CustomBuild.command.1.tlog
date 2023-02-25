@@ -1,0 +1,10 @@
+^C:\USERS\ASGER\MIT DREV\LUA API AGAIN BUT NOT WITH A DUMBASS LIBRARY\SOURCE\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Asger/Mit drev/lua api again but not with a dumbass library/source" "-BC:/Users/Asger/Mit drev/lua api again but not with a dumbass library/build" --check-stamp-file "C:/Users/Asger/Mit drev/lua api again but not with a dumbass library/build/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
