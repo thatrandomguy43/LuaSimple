@@ -55,8 +55,8 @@ unordered_map<string,string> compound{
 };
 
 lua.DoString("some_table = {} some_table.a_goofy_field = 20 some_table[2] = \"this is an index\" some_table.anotha_table = {} some_table.anotha_table.balls_status = \"itching\" ");
-lua_getglobal(*(lua.pointer_to_lua_state), "some_table");
-unordered_map<variant<string,lua_Integer>,any> cpp_table = lua.PushVariable.ParseTable();
+lua_getglobal(lua.pointer_to_lua_state, "some_table");
+unordered_map<variant<string,lua_Integer>,any> cpp_table = lua.GetVariable.Table();
 cout << any_cast<lua_Number>(cpp_table.at("a_goofy_field")) << endl;
 
 cout << any_cast<string>(cpp_table.at(2)) << endl;

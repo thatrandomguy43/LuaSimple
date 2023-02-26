@@ -12,13 +12,13 @@
 class SetGlobal
 {
 private:
-std::shared_ptr<lua_State*> pointer_to_lua_state;
+lua_State** pointer_to_lua_state;
 PushVariable* variable_maker;
 
 
 
 public:
-SetGlobal(std::shared_ptr<lua_State*> pointer_to_lua_state, PushVariable* variable_maker){
+SetGlobal(lua_State** pointer_to_lua_state, PushVariable* variable_maker){
     this->pointer_to_lua_state = pointer_to_lua_state;
     this->variable_maker = variable_maker;
 }

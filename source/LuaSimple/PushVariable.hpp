@@ -2,17 +2,16 @@
 #include <string>
 #include "luainclude/lua.hpp"
 #include <unordered_map>
-#include <memory>
 #include <variant>
 #include <any>
 #include <optional>
 #pragma once
 class PushVariable{
 private:
-std::shared_ptr<lua_State*> pointer_to_lua_state;
+lua_State** pointer_to_lua_state;
 
 public:
-PushVariable(std::shared_ptr<lua_State*> pointer_to_lua_state){
+PushVariable(lua_State** pointer_to_lua_state){
     this->pointer_to_lua_state = pointer_to_lua_state;
 }
 
@@ -100,69 +99,6 @@ void Table(std::unordered_map<std::variant<std::string,lua_Integer>,std::any> ta
 
 
 
-std::unordered_map<std::variant<std::string,lua_Integer>,std::any> ParseTable(){
-    std::unordered_map<std::variant<std::string,lua_Integer>,std::any> return_table;
-    std::variant<std::string,lua_Integer> key_to_add;
-    std::any value_to_add;
-    lua_pushnil(*(this->pointer_to_lua_state));
-    while (lua_next(*(this->pointer_to_lua_state),-2) != 0){
-        if (lua_type(*(this->pointer_to_lua_state),-2) == LUA_TNUMBER){
-            key_to_add = lua_tointeger(*(this->pointer_to_lua_state), -2);
-        } else if (lua_type(*(this->pointer_to_lua_state),-2) == LUA_TSTRING) {
-            key_to_add = lua_tostring(*(this->pointer_to_lua_state), -2);
-        };
-        //we do a little copy pasting
-        switch (lua_type(*(this->pointer_to_lua_state),-1))
-            {
-
-            case LUA_TNIL:
-                value_to_add = nullptr;
-            break;
-            case LUA_TBOOLEAN:
-            {
-                value_to_add = lua_toboolean(*(this->pointer_to_lua_state), -1);
-            }
-            break;
-
-            case LUA_TLIGHTUSERDATA:
-            {
-                value_to_add = lua_touserdata(*(this->pointer_to_lua_state), -1);
-            }
-            break;
-            
-            case LUA_TNUMBER:
-            {
-                value_to_add = lua_tonumber(*(this->pointer_to_lua_state), -1);
-            }
-            break;
-            
-            case LUA_TSTRING:
-            {
-                value_to_add = (std::string)lua_tostring(*(this->pointer_to_lua_state), -1);
-            }
-            break;
-         
-            case LUA_TTABLE:
-            {//when the function is recursive! susjerma.jpg
-                value_to_add = ParseTable();
-            }
-            break;
-
-            case LUA_TUSERDATA:
-            {
-                value_to_add = (std::any*)(lua_touserdata(*(this->pointer_to_lua_state), -1));
-            }
-            break;
-
-            default:
-
-            break;
-            }
-        return_table.insert({key_to_add,value_to_add});
-        lua_pop(*(this->pointer_to_lua_state), 1);
-    };
-    return return_table;
-}
 
 //i dont really understand the purpose of c function upvalues, if you need to do stuff with other lua values for some reason just make them
 //this not works for at least basic funcs, yay
