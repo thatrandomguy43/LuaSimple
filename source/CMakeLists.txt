@@ -13,4 +13,5 @@ set(EXECUTABLE_NAME
 #INSERT_YOUR_EXECUTABLE_NAME_HERE
 example_project
 )
+
 add_subdirectory(LuaSimple)
