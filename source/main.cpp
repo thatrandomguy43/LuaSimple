@@ -81,5 +81,10 @@ lua.SetGlobal.Metatable(my_metatable, "test_metatable");
 lua.SetGlobal.Userdata(test_container,"my_userdata", "test_metatable");
 
 lua.DoString("print(my_userdata())");
+
+lua_getglobal(lua.pointer_to_lua_state, "print");
+tuple<string,int,bool> function_info = lua.GetVariable.Function();
+
+cout << boolalpha << "Type: " << get<string>(function_info) << " Argument count: " << get<int>(function_info) << " Takes extra parameters: " << get<bool>(function_info) << endl;
 return 0;
 }
