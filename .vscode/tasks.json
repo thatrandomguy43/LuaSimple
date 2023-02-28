@@ -3,7 +3,7 @@
       {
         "label": "Build project with MSBuild",
         "type": "shell",
-        "command": "msbuild build/example_project.vcxproj /t:rebuild /fsanitize=address",
+        "command": "msbuild build/example_project.vcxproj /t:rebuild",
         "problemMatcher": "$msCompile",
         "group": {
           "kind": "build",

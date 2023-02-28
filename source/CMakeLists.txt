@@ -8,7 +8,9 @@ VERSION 0.1
 add_executable(example_project)
 target_sources(example_project PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
 
-set(CMAKE_CXX_COMPILE_FEATURES -fsanitize=address -fno-omit-frame-pointer)
+if(MSVC)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++latest")
+endif(MSVC)
 
 #the important line for adding this to somethign else
 set(EXECUTABLE_NAME 

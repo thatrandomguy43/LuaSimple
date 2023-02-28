@@ -9,6 +9,6 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(lua)
 target_sources(${EXECUTABLE_NAME} PUBLIC LuaInstance.hpp SetGlobal.hpp PushVariable.hpp GetGlobal.hpp GetVariable.hpp)
-set(CMAKE_CXX_STANDARD 23)
+
 target_link_libraries(${EXECUTABLE_NAME} lua_static)
 target_include_directories(${EXECUTABLE_NAME} PUBLIC luainclude)
