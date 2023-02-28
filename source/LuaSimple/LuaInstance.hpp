@@ -90,9 +90,8 @@ std::vector<std::any> GetArguments(std::vector<int> types){
         break;
         case LUA_TFUNCTION:
         {
-            std::tuple<std::string,int,bool> value = GetVariable.Function();
-            lua_insert(this->pointer_to_lua_state, 1);
-            argument_values[argument] =(std::make_any<std::tuple<std::string,int,bool>>(value));
+            std::tuple<int,int,bool> value = GetVariable.Function();
+            argument_values[argument] =(std::make_any<std::tuple<int,int,bool>>(value));
         }
 
         case LUA_TUSERDATA:

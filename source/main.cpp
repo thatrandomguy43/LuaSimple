@@ -55,8 +55,8 @@ unordered_map<string,string> compound{
 };
 
 lua.DoString("some_table = {} some_table.a_goofy_field = 20 some_table[2] = \"this is an index\" some_table.anotha_table = {} some_table.anotha_table.balls_status = \"itching\" ");
-lua_getglobal(lua.pointer_to_lua_state, "some_table");
-unordered_map<variant<string,lua_Integer>,any> cpp_table = lua.GetVariable.Table();
+
+unordered_map<variant<string,lua_Integer>,any> cpp_table = lua.GetGlobal.Table("some_table");
 cout << any_cast<lua_Number>(cpp_table.at("a_goofy_field")) << endl;
 
 cout << any_cast<string>(cpp_table.at(2)) << endl;
@@ -83,8 +83,8 @@ lua.SetGlobal.Userdata(test_container,"my_userdata", "test_metatable");
 lua.DoString("print(my_userdata())");
 
 lua_getglobal(lua.pointer_to_lua_state, "print");
-tuple<string,int,bool> function_info = lua.GetVariable.Function();
+tuple<int,int,bool> function_info = lua.GetVariable.Function();
 
-cout << boolalpha << "Type: " << get<string>(function_info) << " Argument count: " << get<int>(function_info) << " Takes extra parameters: " << get<bool>(function_info) << endl;
+cout << boolalpha << "Stack position: " << get<0>(function_info) << " Argument count: " << get<1>(function_info) << " Takes extra parameters: " << get<bool>(function_info) << endl;
 return 0;
 }

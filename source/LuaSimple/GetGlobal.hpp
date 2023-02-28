@@ -74,7 +74,7 @@ std::unordered_map<std::variant<std::string,lua_Integer>,std::any> Table(std::st
     };
 }
 
-std::tuple<std::string,int,bool> Function(std::string name){
+std::tuple<int,int,bool> Function(std::string name){
     lua_getglobal(*(this->pointer_to_lua_state), name.c_str());
     if (lua_type(*(this->pointer_to_lua_state), -1) == LUA_TFUNCTION){
         return get_variable->Function();

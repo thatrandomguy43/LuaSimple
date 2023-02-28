@@ -43,6 +43,11 @@ std::unordered_map<std::variant<std::string,lua_Integer>,std::any> Table(){
     std::any value_to_add;
     lua_pushnil(*(this->pointer_to_lua_state));
     while (lua_next(*(this->pointer_to_lua_state),-2) != 0){
+    std::cout << "stack height: " << lua_gettop(*(this->pointer_to_lua_state)) << std::endl;
+    std::cout << "index -1: " << lua_typename(*(this->pointer_to_lua_state),lua_type(*(this->pointer_to_lua_state),-1)) << std::endl;
+    std::cout << "index -2: " << lua_typename(*(this->pointer_to_lua_state),lua_type(*(this->pointer_to_lua_state),-2)) << std::endl;
+    std::cout << "index -3: " << lua_typename(*(this->pointer_to_lua_state),lua_type(*(this->pointer_to_lua_state),-3)) << std::endl;
+    std::cout << "index -4: " << lua_typename(*(this->pointer_to_lua_state),lua_type(*(this->pointer_to_lua_state),-4)) << std::endl;
         if (lua_type(*(this->pointer_to_lua_state),-2) == LUA_TNUMBER){
             key_to_add = lua_tointeger(*(this->pointer_to_lua_state), -2);
         } else if (lua_type(*(this->pointer_to_lua_state),-2) == LUA_TSTRING) {
@@ -91,7 +96,7 @@ std::unordered_map<std::variant<std::string,lua_Integer>,std::any> Table(){
             {
                 value_to_add = Function();
                 //slaps the function below the table
-                lua_insert(*(this->pointer_to_lua_state), -4);
+                
             }
             break;
 
@@ -109,13 +114,24 @@ std::unordered_map<std::variant<std::string,lua_Integer>,std::any> Table(){
         lua_pop(*(this->pointer_to_lua_state), 1);
     };
     lua_pop(*(this->pointer_to_lua_state), 1);
+    std::cout << "stack height: " << lua_gettop(*(this->pointer_to_lua_state)) << std::endl;
+    std::cout << "index -1: " << lua_typename(*(this->pointer_to_lua_state),lua_type(*(this->pointer_to_lua_state),-1)) << std::endl;
+    std::cout << "index -2: " << lua_typename(*(this->pointer_to_lua_state),lua_type(*(this->pointer_to_lua_state),-2)) << std::endl;
+    std::cout << "index -3: " << lua_typename(*(this->pointer_to_lua_state),lua_type(*(this->pointer_to_lua_state),-3)) << std::endl;
+    std::cout << "index -4: " << lua_typename(*(this->pointer_to_lua_state),lua_type(*(this->pointer_to_lua_state),-4)) << std::endl;
     return return_table;
 }
 
-std::tuple<std::string,int,bool> Function(){
+std::tuple<int,int,bool> Function(){
     lua_Debug debug;
     lua_getinfo(*(this->pointer_to_lua_state), ">uS", &debug);
-    return std::make_tuple<std::string,int,bool>(debug.what, debug.nparams, debug.isvararg);
+    int functions_in_stack = 0;
+    while (lua_isfunction(*(this->pointer_to_lua_state), functions_in_stack))
+    {
+        functions_in_stack++;
+    }
+    lua_insert(*(this->pointer_to_lua_state), functions_in_stack+1);
+    return std::make_tuple<int,int,bool>(functions_in_stack+1, debug.nparams, debug.isvararg);
 }
 
 std::any* Userdata(){
