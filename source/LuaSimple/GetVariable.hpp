@@ -113,7 +113,6 @@ std::unordered_map<std::variant<std::string,lua_Integer>,std::any> Table(){
         return_table.insert({key_to_add,value_to_add});
         lua_pop(*(this->pointer_to_lua_state), 1);
     };
-    lua_pop(*(this->pointer_to_lua_state), 1);
     std::cout << "stack height: " << lua_gettop(*(this->pointer_to_lua_state)) << std::endl;
     std::cout << "index -1: " << lua_typename(*(this->pointer_to_lua_state),lua_type(*(this->pointer_to_lua_state),-1)) << std::endl;
     std::cout << "index -2: " << lua_typename(*(this->pointer_to_lua_state),lua_type(*(this->pointer_to_lua_state),-2)) << std::endl;
