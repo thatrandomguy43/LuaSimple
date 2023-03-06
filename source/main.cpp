@@ -77,7 +77,7 @@ lua.DoString("help_me = scream(10) print(help_me)");
 
 
 any test_container = make_any<int>(3);
-
+cout << test_container.type().name() << endl;
 unordered_map<variant<string, lua_Integer>,any> my_metatable;
 int (* metamethod_ptr)(lua_State*) = &GetFunnyNumber;
 my_metatable["__call"] = make_any<lua_CFunction>(metamethod_ptr);

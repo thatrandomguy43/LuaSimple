@@ -5,6 +5,8 @@
 #include <variant>
 #include <any>
 #include <optional>
+#include <iostream>
+#include <cstring>
 #pragma once
 class PushVariable{
 private:
@@ -113,7 +115,8 @@ std::any* Userdata(std::any data, std::optional<std::string> metatable_name /*,i
     if (metatable_name.has_value()){
         luaL_setmetatable(*(this->pointer_to_lua_state), metatable_name.value().c_str());
     }
-    *((std::any*)userdata_ptr) = data;
+    std::cout << data.type().name() << std::endl;
+    std::memmove(userdata_ptr, &data, sizeof data);
     return (std::any*)userdata_ptr;
 }
 
