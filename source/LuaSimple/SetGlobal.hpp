@@ -68,7 +68,7 @@ void Function(lua_CFunction function_to_set, std::string name){
 
 std::any* Userdata(std::any data, std::string name, std::optional<std::string> metatable_name /*,int uservalue_count*/){
     std::any* userdata_ptr = variable_maker->Userdata(data, metatable_name);
-
+    
     lua_setglobal(*(this->pointer_to_lua_state), name.c_str());
     return userdata_ptr;
 }

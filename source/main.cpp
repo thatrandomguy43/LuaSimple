@@ -21,12 +21,23 @@ int StringOfAs(lua_State* Lua){
     return 1;
 }
 
+class TestUserdata
+{
+private:
+int funny_number = 13;
+public:
 
-int GetFunnyNumber (lua_State* L){
-    lua_settop(L, 0);
+static int GetFunnyNumber (lua_State* L){
+    any* self = static_cast<any*>(lua_touserdata(lua.pointer_to_lua_state, 1));
+    //any_cast<TestUserdata>(*self);
     lua.PushVariable.Number(69);
     return 1;
 }
+
+};
+
+
+
 
 
 int main(){
@@ -69,23 +80,26 @@ cout << any_cast<string>(cpp_table.at(2)) << endl;
 auto subtable = any_cast<unordered_map<variant<string,lua_Integer>,any>>(cpp_table.at("anotha_table"));
 cout << any_cast<string>(subtable.at("balls_status")) << endl; 
 
-
+any ref_test = make_any<double>(69.420);
+double* retrieved_value_ref_test = any_cast<double>(&ref_test);
+*retrieved_value_ref_test = 54.321;
+cout << any_cast<double>(ref_test) << endl;
 
 lua.SetGlobal.Function(&StringOfAs, "scream");
 
 lua.DoString("help_me = scream(10) print(help_me)");
 
 
-any test_container = make_any<int>(3);
-cout << test_container.type().name() << endl;
 unordered_map<variant<string, lua_Integer>,any> my_metatable;
-int (* metamethod_ptr)(lua_State*) = &GetFunnyNumber;
+int (*metamethod_ptr)(lua_State*) = &TestUserdata::GetFunnyNumber;
+TestUserdata my_object;
+
 my_metatable["__call"] = make_any<lua_CFunction>(metamethod_ptr);
 
 lua.SetGlobal.Metatable(my_metatable, "test_metatable");
-lua.SetGlobal.Userdata(test_container,"my_userdata", "test_metatable");
+lua.SetGlobal.Userdata(my_object,"my_userdata", "test_metatable");
 
-lua.DoString("print(my_userdata())");
+lua.DoString("print(my_userdata(my_userdata))");
 
 lua_getglobal(lua.pointer_to_lua_state, "print");
 tuple<int,int,bool> function_info = lua.GetVariable.Function();

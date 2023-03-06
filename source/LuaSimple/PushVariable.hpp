@@ -103,7 +103,7 @@ void Table(std::unordered_map<std::variant<std::string,lua_Integer>,std::any> ta
 
 
 //i dont really understand the purpose of c function upvalues, if you need to do stuff with other lua values for some reason just make them
-//this not works for at least basic funcs, yay
+//this now works for at least basic funcs, yay
 void Function(lua_CFunction function){
     lua_pushcfunction(*(this->pointer_to_lua_state), function);
 }
