@@ -41,7 +41,6 @@ void LightUserdata(void* pointer_to_set, std::string name){
     lua_setglobal(*(this->pointer_to_lua_state), name.c_str());
     return;
 }
-
 void String(std::string string_to_set, std::string name){
     variable_maker->String(string_to_set);
     lua_setglobal(*(this->pointer_to_lua_state), name.c_str());

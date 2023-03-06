@@ -10,7 +10,7 @@ using namespace std;
 
 LuaInstance lua;
 
-int StringOfAs(lua_State* L){
+int StringOfAs(lua_State* Lua){
     vector<any> arguments = lua.GetArguments({LUA_TNUMBER});
     string help_aaaa;
     int count = any_cast<lua_Number>(arguments[0]);
