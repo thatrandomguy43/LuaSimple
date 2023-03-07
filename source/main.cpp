@@ -28,9 +28,9 @@ int funny_number = 13;
 public:
 
 static int GetFunnyNumber (lua_State* L){
-    any* self = static_cast<any*>(lua_touserdata(lua.pointer_to_lua_state, 1));
-    //any_cast<TestUserdata>(*self);
-    lua.PushVariable.Number(69);
+    any* packed_self = static_cast<any*>(lua_touserdata(lua.pointer_to_lua_state, 1));
+    TestUserdata* self = any_cast<TestUserdata>(packed_self);
+    lua.PushVariable.Number(self->funny_number);
     return 1;
 }
 
