@@ -44,7 +44,7 @@ std::vector<std::any> GetArguments(std::vector<int> types){
     std::vector<std::any> argument_values;
     int num_arguments = lua_gettop(this->pointer_to_lua_state);
     argument_values.resize(num_arguments);
-
+    int function_count = 0;
     for (int argument = 0; argument != num_arguments; argument++){
     //only do a check if there is actualy a value to check against, don't want any buffer overflows here
         if (argument <= types.size()){
@@ -95,6 +95,7 @@ std::vector<std::any> GetArguments(std::vector<int> types){
         {
             std::tuple<int,int,bool> value = GetVariable.Function();
             argument_values[argument] =(std::make_any<std::tuple<int,int,bool>>(value));
+            function_count++;
         }
 
         case LUA_TUSERDATA:
@@ -110,6 +111,8 @@ std::vector<std::any> GetArguments(std::vector<int> types){
         }
 
         }
+        //removes everything that is not a function, as it has no reason to fill the stack anymore and would block functions from being called
+        lua_settop(this->pointer_to_lua_state, function_count);
         return argument_values;
     }
 void ReturnResults(std::vector<std::any> values){
