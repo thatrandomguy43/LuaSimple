@@ -64,7 +64,7 @@ std::string String(std::string name){
     };
 }
 
-std::unordered_map<std::variant<std::string,lua_Integer>,std::any> Table(std::string name){
+lua_Table Table(std::string name){
     lua_getglobal(*(this->pointer_to_lua_state), name.c_str());
     if (lua_type(*(this->pointer_to_lua_state), -1) == LUA_TTABLE){
         return get_variable->Table();

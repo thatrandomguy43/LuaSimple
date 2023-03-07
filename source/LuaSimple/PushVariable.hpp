@@ -54,7 +54,7 @@ void TableKeyAdder(std::variant<std::string,lua_Integer> key){
 return;
 }
 
-void Table(std::unordered_map<std::variant<std::string,lua_Integer>,std::any> table_to_add, bool make_new/*if not set will instead merge the keys and values into existing table on top of stack, presubably overriding any duplicate keys with new ones*/, std::optional<std::string> metatable_name){
+void Table(lua_Table table_to_add, bool make_new/*if not set will instead merge the keys and values into existing table on top of stack, presubably overriding any duplicate keys with new ones*/, std::optional<std::string> metatable_name){
     if (make_new){
     lua_newtable(*(this->pointer_to_lua_state));
     };

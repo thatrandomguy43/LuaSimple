@@ -8,6 +8,9 @@
 #include <any>
 #include "GetVariable.hpp"
 #pragma once
+
+typedef std::unordered_map<std::variant<std::string,lua_Integer>,std::any> lua_Table;
+
 class LuaInstance{
 
     public:
@@ -84,8 +87,8 @@ std::vector<std::any> GetArguments(std::vector<int> types){
          
         case LUA_TTABLE:
         {
-            std::unordered_map<std::variant<std::string,lua_Integer>,std::any> value = GetVariable.Table();
-            argument_values[argument] =(std::make_any<std::unordered_map<std::variant<std::string,lua_Integer>,std::any>>(value));
+            lua_Table value = GetVariable.Table();
+            argument_values[argument] =(std::make_any<lua_Table>(value));
         }
         break;
         case LUA_TFUNCTION:
@@ -105,10 +108,7 @@ std::vector<std::any> GetArguments(std::vector<int> types){
             argument_values[argument] = (std::make_any<nullptr_t>(nullptr));
         break;
         }
-        //gotta do it this way so it is always working with the top value, and to not leave stuff left on the stack
-        if (types[argument] != LUA_TFUNCTION){ //in this case the pop already got done by lua_insert
-            lua_pop(this->pointer_to_lua_state,1);
-        }
+
         }
         return argument_values;
     }

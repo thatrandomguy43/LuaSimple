@@ -37,17 +37,12 @@ std::string String(){
     return found_global;
 }
 
-std::unordered_map<std::variant<std::string,lua_Integer>,std::any> Table(){
-    std::unordered_map<std::variant<std::string,lua_Integer>,std::any> return_table;
+lua_Table Table(){
+    lua_Table return_table;
     std::variant<std::string,lua_Integer> key_to_add;
     std::any value_to_add;
     lua_pushnil(*(this->pointer_to_lua_state));
     while (lua_next(*(this->pointer_to_lua_state),-2) != 0){
-    std::cout << "stack height: " << lua_gettop(*(this->pointer_to_lua_state)) << std::endl;
-    std::cout << "index -1: " << lua_typename(*(this->pointer_to_lua_state),lua_type(*(this->pointer_to_lua_state),-1)) << std::endl;
-    std::cout << "index -2: " << lua_typename(*(this->pointer_to_lua_state),lua_type(*(this->pointer_to_lua_state),-2)) << std::endl;
-    std::cout << "index -3: " << lua_typename(*(this->pointer_to_lua_state),lua_type(*(this->pointer_to_lua_state),-3)) << std::endl;
-    std::cout << "index -4: " << lua_typename(*(this->pointer_to_lua_state),lua_type(*(this->pointer_to_lua_state),-4)) << std::endl;
         if (lua_type(*(this->pointer_to_lua_state),-2) == LUA_TNUMBER){
             key_to_add = lua_tointeger(*(this->pointer_to_lua_state), -2);
         } else if (lua_type(*(this->pointer_to_lua_state),-2) == LUA_TSTRING) {
@@ -113,11 +108,6 @@ std::unordered_map<std::variant<std::string,lua_Integer>,std::any> Table(){
         return_table.insert({key_to_add,value_to_add});
         lua_pop(*(this->pointer_to_lua_state), 1);
     };
-    std::cout << "stack height: " << lua_gettop(*(this->pointer_to_lua_state)) << std::endl;
-    std::cout << "index -1: " << lua_typename(*(this->pointer_to_lua_state),lua_type(*(this->pointer_to_lua_state),-1)) << std::endl;
-    std::cout << "index -2: " << lua_typename(*(this->pointer_to_lua_state),lua_type(*(this->pointer_to_lua_state),-2)) << std::endl;
-    std::cout << "index -3: " << lua_typename(*(this->pointer_to_lua_state),lua_type(*(this->pointer_to_lua_state),-3)) << std::endl;
-    std::cout << "index -4: " << lua_typename(*(this->pointer_to_lua_state),lua_type(*(this->pointer_to_lua_state),-4)) << std::endl;
     return return_table;
 }
 

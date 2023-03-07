@@ -47,12 +47,12 @@ void String(std::string string_to_set, std::string name){
     return;
 }
 
-void Table(std::unordered_map<std::variant<std::string,lua_Integer>,std::any> table_to_set, std::string name, std::optional<std::string> metatable_name){
+void Table(lua_Table table_to_set, std::string name, std::optional<std::string> metatable_name){
     variable_maker->Table(table_to_set, true, metatable_name);
     lua_setglobal(*(this->pointer_to_lua_state), name.c_str());
 }
 
-void Metatable(std::unordered_map<std::variant<std::string,lua_Integer>,std::any> metatable_to_register, std::string name){
+void Metatable(lua_Table metatable_to_register, std::string name){
     if (luaL_getmetatable(*(this->pointer_to_lua_state),name.c_str()) == 0){
         lua_pop(*(this->pointer_to_lua_state),1);
         luaL_newmetatable(*(this->pointer_to_lua_state), name.c_str());
