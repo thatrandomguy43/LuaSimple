@@ -1,5 +1,6 @@
 #include "luainclude/lua.hpp"
 #include "PushVariable.hpp"
+#include "LuaInstance.hpp"
 #include <string>
 #include <iostream>
 #include <unordered_map>

@@ -7,7 +7,9 @@
 #include <optional>
 #include <iostream>
 #include <cstring>
-#pragma once
+#include "LuaInstance.hpp"
+
+
 class PushVariable{
 private:
 lua_State** pointer_to_lua_state;

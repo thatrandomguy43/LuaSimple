@@ -4,7 +4,7 @@
 #include <any>
 #include "luainclude/lua.hpp"
 #include <variant>
-
+#include "LuaInstance.hpp"
 #pragma once
 class GetVariable
 {

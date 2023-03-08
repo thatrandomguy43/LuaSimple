@@ -8,7 +8,7 @@ FetchContent_Declare(
   GIT_TAG        v5.4.3
 )
 FetchContent_MakeAvailable(lua)
-target_sources(${EXECUTABLE_NAME} PUBLIC LuaInstance.hpp SetGlobal.hpp PushVariable.hpp GetGlobal.hpp GetVariable.hpp)
+target_sources(${EXECUTABLE_NAME} PUBLIC LuaInstance.cpp LuaInstance.hpp SetGlobal.hpp PushVariable.hpp GetGlobal.hpp GetVariable.hpp)
 
 target_link_libraries(${EXECUTABLE_NAME} lua_static)
 target_include_directories(${EXECUTABLE_NAME} PUBLIC luainclude)

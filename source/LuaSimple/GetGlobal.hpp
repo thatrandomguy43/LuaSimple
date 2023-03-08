@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "luainclude/lua.hpp"
+#include "LuaInstance.hpp"
 #include "GetVariable.hpp"
 class GetGlobal{
 private:
