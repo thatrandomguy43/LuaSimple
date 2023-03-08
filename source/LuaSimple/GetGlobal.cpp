@@ -6,9 +6,8 @@
 #include "GetVariable.hpp"
 #include "GetGlobal.hpp"
 
-GetGlobal::GetGlobal(lua_State** L, GetVariable* get_obj){
-    this->pointer_to_lua_state = L;
-    this->get_variable = get_obj;
+GetGlobal::GetGlobal(lua_State** pointer_passed, GetVariable* get_obj) : pointer_to_lua_state(pointer_passed), get_variable(get_obj){
+
 }
 
 int GetGlobal::GetType(std::string name){

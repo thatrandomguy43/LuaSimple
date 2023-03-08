@@ -9,21 +9,18 @@
 #include "GetVariable.hpp"
 #include "LuaInstance.hpp"
 
-LuaInstance::LuaInstance(){
-    this->pointer_to_lua_state = luaL_newstate();
+LuaInstance::LuaInstance() : 
+pointer_to_lua_state(luaL_newstate()), 
+PushVariable(&pointer_to_lua_state), 
+GetVariable(&pointer_to_lua_state),
+SetGlobal(&pointer_to_lua_state, &PushVariable),
+GetGlobal(&pointer_to_lua_state, &GetVariable) {
     luaL_openlibs(this->pointer_to_lua_state);
-    this->PushVariable = PushVariable::PushVariable(&pointer_to_lua_state);
-    this->GetVariable = GetVariable(&pointer_to_lua_state);
-    this->GetGlobal = GetGlobal(&pointer_to_lua_state, &GetVariable);
-    this->SetGlobal = SetGlobal(&pointer_to_lua_state, &PushVariable);
-};
+}
 
 LuaInstance::~LuaInstance(){
     lua_close(this->pointer_to_lua_state);
-};
-
-
-
+}
 
 int LuaInstance::DoString(std::string code){
     int response_code = luaL_dostring(this->pointer_to_lua_state,code.c_str());
@@ -32,7 +29,7 @@ int LuaInstance::DoString(std::string code){
         std::cerr << error_message;
     };
     return response_code;
-};
+}
 
 std::vector<std::any> LuaInstance::GetArguments(std::vector<int> types){
     std::vector<std::any> argument_values;

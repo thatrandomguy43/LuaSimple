@@ -24,9 +24,11 @@ GetVariable GetVariable;
 GetGlobal GetGlobal;
 SetGlobal SetGlobal;
 
-int DoString(std::string code);
-std::vector<std::any> GetArguments(std::vector<int> types);
-void ReturnResults(std::vector<std::any> values);
+int DoString(std::string);
+
+std::vector<std::any> GetArguments(std::vector<int>);
+
+void ReturnResults(std::vector<std::any>);
 };
 
 

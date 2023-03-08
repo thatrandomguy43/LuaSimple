@@ -13,22 +13,22 @@ lua_State** pointer_to_lua_state;
 GetVariable* get_variable;
 public:
 
-GetGlobal(lua_State** L, GetVariable* get_obj);
+GetGlobal(lua_State**, GetVariable*);
 
-int GetType(std::string name);
+int GetType(std::string);
 
-bool Boolean(std::string name);
+bool Boolean(std::string);
 
-void* LightUserdata(std::string name);
+void* LightUserdata(std::string);
 
-lua_Number Number(std::string name);
+lua_Number Number(std::string);
 
-std::string String(std::string name);
+std::string String(std::string);
 
-lua_Table Table(std::string name);
+lua_Table Table(std::string);
 
-std::tuple<int,int,bool> Function(std::string name);
+std::tuple<int,int,bool> Function(std::string);
 
-std::any* Userdata(std::string name);
+std::any* Userdata(std::string);
 };
 

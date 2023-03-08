@@ -15,31 +15,31 @@ private:
 lua_State** pointer_to_lua_state;
 
 public:
-PushVariable(lua_State** pointer_to_lua_state);
+PushVariable(lua_State**);
 
 void Nil();
 
-void Boolean(bool boolean);
+void Boolean(bool);
 
-void Number(lua_Number number);
+void Number(lua_Number);
 
-void LightUserdata(void* pointer);
+void LightUserdata(void*);
 
-void String(std::string string);
+void String(std::string);
 
-void TableKeyAdder(std::variant<std::string,lua_Integer> key);
+void TableKeyAdder(std::variant<std::string,lua_Integer>);
 
-void Table(lua_Table table_to_add, bool make_new/*if not set will instead merge the keys and values into existing table on top of stack, presubably overriding any duplicate keys with new ones*/, std::optional<std::string> metatable_name);
+void Table(lua_Table, bool/*if not set will instead merge the keys and values into existing table on top of stack, presubably overriding any duplicate keys with new ones*/, std::optional<std::string>);
 
 
 
 //i dont really understand the purpose of c function upvalues, if you need to do stuff with other lua values for some reason just make them
 //this now works for at least basic funcs, yay
-void Function(lua_CFunction function);
+void Function(lua_CFunction);
 
 
 //not doing uservalues quite yet
-std::any* Userdata(std::any data, std::optional<std::string> metatable_name /*,int uservalue_count*/);
+std::any* Userdata(std::any, std::optional<std::string>);
 
 
 };

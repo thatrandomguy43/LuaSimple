@@ -15,7 +15,7 @@ private:
 lua_State** pointer_to_lua_state;
 public:
 
-GetVariable(lua_State** L);
+GetVariable(lua_State**);
 
 bool Boolean();
 
