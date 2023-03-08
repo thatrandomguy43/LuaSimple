@@ -11,6 +11,9 @@
 
 using namespace std;
 
+//this retarded line of code is needed because static members of a class are not considered to be defined when declared for soem reason
+unordered_map<lua_State*, LuaInstance*> LuaInstance::instance_list = unordered_map<lua_State*, LuaInstance*>();
+
 LuaInstance::LuaInstance() : 
 pointer_to_lua_state(luaL_newstate()), 
 PushVariable(&pointer_to_lua_state), 
@@ -18,10 +21,12 @@ GetVariable(&pointer_to_lua_state),
 SetGlobal(&pointer_to_lua_state, &PushVariable),
 GetGlobal(&pointer_to_lua_state, &GetVariable) {
     luaL_openlibs(this->pointer_to_lua_state);
+    LuaInstance::instance_list.at(this->pointer_to_lua_state) = this;
 }
 
 LuaInstance::~LuaInstance(){
     lua_close(this->pointer_to_lua_state);
+    instance_list.erase(this->pointer_to_lua_state);
 }
 
 int LuaInstance::DoString(string code){
@@ -110,4 +115,9 @@ vector<any> LuaInstance::GetArguments(vector<int> types){
     }
 void LuaInstance::ReturnResults(vector<any> values){
 
+}
+
+LuaInstance& LuaInstance::FindInstance(lua_State* pointer_from_lua){
+    LuaInstance& found_instance = *(LuaInstance::instance_list[pointer_from_lua]);
+    return found_instance;
 }

@@ -16,6 +16,7 @@ class LuaInstance{
 public:
 lua_State* pointer_to_lua_state;
 
+static std::unordered_map<lua_State*, LuaInstance*> instance_list;
 
 LuaInstance();
 ~LuaInstance();
@@ -30,6 +31,8 @@ int DoString(std::string);
 std::vector<std::any> GetArguments(std::vector<int>);
 
 void ReturnResults(std::vector<std::any>);
+
+static LuaInstance& FindInstance(lua_State*);
 };
 
 
