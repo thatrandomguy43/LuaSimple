@@ -9,24 +9,20 @@
 #include "GetVariable.hpp"
 #include "LuaInstance.hpp"
 
+LuaInstance::LuaInstance(){
+    this->pointer_to_lua_state = luaL_newstate();
+    luaL_openlibs(this->pointer_to_lua_state);
+    this->PushVariable = PushVariable(&pointer_to_lua_state);
+    this->GetVariable = GetVariable(&pointer_to_lua_state);
+    this->GetGlobal = GetGlobal(&pointer_to_lua_state, &GetVariable);
+    this->SetGlobal = SetGlobal(&pointer_to_lua_state, &PushVariable);
+};
+
+LuaInstance::~LuaInstance(){
+    lua_close(this->pointer_to_lua_state);
+};
 
 
-
-
-
-    LuaInstance::LuaInstance(){
-        this->pointer_to_lua_state = luaL_newstate();
-        luaL_openlibs(this->pointer_to_lua_state);
-    };
-
-    LuaInstance::~LuaInstance(){
-        lua_close(this->pointer_to_lua_state);
-    };
-
-LuaInstance::PushVariable = PushVariable(&pointer_to_lua_state);
-LuaInstance::GetVariable = GetVariable(&pointer_to_lua_state);
-LuaInstance::GetGlobal = GetGlobal(&pointer_to_lua_state, &GetVariable);
-SetGlobal SetGlobal = SetGlobal(&pointer_to_lua_state, &PushVariable);
 
 
 int LuaInstance::DoString(std::string code){
