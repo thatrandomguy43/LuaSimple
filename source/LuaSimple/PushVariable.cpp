@@ -12,8 +12,8 @@
 
 
 
-PushVariable::PushVariable(lua_State** pointer_to_lua_state){
-    this->pointer_to_lua_state = pointer_to_lua_state;
+PushVariable::PushVariable(lua_State** pointer_passed) : pointer_to_lua_state(pointer_passed){
+    
 }
 
 void PushVariable::Nil(){

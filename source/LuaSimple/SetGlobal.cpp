@@ -12,9 +12,8 @@
 #include <optional>
 #pragma once
 
-SetGlobal::SetGlobal(lua_State** pointer_to_lua_state, PushVariable* variable_maker){
-    this->pointer_to_lua_state = pointer_to_lua_state;
-    this->variable_maker = variable_maker;
+SetGlobal::SetGlobal(lua_State** pointer_passed, PushVariable* var_pusher_passed)  : pointer_to_lua_state(pointer_passed), variable_maker(var_pusher_passed){
+
 }
 
 
