@@ -52,7 +52,7 @@ lua.DoString("for i=1,10 do print(\"hi\") end");
 lua.SetGlobal.Number(80, "some_number");
 lua.DoString("print(some_number)");
 
-std::string goofy_words = "heya scott here";
+string goofy_words = "heya scott here";
 lua.SetGlobal.String(goofy_words, "some_string");
 lua.DoString("print(some_string)");
 

@@ -16,6 +16,7 @@ class LuaInstance{
 public:
 lua_State* pointer_to_lua_state;
 
+
 LuaInstance();
 ~LuaInstance();
 

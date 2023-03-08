@@ -6,86 +6,88 @@
 #include "GetVariable.hpp"
 #include "GetGlobal.hpp"
 
+using namespace std;
+
 GetGlobal::GetGlobal(lua_State** pointer_passed, GetVariable* get_obj) : pointer_to_lua_state(pointer_passed), get_variable(get_obj){
 
 }
 
-int GetGlobal::GetType(std::string name){
+int GetGlobal::GetType(string name){
     lua_getglobal(*(this->pointer_to_lua_state), name.c_str());
     int type = lua_type(*(this->pointer_to_lua_state), -1);
     lua_pop(*(this->pointer_to_lua_state), 1);
     return type;
 }
 
-bool GetGlobal::Boolean(std::string name){
+bool GetGlobal::Boolean(string name){
     lua_getglobal(*(this->pointer_to_lua_state), name.c_str());
     if (lua_type(*(this->pointer_to_lua_state), -1) == LUA_TBOOLEAN){
        return get_variable->Boolean();
     } else {
-        std::cerr << "Global Lua variable " << name << " is not a boolean." << std::endl;
+        cerr << "Global Lua variable " << name << " is not a boolean." << endl;
         return false;
     };
     
 }
 
-void* GetGlobal::LightUserdata(std::string name){
+void* GetGlobal::LightUserdata(string name){
     lua_getglobal(*(this->pointer_to_lua_state), name.c_str());
     if (lua_type(*(this->pointer_to_lua_state), -1) == LUA_TLIGHTUSERDATA){
         return get_variable->LightUserdata();
     } else {
-        std::cerr << "Global Lua variable " << name << " is not a light userdata." << std::endl;
+        cerr << "Global Lua variable " << name << " is not a light userdata." << endl;
         return nullptr;
     };
    
 }
 
-lua_Number GetGlobal::Number(std::string name){
+lua_Number GetGlobal::Number(string name){
     lua_getglobal(*(this->pointer_to_lua_state), name.c_str());
     if (lua_type(*(this->pointer_to_lua_state), -1) == LUA_TNUMBER){
         return get_variable->Number();
     } else {
-        std::cerr << "Global Lua variable " << name << " is not a number." << std::endl;
+        cerr << "Global Lua variable " << name << " is not a number." << endl;
         return 0;
     };
 }
 
-std::string GetGlobal::String(std::string name){
+string GetGlobal::String(string name){
     lua_getglobal(*(this->pointer_to_lua_state), name.c_str());
-    std::string found_global;
+    string found_global;
     if (lua_type(*(this->pointer_to_lua_state), -1) == LUA_TSTRING){
         return get_variable->String();
     } else {
-        std::cerr << "Global Lua variable " << name << " is not a string." << std::endl;
+        cerr << "Global Lua variable " << name << " is not a string." << endl;
         return "";
     };
 }
 
-lua_Table GetGlobal::Table(std::string name){
+lua_Table GetGlobal::Table(string name){
     lua_getglobal(*(this->pointer_to_lua_state), name.c_str());
     if (lua_type(*(this->pointer_to_lua_state), -1) == LUA_TTABLE){
         return get_variable->Table();
     } else {
-        std::cerr << "Global Lua variable " << name << " is not a table." << std::endl;
+        cerr << "Global Lua variable " << name << " is not a table." << endl;
         return {};
     };
 }
 
-std::tuple<int,int,bool> GetGlobal::Function(std::string name){
+tuple<int,int,bool> GetGlobal::Function(string name){
     lua_getglobal(*(this->pointer_to_lua_state), name.c_str());
     if (lua_type(*(this->pointer_to_lua_state), -1) == LUA_TFUNCTION){
         return get_variable->Function();
     } else {
-        std::cerr << "Global Lua variable " << name << " is not a function." << std::endl;
+        cerr << "Global Lua variable " << name << " is not a function." << endl;
         return {};
     };
 }
 
-std::any* GetGlobal::Userdata(std::string name){
+any* GetGlobal::Userdata(string name){
 lua_getglobal(*(this->pointer_to_lua_state), name.c_str());
     if (lua_type(*(this->pointer_to_lua_state), -1) == LUA_TUSERDATA){
         return get_variable->Userdata();
     } else {
-        std::cerr << "Global Lua variable " << name << " is not a userdata." << std::endl;
+        cerr << "Global Lua variable " << name << " is not a userdata." << endl;
         return nullptr;
     };
 }

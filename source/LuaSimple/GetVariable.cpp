@@ -7,6 +7,8 @@
 #include "LuaInstance.hpp"
 #include "GetVariable.hpp"
 
+using namespace std;
+
 GetVariable::GetVariable(lua_State** pointer_passed) : pointer_to_lua_state(pointer_passed){
 
 }
@@ -27,15 +29,15 @@ lua_Number GetVariable::Number(){
     return found_global;
 }
 
-std::string GetVariable::String(){
-    std::string found_global = lua_tostring(*(this->pointer_to_lua_state),-1);
+string GetVariable::String(){
+    string found_global = lua_tostring(*(this->pointer_to_lua_state),-1);
     return found_global;
 }
 
 lua_Table GetVariable::Table(){
     lua_Table return_table;
-    std::variant<std::string,lua_Integer> key_to_add;
-    std::any value_to_add;
+    variant<string,lua_Integer> key_to_add;
+    any value_to_add;
     lua_pushnil(*(this->pointer_to_lua_state));
     while (lua_next(*(this->pointer_to_lua_state),-2) != 0){
         if (lua_type(*(this->pointer_to_lua_state),-2) == LUA_TNUMBER){
@@ -92,7 +94,7 @@ lua_Table GetVariable::Table(){
 
             case LUA_TUSERDATA:
             {
-                value_to_add = (std::any*)(lua_touserdata(*(this->pointer_to_lua_state), -1));
+                value_to_add = (any*)(lua_touserdata(*(this->pointer_to_lua_state), -1));
             }
             break;
 
@@ -106,7 +108,7 @@ lua_Table GetVariable::Table(){
     return return_table;
 }
 
-std::tuple<int,int,bool> GetVariable::Function(){
+tuple<int,int,bool> GetVariable::Function(){
     lua_Debug debug;
     lua_getinfo(*(this->pointer_to_lua_state), ">uS", &debug);
     int functions_in_stack = 0;
@@ -115,10 +117,10 @@ std::tuple<int,int,bool> GetVariable::Function(){
         functions_in_stack++;
     }
     lua_insert(*(this->pointer_to_lua_state), functions_in_stack+1);
-    return std::make_tuple<int,int,bool>(functions_in_stack+1, debug.nparams, debug.isvararg);
+    return make_tuple<int,int,bool>(functions_in_stack+1, debug.nparams, debug.isvararg);
 }
 
-std::any* GetVariable::Userdata(){
-    std::any* found_global = (std::any*)lua_touserdata(*(this->pointer_to_lua_state),-1);
+any* GetVariable::Userdata(){
+    any* found_global = (any*)lua_touserdata(*(this->pointer_to_lua_state),-1);
     return found_global;
 }
