@@ -7,7 +7,7 @@
 #include "LuaInstance.hpp"
 #include "GetVariable.hpp"
 
-GetVariable::GetVariable(lua_State** pointer_passed) : pointer_to_lua_state(){
+GetVariable::GetVariable(lua_State** pointer_passed) : pointer_to_lua_state(pointer_passed){
 
 }
 
