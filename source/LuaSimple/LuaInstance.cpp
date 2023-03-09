@@ -21,7 +21,7 @@ GetVariable(&pointer_to_lua_state),
 SetGlobal(&pointer_to_lua_state, &PushVariable),
 GetGlobal(&pointer_to_lua_state, &GetVariable) {
     luaL_openlibs(this->pointer_to_lua_state);
-    LuaInstance::instance_list.at(this->pointer_to_lua_state) = this;
+    LuaInstance::instance_list[this->pointer_to_lua_state] = this;
 }
 
 LuaInstance::~LuaInstance(){
