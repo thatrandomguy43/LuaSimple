@@ -35,6 +35,3 @@ void ReturnResults(std::vector<std::any>);
 
 static LuaInstance& FindInstance(lua_State*);
 };
-
-
-

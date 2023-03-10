@@ -24,11 +24,11 @@ GetGlobal(&pointer_to_lua_state, &GetVariable) {
 }
 
 LuaInstance::~LuaInstance(){
-    cout << "Call to destructor" << endl;
     lua_close(this->pointer_to_lua_state);
     for (auto itr = LuaInstance::instance_list.begin(); itr != LuaInstance::instance_list.end(); itr++){
         if (itr->first == this->pointer_to_lua_state){
             LuaInstance::instance_list.erase(itr);
+            break;
         }
     }
 }
