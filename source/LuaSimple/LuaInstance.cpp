@@ -11,8 +11,7 @@
 
 using namespace std;
 
-//this retarded line of code is needed because static members of a class are not considered to be defined when declared for soem reason
-vector<pair<lua_State*, LuaInstance*>> LuaInstance::instance_list = vector<pair<lua_State*, LuaInstance*>>();
+
 
 LuaInstance::LuaInstance() : 
 pointer_to_lua_state(luaL_newstate()), 
@@ -25,6 +24,7 @@ GetGlobal(&pointer_to_lua_state, &GetVariable) {
 }
 
 LuaInstance::~LuaInstance(){
+    cout << "Call to destructor" << endl;
     lua_close(this->pointer_to_lua_state);
     for (auto itr = LuaInstance::instance_list.begin(); itr != LuaInstance::instance_list.end(); itr++){
         if (itr->first == this->pointer_to_lua_state){
@@ -129,7 +129,7 @@ LuaInstance& LuaInstance::FindInstance(lua_State* pointer_from_lua){
             found_ptr = itr->second;
             found = true;
         };
-    }
+    };
     if (not found){
         throw "No LuaInstance matching the specified lua_State* was found!";
     };
