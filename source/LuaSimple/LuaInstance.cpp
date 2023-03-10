@@ -12,7 +12,7 @@
 using namespace std;
 
 //this retarded line of code is needed because static members of a class are not considered to be defined when declared for soem reason
-unordered_map<lua_State*, LuaInstance*> LuaInstance::instance_list = unordered_map<lua_State*, LuaInstance*>();
+vector<pair<lua_State*, LuaInstance*>> LuaInstance::instance_list = vector<pair<lua_State*, LuaInstance*>>();
 
 LuaInstance::LuaInstance() : 
 pointer_to_lua_state(luaL_newstate()), 
@@ -21,12 +21,16 @@ GetVariable(&pointer_to_lua_state),
 SetGlobal(&pointer_to_lua_state, &PushVariable),
 GetGlobal(&pointer_to_lua_state, &GetVariable) {
     luaL_openlibs(this->pointer_to_lua_state);
-    LuaInstance::instance_list[this->pointer_to_lua_state] = this;
+    LuaInstance::instance_list.push_back({this->pointer_to_lua_state, this});
 }
 
 LuaInstance::~LuaInstance(){
     lua_close(this->pointer_to_lua_state);
-    instance_list.erase(this->pointer_to_lua_state);
+    for (auto itr = LuaInstance::instance_list.begin(); itr != LuaInstance::instance_list.end(); itr++){
+        if (itr->first == this->pointer_to_lua_state){
+            LuaInstance::instance_list.erase(itr);
+        }
+    }
 }
 
 int LuaInstance::DoString(string code){
@@ -118,6 +122,17 @@ void LuaInstance::ReturnResults(vector<any> values){
 }
 
 LuaInstance& LuaInstance::FindInstance(lua_State* pointer_from_lua){
-    LuaInstance& found_instance = *(LuaInstance::instance_list[pointer_from_lua]);
+    LuaInstance* found_ptr;
+    bool found = false;
+    for (auto itr = LuaInstance::instance_list.begin(); itr != LuaInstance::instance_list.end(); itr++){
+        if (itr->first == pointer_from_lua){
+            found_ptr = itr->second;
+            found = true;
+        };
+    }
+    if (not found){
+        throw "No LuaInstance matching the specified lua_State* was found!";
+    };
+    LuaInstance& found_instance = *found_ptr;
     return found_instance;
 }

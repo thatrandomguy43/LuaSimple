@@ -2,6 +2,7 @@
 #include <string>
 #include <unordered_map>
 #include <any>
+#include <utility>
 #include "luainclude/lua.hpp"
 #include "PushVariable.hpp"
 #include "GetVariable.hpp"
@@ -16,7 +17,7 @@ class LuaInstance{
 public:
 lua_State* pointer_to_lua_state;
 
-static std::unordered_map<lua_State*, LuaInstance*> instance_list;
+static std::vector<std::pair<lua_State*, LuaInstance*>> instance_list;
 
 LuaInstance();
 ~LuaInstance();
