@@ -43,11 +43,6 @@ static int GetFunnyNumber (lua_State* L){
 
 int main(){
 
-int* asan_fail_generator = new int;
-delete asan_fail_generator;
-// *asan_fail_generator = 4;
-
-
 lua.DoString("for i=1,10 do print(\"hi\") end");
 
 lua.SetGlobal.Number(80, "some_number");

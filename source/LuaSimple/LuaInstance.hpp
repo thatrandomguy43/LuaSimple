@@ -17,7 +17,7 @@ class LuaInstance{
 public:
 lua_State* pointer_to_lua_state;
 
-static inline std::vector<std::pair<lua_State*, LuaInstance*>> instance_list = std::vector<std::pair<lua_State*, LuaInstance*>>();
+static inline std::unordered_map<lua_State*, LuaInstance*> instance_list = std::unordered_map<lua_State*, LuaInstance*>();
 
 LuaInstance();
 ~LuaInstance();
