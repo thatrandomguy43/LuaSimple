@@ -95,7 +95,7 @@ vector<any> LuaInstance::GetArguments(vector<int> types){
             argument_values[argument] =(make_any<tuple<int,int,bool>>(value));
             function_count++;
         }
-
+        break;
         case LUA_TUSERDATA:
         {
             any* value = (any*)(lua_touserdata(this->pointer_to_lua_state, -1));
