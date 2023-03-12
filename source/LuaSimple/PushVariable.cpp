@@ -104,31 +104,31 @@ any* PushVariable::Userdata(any data, optional<string> metatable_name /*,int use
 void PushVariable::AnyValue(any value){
      if (value.has_value())
         {
-            // boolean
             if (value.type() == typeid(bool))
             {
                 Boolean(any_cast<bool>(value));
             }
-            // number
             else if (value.type() == typeid(lua_Number))
             {
                 Number(any_cast<lua_Number>(value));
             }
-            // light userdata
             else if (value.type() == typeid(void*))
             {
                 LightUserdata(any_cast<void*>(value));
             }
-            // string
             else if (value.type() == typeid(string))
             {
                 String(any_cast<string>(value));
+            }
+            else if (value.type() == typeid(lua_Table))
+            {
+                //i somehow completely forgot to add recursive table pushing
+                Table(any_cast<lua_Table>(value), false, {});
             }
             else if (value.type() == typeid(lua_CFunction))
             {
                 Function(any_cast<lua_CFunction>(value));
             }
-            // nil
             else
             {
                 lua_pushnil(*(this->pointer_to_lua_state));
