@@ -13,61 +13,64 @@
 
 using namespace std;
 
-SetGlobal::SetGlobal(lua_State** pointer_passed, PushVariable* var_pusher_passed)  : pointer_to_lua_state(pointer_passed), variable_maker(var_pusher_passed){
-
+SetGlobal::SetGlobal(lua_State **pointer_passed, PushVariable *var_pusher_passed) : pointer_to_lua_state(pointer_passed), variable_maker(var_pusher_passed)
+{
 }
 
-
-void SetGlobal::Boolean(bool bool_to_set, string name){
+void SetGlobal::Boolean(bool bool_to_set, string name)
+{
     variable_maker->Boolean(bool_to_set);
     lua_setglobal(*(this->pointer_to_lua_state), name.c_str());
     return;
 }
 
-void SetGlobal::Number(double number_to_set, string name){
+void SetGlobal::Number(double number_to_set, string name)
+{
     variable_maker->Number(number_to_set);
     lua_setglobal(*(this->pointer_to_lua_state), name.c_str());
-        return;
+    return;
 }
 
-void SetGlobal::LightUserdata(void* pointer_to_set, string name){
+void SetGlobal::LightUserdata(void *pointer_to_set, string name)
+{
     variable_maker->LightUserdata(pointer_to_set);
     lua_setglobal(*(this->pointer_to_lua_state), name.c_str());
     return;
 }
-void SetGlobal::String(string string_to_set, string name){
+void SetGlobal::String(string string_to_set, string name)
+{
     variable_maker->String(string_to_set);
     lua_setglobal(*(this->pointer_to_lua_state), name.c_str());
     return;
 }
 
-void SetGlobal::Table(lua_Table table_to_set, string name, optional<string> metatable_name){
+void SetGlobal::Table(lua_Table table_to_set, string name, optional<string> metatable_name)
+{
     variable_maker->Table(table_to_set, true, metatable_name);
     lua_setglobal(*(this->pointer_to_lua_state), name.c_str());
 }
 
-void SetGlobal::Metatable(lua_Table metatable_to_register, string name){
-    if (luaL_getmetatable(*(this->pointer_to_lua_state),name.c_str()) == 0){
-        lua_pop(*(this->pointer_to_lua_state),1);
+void SetGlobal::Metatable(lua_Table metatable_to_register, string name)
+{
+    if (luaL_getmetatable(*(this->pointer_to_lua_state), name.c_str()) == 0)
+    {
+        lua_pop(*(this->pointer_to_lua_state), 1);
         luaL_newmetatable(*(this->pointer_to_lua_state), name.c_str());
     };
-    variable_maker->Table(metatable_to_register, false,{});
+    variable_maker->Table(metatable_to_register, false, {});
     return;
 }
 
-void SetGlobal::Function(lua_CFunction function_to_set, string name){
+void SetGlobal::Function(lua_CFunction function_to_set, string name)
+{
     variable_maker->Function(function_to_set);
     lua_setglobal(*(this->pointer_to_lua_state), name.c_str());
 }
 
-any* SetGlobal::Userdata(any data, string name, optional<string> metatable_name /*,int uservalue_count*/){
-    any* userdata_ptr = variable_maker->Userdata(data, metatable_name);
-    
+any *SetGlobal::Userdata(any data, string name, optional<string> metatable_name /*,int uservalue_count*/)
+{
+    any *userdata_ptr = variable_maker->Userdata(data, metatable_name);
+
     lua_setglobal(*(this->pointer_to_lua_state), name.c_str());
     return userdata_ptr;
 }
-
-
-
-
-

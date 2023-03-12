@@ -7,29 +7,29 @@
 
 #pragma once
 
-typedef std::unordered_map<std::variant<std::string,lua_Integer>,std::any> lua_Table;
-class GetGlobal{
+typedef std::unordered_map<std::variant<std::string, lua_Integer>, std::any> lua_Table;
+class GetGlobal
+{
 private:
-lua_State** pointer_to_lua_state;
-GetVariable* get_variable;
+    lua_State **pointer_to_lua_state;
+    GetVariable *get_variable;
+
 public:
+    GetGlobal(lua_State **, GetVariable *);
 
-GetGlobal(lua_State**, GetVariable*);
+    int GetType(std::string);
 
-int GetType(std::string);
+    bool Boolean(std::string);
 
-bool Boolean(std::string);
+    void *LightUserdata(std::string);
 
-void* LightUserdata(std::string);
+    lua_Number Number(std::string);
 
-lua_Number Number(std::string);
+    std::string String(std::string);
 
-std::string String(std::string);
+    lua_Table Table(std::string);
 
-lua_Table Table(std::string);
+    LuaFunction Function(std::string);
 
-LuaFunction Function(std::string);
-
-std::any* Userdata(std::string);
+    std::any *Userdata(std::string);
 };
-

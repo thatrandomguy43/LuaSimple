@@ -8,31 +8,27 @@
 
 #pragma once
 
-typedef std::unordered_map<std::variant<std::string,lua_Integer>,std::any> lua_Table;
+typedef std::unordered_map<std::variant<std::string, lua_Integer>, std::any> lua_Table;
 
 class GetVariable
 {
 private:
-lua_State** pointer_to_lua_state;
+    lua_State **pointer_to_lua_state;
+
 public:
+    GetVariable(lua_State **);
 
-GetVariable(lua_State**);
+    bool Boolean();
 
-bool Boolean();
+    void *LightUserdata();
 
-void* LightUserdata();
+    lua_Number Number();
 
+    std::string String();
 
-lua_Number Number();
+    lua_Table Table();
 
-std::string String();
+    LuaFunction Function();
 
-lua_Table Table();
-
-LuaFunction Function();
-
-std::any* Userdata();
-
+    std::any *Userdata();
 };
-
-

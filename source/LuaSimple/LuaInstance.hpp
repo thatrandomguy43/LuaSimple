@@ -11,29 +11,32 @@
 
 #pragma once
 
-typedef std::unordered_map<std::variant<std::string,lua_Integer>,std::any> lua_Table;
+typedef std::unordered_map<std::variant<std::string, lua_Integer>, std::any> lua_Table;
 
-class LuaInstance{
+class LuaInstance
+{
 public:
-lua_State* pointer_to_lua_state;
+    lua_State *pointer_to_lua_state;
 
-static inline std::unordered_map<lua_State*, LuaInstance*> instance_list = std::unordered_map<lua_State*, LuaInstance*>();
+    std::vector<std::any> lua_return_values;
 
-LuaInstance();
-~LuaInstance();
+    static inline std::unordered_map<lua_State *, LuaInstance *> instance_list = std::unordered_map<lua_State *, LuaInstance *>();
 
-PushVariable PushVariable;
-GetVariable GetVariable;
-GetGlobal GetGlobal;
-SetGlobal SetGlobal;
+    LuaInstance();
+    ~LuaInstance();
 
-int DoString(std::string);
+    PushVariable PushVariable;
+    GetVariable GetVariable;
+    GetGlobal GetGlobal;
+    SetGlobal SetGlobal;
 
-int DoFile(std::string);
+    int DoString(std::string);
 
-std::vector<std::any> GetArguments(std::vector<int>);
+    int DoFile(std::string);
 
-void ReturnResults(std::vector<std::any>);
+    std::vector<std::any> GetArguments(std::vector<int>);
 
-static LuaInstance& FindInstance(lua_State*);
+    void ReturnResults(std::vector<std::any>);
+
+    static LuaInstance &FindInstance(lua_State *);
 };
