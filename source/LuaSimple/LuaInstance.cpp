@@ -8,6 +8,7 @@
 #include <any>
 #include "GetVariable.hpp"
 #include "LuaInstance.hpp"
+#include "LuaFunction.hpp"
 
 using namespace std;
 
@@ -27,8 +28,15 @@ LuaInstance::~LuaInstance()
     this->instance_list.erase(this->pointer_to_lua_state);
 }
 
-int DoFunction(LuaFunction function_object, vector<any> arguments){
-    
+int LuaInstance::DoFunction(LuaFunction function_object, vector<any> arguments){
+    this->PushVariable.Number(function_object.registry_key);
+    lua_gettable(this->pointer_to_lua_state, LUA_REGISTRYINDEX);
+    for (auto itr = arguments.begin(); itr != arguments.end(); itr++){
+        this->PushVariable.AnyValue(*itr);
+    };
+    int response_code = lua_pcall(this->pointer_to_lua_state, function_object.argument_count, LUA_MULTRET, 0);
+    this->HandleReturn(response_code);
+    return response_code;
 }
 
 int LuaInstance::DoString(string code)
@@ -55,8 +63,9 @@ void LuaInstance::HandleReturn(int response){
     {
         this->lua_return_values.clear();
         int num_returns = lua_gettop(this->pointer_to_lua_state);
-        for (int return_index = num_returns-1; return_index != 0; return_index--){
-            
+        this->lua_return_values.resize(num_returns);
+        for (int return_index = num_returns-1; return_index > 0; return_index--){
+            this->lua_return_values[return_index] = this->GetVariable.AnyValue();
         };
     };
     return;
@@ -70,7 +79,7 @@ vector<any> LuaInstance::GetArguments(vector<int> types)
     for (int argument_index = num_arguments-1; argument_index >= 0; argument_index--)
     {
         // only do a check if there is actualy a value to check against, extra args can be whatever and just go unused anyway
-        if (argument_index <= types.size())
+        if (argument_index < types.size())
         {
             luaL_checktype(this->pointer_to_lua_state, argument_index, types[(argument_index)]);
         };

@@ -108,7 +108,9 @@ LuaFunction function_info = lua.GetGlobal.Function("print");
 cout << boolalpha << "Stored in registry at: " << function_info.registry_key << " Argument count: " << function_info.argument_count << " Takes extra parameters: " << function_info.takes_extra_args << endl;
 
 lua.DoFile("C:/Users/Asger/Desktop/programming/LuaSimple/source/funny file.lua");
-vector<any> return_values = lua.GetArguments({LUA_TNUMBER});
-cout << any_cast<lua_Number>(return_values[0]) << endl;
+
+cout << any_cast<lua_Number>(lua.lua_return_values[0]) << endl;
+
+lua.DoFunction(function_info, {make_any<string>("my "), make_any<string>("balls "), make_any<string>("itch")});
 return 0;
 }

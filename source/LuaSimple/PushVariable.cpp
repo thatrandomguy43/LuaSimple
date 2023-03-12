@@ -101,38 +101,38 @@ any* PushVariable::Userdata(any data, optional<string> metatable_name /*,int use
     return (any*)userdata_ptr;
 }
 
-void PushVariable::AnyValue(any value){
-     if (value.has_value())
+void PushVariable::AnyValue(any value) {
+    if (value.has_value())
+    {
+        if (value.type() == typeid(bool))
         {
-            if (value.type() == typeid(bool))
-            {
-                Boolean(any_cast<bool>(value));
-            }
-            else if (value.type() == typeid(lua_Number))
-            {
-                Number(any_cast<lua_Number>(value));
-            }
-            else if (value.type() == typeid(void*))
-            {
-                LightUserdata(any_cast<void*>(value));
-            }
-            else if (value.type() == typeid(string))
-            {
-                String(any_cast<string>(value));
-            }
-            else if (value.type() == typeid(lua_Table))
-            {
-                //i somehow completely forgot to add recursive table pushing
-                Table(any_cast<lua_Table>(value), false, {});
-            }
-            else if (value.type() == typeid(lua_CFunction))
-            {
-                Function(any_cast<lua_CFunction>(value));
-            }
-            else
-            {
-                lua_pushnil(*(this->pointer_to_lua_state));
-            };
-            // full userdata would not work as you need to get a pointer to its location in lua back
+            Boolean(any_cast<bool>(value));
+        }
+        else if (value.type() == typeid(lua_Number))
+        {
+            Number(any_cast<lua_Number>(value));
+        }
+        else if (value.type() == typeid(void*))
+        {
+            LightUserdata(any_cast<void*>(value));
+        }
+        else if (value.type() == typeid(string))
+        {
+            String(any_cast<string>(value));
+        }
+        else if (value.type() == typeid(lua_Table))
+        {
+            //i somehow completely forgot to add recursive table pushing
+            Table(any_cast<lua_Table>(value), false, {});
+        }
+        else if (value.type() == typeid(lua_CFunction))
+        {
+            Function(any_cast<lua_CFunction>(value));
+        }
+        else
+        {
+            lua_pushnil(*(this->pointer_to_lua_state));
         };
+        // full userdata would not work as you need to get a pointer to its location in lua back
+    };
 }
