@@ -72,46 +72,8 @@ void PushVariable::Table(lua_Table table_to_add, bool make_new /*if not set will
     };
     for (auto itr = table_to_add.begin(); itr != table_to_add.end(); itr++)
     {
-        // if there's nothing in the any do nothing
-        if (itr->second.has_value())
-        {
-            // boolean
-            if (itr->second.type() == typeid(bool))
-            {
-                Boolean(any_cast<bool>(itr->second));
-                TableKeyAdder(itr->first);
-            }
-            // number
-            else if (itr->second.type() == typeid(lua_Number))
-            {
-                Number(any_cast<lua_Number>(itr->second));
-                TableKeyAdder(itr->first);
-            }
-            // light userdata
-            else if (itr->second.type() == typeid(void*))
-            {
-                LightUserdata(any_cast<void*>(itr->second));
-                TableKeyAdder(itr->first);
-            }
-            // string
-            else if (itr->second.type() == typeid(string))
-            {
-                String(any_cast<string>(itr->second));
-                TableKeyAdder(itr->first);
-            }
-            else if (itr->second.type() == typeid(lua_CFunction))
-            {
-                Function(any_cast<lua_CFunction>(itr->second));
-                TableKeyAdder(itr->first);
-            }
-            // nil
-            else
-            {
-                lua_pushnil(*(this->pointer_to_lua_state));
-                TableKeyAdder(itr->first);
-            };
-            // full userdata would not work as you need to get a pointer to its location in lua back
-        };
+        this->AnyValue(itr->second);
+        this->TableKeyAdder(itr->first);
     };
     if (metatable_name.has_value())
     {
@@ -137,4 +99,40 @@ any* PushVariable::Userdata(any data, optional<string> metatable_name /*,int use
     }
     memmove(userdata_ptr, &data, sizeof data);
     return (any*)userdata_ptr;
+}
+
+void PushVariable::AnyValue(any value){
+     if (value.has_value())
+        {
+            // boolean
+            if (value.type() == typeid(bool))
+            {
+                Boolean(any_cast<bool>(value));
+            }
+            // number
+            else if (value.type() == typeid(lua_Number))
+            {
+                Number(any_cast<lua_Number>(value));
+            }
+            // light userdata
+            else if (value.type() == typeid(void*))
+            {
+                LightUserdata(any_cast<void*>(value));
+            }
+            // string
+            else if (value.type() == typeid(string))
+            {
+                String(any_cast<string>(value));
+            }
+            else if (value.type() == typeid(lua_CFunction))
+            {
+                Function(any_cast<lua_CFunction>(value));
+            }
+            // nil
+            else
+            {
+                lua_pushnil(*(this->pointer_to_lua_state));
+            };
+            // full userdata would not work as you need to get a pointer to its location in lua back
+        };
 }

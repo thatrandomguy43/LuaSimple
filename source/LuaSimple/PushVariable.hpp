@@ -38,4 +38,6 @@ public:
 
     // not doing uservalues quite yet
     std::any* Userdata(std::any, std::optional<std::string>);
+
+    void AnyValue(std::any);
 };
