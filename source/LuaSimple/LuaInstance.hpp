@@ -16,11 +16,11 @@ typedef std::unordered_map<std::variant<std::string, lua_Integer>, std::any> lua
 class LuaInstance
 {
 public:
-    lua_State *pointer_to_lua_state;
+    lua_State* pointer_to_lua_state;
 
     std::vector<std::any> lua_return_values;
 
-    static inline std::unordered_map<lua_State *, LuaInstance *> instance_list = std::unordered_map<lua_State *, LuaInstance *>();
+    static inline std::unordered_map<lua_State*, LuaInstance*> instance_list = std::unordered_map<lua_State*, LuaInstance*>();
 
     LuaInstance();
     ~LuaInstance();
@@ -36,7 +36,9 @@ public:
 
     std::vector<std::any> GetArguments(std::vector<int>);
 
+    std::any GetValue();
+
     void ReturnResults(std::vector<std::any>);
 
-    static LuaInstance &FindInstance(lua_State *);
+    static LuaInstance& FindInstance(lua_State*);
 };

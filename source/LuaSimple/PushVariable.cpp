@@ -12,7 +12,7 @@
 
 using namespace std;
 
-PushVariable::PushVariable(lua_State **pointer_passed) : pointer_to_lua_state(pointer_passed)
+PushVariable::PushVariable(lua_State** pointer_passed): pointer_to_lua_state(pointer_passed)
 {
 }
 
@@ -34,7 +34,7 @@ void PushVariable::Number(lua_Number number)
     return;
 }
 
-void PushVariable::LightUserdata(void *pointer)
+void PushVariable::LightUserdata(void* pointer)
 {
     lua_pushlightuserdata(*(this->pointer_to_lua_state), pointer);
     return;
@@ -88,9 +88,9 @@ void PushVariable::Table(lua_Table table_to_add, bool make_new /*if not set will
                 TableKeyAdder(itr->first);
             }
             // light userdata
-            else if (itr->second.type() == typeid(void *))
+            else if (itr->second.type() == typeid(void*))
             {
-                LightUserdata(any_cast<void *>(itr->second));
+                LightUserdata(any_cast<void*>(itr->second));
                 TableKeyAdder(itr->first);
             }
             // string
@@ -128,13 +128,13 @@ void PushVariable::Function(lua_CFunction function)
 }
 
 // not doing uservalues quite yet
-any *PushVariable::Userdata(any data, optional<string> metatable_name /*,int uservalue_count*/)
+any* PushVariable::Userdata(any data, optional<string> metatable_name /*,int uservalue_count*/)
 {
-    void *userdata_ptr = lua_newuserdatauv(*(this->pointer_to_lua_state), sizeof data, 0);
+    void* userdata_ptr = lua_newuserdatauv(*(this->pointer_to_lua_state), sizeof data, 0);
     if (metatable_name.has_value())
     {
         luaL_setmetatable(*(this->pointer_to_lua_state), metatable_name.value().c_str());
     }
     memmove(userdata_ptr, &data, sizeof data);
-    return (any *)userdata_ptr;
+    return (any*)userdata_ptr;
 }

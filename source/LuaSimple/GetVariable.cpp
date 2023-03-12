@@ -9,7 +9,7 @@
 
 using namespace std;
 
-GetVariable::GetVariable(lua_State **pointer_passed) : pointer_to_lua_state(pointer_passed)
+GetVariable::GetVariable(lua_State** pointer_passed): pointer_to_lua_state(pointer_passed)
 {
 }
 
@@ -19,9 +19,9 @@ bool GetVariable::Boolean()
     return found_global;
 }
 
-void *GetVariable::LightUserdata()
+void* GetVariable::LightUserdata()
 {
-    void *found_global = lua_touserdata(*(this->pointer_to_lua_state), -1);
+    void* found_global = lua_touserdata(*(this->pointer_to_lua_state), -1);
     return found_global;
 }
 
@@ -101,7 +101,7 @@ lua_Table GetVariable::Table()
 
         case LUA_TUSERDATA:
         {
-            value_to_add = (any *)(lua_touserdata(*(this->pointer_to_lua_state), -1));
+            value_to_add = (any*)(lua_touserdata(*(this->pointer_to_lua_state), -1));
         }
         break;
 
@@ -109,7 +109,7 @@ lua_Table GetVariable::Table()
             value_to_add = nullptr;
             break;
         }
-        return_table.insert({key_to_add, value_to_add});
+        return_table.insert({ key_to_add, value_to_add });
         lua_pop(*(this->pointer_to_lua_state), 1);
     };
     return return_table;
@@ -123,15 +123,15 @@ LuaFunction GetVariable::Function()
     lua_pushvalue(*(this->pointer_to_lua_state), -1);
     lua_getinfo(*(this->pointer_to_lua_state), ">uS", &debug);
     LuaFunction func;
-    // this fuction adds the function to a table (here the registy) with a guarenteed unique key
+    // this fuction adds the function to a table (here the registry) with a guarenteed unique key
     func.registry_key = luaL_ref(*(this->pointer_to_lua_state), LUA_REGISTRYINDEX);
     func.argument_count = debug.nparams;
     func.takes_extra_args = debug.isvararg;
     return func;
 }
 
-any *GetVariable::Userdata()
+any* GetVariable::Userdata()
 {
-    any *found_global = (any *)lua_touserdata(*(this->pointer_to_lua_state), -1);
+    any* found_global = (any*)lua_touserdata(*(this->pointer_to_lua_state), -1);
     return found_global;
 }

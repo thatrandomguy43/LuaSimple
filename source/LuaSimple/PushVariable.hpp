@@ -13,10 +13,10 @@ typedef std::unordered_map<std::variant<std::string, lua_Integer>, std::any> lua
 class PushVariable
 {
 private:
-    lua_State **pointer_to_lua_state;
+    lua_State** pointer_to_lua_state;
 
 public:
-    PushVariable(lua_State **);
+    PushVariable(lua_State**);
 
     void Nil();
 
@@ -24,7 +24,7 @@ public:
 
     void Number(lua_Number);
 
-    void LightUserdata(void *);
+    void LightUserdata(void*);
 
     void String(std::string);
 
@@ -37,5 +37,5 @@ public:
     void Function(lua_CFunction);
 
     // not doing uservalues quite yet
-    std::any *Userdata(std::any, std::optional<std::string>);
+    std::any* Userdata(std::any, std::optional<std::string>);
 };

@@ -13,7 +13,7 @@
 
 using namespace std;
 
-SetGlobal::SetGlobal(lua_State **pointer_passed, PushVariable *var_pusher_passed) : pointer_to_lua_state(pointer_passed), variable_maker(var_pusher_passed)
+SetGlobal::SetGlobal(lua_State** pointer_passed, PushVariable* var_pusher_passed): pointer_to_lua_state(pointer_passed), variable_maker(var_pusher_passed)
 {
 }
 
@@ -31,7 +31,7 @@ void SetGlobal::Number(double number_to_set, string name)
     return;
 }
 
-void SetGlobal::LightUserdata(void *pointer_to_set, string name)
+void SetGlobal::LightUserdata(void* pointer_to_set, string name)
 {
     variable_maker->LightUserdata(pointer_to_set);
     lua_setglobal(*(this->pointer_to_lua_state), name.c_str());
@@ -67,9 +67,9 @@ void SetGlobal::Function(lua_CFunction function_to_set, string name)
     lua_setglobal(*(this->pointer_to_lua_state), name.c_str());
 }
 
-any *SetGlobal::Userdata(any data, string name, optional<string> metatable_name /*,int uservalue_count*/)
+any* SetGlobal::Userdata(any data, string name, optional<string> metatable_name /*,int uservalue_count*/)
 {
-    any *userdata_ptr = variable_maker->Userdata(data, metatable_name);
+    any* userdata_ptr = variable_maker->Userdata(data, metatable_name);
 
     lua_setglobal(*(this->pointer_to_lua_state), name.c_str());
     return userdata_ptr;

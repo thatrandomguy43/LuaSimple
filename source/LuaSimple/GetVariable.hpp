@@ -13,14 +13,14 @@ typedef std::unordered_map<std::variant<std::string, lua_Integer>, std::any> lua
 class GetVariable
 {
 private:
-    lua_State **pointer_to_lua_state;
+    lua_State** pointer_to_lua_state;
 
 public:
-    GetVariable(lua_State **);
+    GetVariable(lua_State**);
 
     bool Boolean();
 
-    void *LightUserdata();
+    void* LightUserdata();
 
     lua_Number Number();
 
@@ -30,5 +30,5 @@ public:
 
     LuaFunction Function();
 
-    std::any *Userdata();
+    std::any* Userdata();
 };

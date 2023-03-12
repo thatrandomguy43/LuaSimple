@@ -11,11 +11,11 @@
 
 using namespace std;
 
-LuaInstance::LuaInstance() : pointer_to_lua_state(luaL_newstate()),
-                             PushVariable(&pointer_to_lua_state),
-                             GetVariable(&pointer_to_lua_state),
-                             SetGlobal(&pointer_to_lua_state, &PushVariable),
-                             GetGlobal(&pointer_to_lua_state, &GetVariable)
+LuaInstance::LuaInstance(): pointer_to_lua_state(luaL_newstate()),
+PushVariable(&pointer_to_lua_state),
+GetVariable(&pointer_to_lua_state),
+SetGlobal(&pointer_to_lua_state, &PushVariable),
+GetGlobal(&pointer_to_lua_state, &GetVariable)
 {
     luaL_openlibs(this->pointer_to_lua_state);
     this->instance_list[this->pointer_to_lua_state] = this;
@@ -65,66 +65,71 @@ vector<any> LuaInstance::GetArguments(vector<int> types)
             luaL_checktype(this->pointer_to_lua_state, argument, types[(argument - 1)]);
         };
 
-        switch (lua_type(this->pointer_to_lua_state, argument))
-        {
-        case LUA_TNIL:
-            argument_values[argument - 1] = make_any<nullptr_t>(nullptr);
-            break;
-        case LUA_TBOOLEAN:
-        {
-            bool value = this->GetVariable.Boolean();
-            argument_values[argument - 1] = (make_any<bool>(value));
-        }
-        break;
-
-        case LUA_TLIGHTUSERDATA:
-        {
-            void *value = this->GetVariable.LightUserdata();
-            argument_values[argument - 1] = (make_any<void *>(value));
-        }
-        break;
-
-        case LUA_TNUMBER:
-        {
-            lua_Number value = this->GetVariable.Number();
-            argument_values[argument - 1] = (make_any<lua_Number>(value));
-        }
-        break;
-
-        case LUA_TSTRING:
-        {
-            string value = this->GetVariable.String();
-            argument_values[argument - 1] = (make_any<string>(value));
-        }
-        break;
-
-        case LUA_TTABLE:
-        {
-            lua_Table value = this->GetVariable.Table();
-            argument_values[argument - 1] = (make_any<lua_Table>(value));
-        }
-        break;
-        case LUA_TFUNCTION:
-        {
-            LuaFunction value = this->GetVariable.Function();
-            argument_values[argument - 1] = (make_any<LuaFunction>(value));
-        }
-        break;
-        case LUA_TUSERDATA:
-        {
-            any *value = this->GetVariable.Userdata();
-            argument_values[argument - 1] = (make_any<any *>(value));
-        }
-        break;
-
-        default:
-            argument_values[argument - 1] = (make_any<nullptr_t>(nullptr));
-            break;
-        }
         lua_pop(this->pointer_to_lua_state, 1);
     }
     return argument_values;
 }
+
+std::any LuaInstance::GetValue()
+{
+    switch (lua_type(this->pointer_to_lua_state, -1))
+    {
+    case LUA_TNIL:
+        return make_any<nullptr_t>(nullptr);
+        break;
+    case LUA_TBOOLEAN:
+    {
+        bool value = this->GetVariable.Boolean();
+        return make_any<bool>(value);
+    }
+    break;
+
+    case LUA_TLIGHTUSERDATA:
+    {
+        void* value = this->GetVariable.LightUserdata();
+        return make_any<void*>(value);
+    }
+    break;
+
+    case LUA_TNUMBER:
+    {
+        lua_Number value = this->GetVariable.Number();
+        return make_any<lua_Number>(value);
+    }
+    break;
+
+    case LUA_TSTRING:
+    {
+        string value = this->GetVariable.String();
+        return make_any<string>(value);
+    }
+    break;
+
+    case LUA_TTABLE:
+    {
+        lua_Table value = this->GetVariable.Table();
+        return make_any<lua_Table>(value);
+    }
+    break;
+    case LUA_TFUNCTION:
+    {
+        LuaFunction value = this->GetVariable.Function();
+        return make_any<LuaFunction>(value);
+    }
+    break;
+    case LUA_TUSERDATA:
+    {
+        any* value = this->GetVariable.Userdata();
+        return make_any<any*>(value);
+    }
+    break;
+
+    default:
+        return make_any<nullptr_t>(nullptr);
+        break;
+    }
+}
+
 void LuaInstance::ReturnResults(vector<any> values)
 {
     for (auto itr = values.begin(); itr != values.end(); itr++)
@@ -143,9 +148,9 @@ void LuaInstance::ReturnResults(vector<any> values)
                 this->PushVariable.Number(any_cast<lua_Number>(*itr));
             }
             // light userdata
-            else if (itr->type() == typeid(void *))
+            else if (itr->type() == typeid(void*))
             {
-                this->PushVariable.LightUserdata(any_cast<void *>(*itr));
+                this->PushVariable.LightUserdata(any_cast<void*>(*itr));
             }
             // string
             else if (itr->type() == typeid(string))
@@ -166,8 +171,8 @@ void LuaInstance::ReturnResults(vector<any> values)
     };
 }
 
-LuaInstance &LuaInstance::FindInstance(lua_State *pointer_from_lua)
+LuaInstance& LuaInstance::FindInstance(lua_State* pointer_from_lua)
 {
-    LuaInstance &found_instance = *(LuaInstance::instance_list[pointer_from_lua]);
+    LuaInstance& found_instance = *(LuaInstance::instance_list[pointer_from_lua]);
     return found_instance;
 }

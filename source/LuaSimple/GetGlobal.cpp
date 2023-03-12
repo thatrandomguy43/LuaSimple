@@ -8,8 +8,8 @@
 
 using namespace std;
 
-GetGlobal::GetGlobal(lua_State **pointer_passed, GetVariable *get_obj) : pointer_to_lua_state(pointer_passed),
-                                                                         get_variable(get_obj)
+GetGlobal::GetGlobal(lua_State** pointer_passed, GetVariable* get_obj): pointer_to_lua_state(pointer_passed),
+get_variable(get_obj)
 {
 }
 
@@ -35,7 +35,7 @@ bool GetGlobal::Boolean(string name)
     };
 }
 
-void *GetGlobal::LightUserdata(string name)
+void* GetGlobal::LightUserdata(string name)
 {
     lua_getglobal(*(this->pointer_to_lua_state), name.c_str());
     if (lua_type(*(this->pointer_to_lua_state), -1) == LUA_TLIGHTUSERDATA)
@@ -106,7 +106,7 @@ LuaFunction GetGlobal::Function(string name)
     };
 }
 
-any *GetGlobal::Userdata(string name)
+any* GetGlobal::Userdata(string name)
 {
     lua_getglobal(*(this->pointer_to_lua_state), name.c_str());
     if (lua_type(*(this->pointer_to_lua_state), -1) == LUA_TUSERDATA)

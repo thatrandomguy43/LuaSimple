@@ -15,17 +15,17 @@ typedef std::unordered_map<std::variant<std::string, lua_Integer>, std::any> lua
 class SetGlobal
 {
 private:
-    lua_State **pointer_to_lua_state;
-    PushVariable *variable_maker;
+    lua_State** pointer_to_lua_state;
+    PushVariable* variable_maker;
 
 public:
-    SetGlobal(lua_State **, PushVariable *);
+    SetGlobal(lua_State**, PushVariable*);
 
     void Boolean(bool, std::string);
 
     void Number(double, std::string);
 
-    void LightUserdata(void *, std::string);
+    void LightUserdata(void*, std::string);
 
     void String(std::string, std::string);
 
@@ -35,5 +35,5 @@ public:
 
     void Function(lua_CFunction, std::string);
 
-    std::any *Userdata(std::any, std::string, std::optional<std::string>);
+    std::any* Userdata(std::any, std::string, std::optional<std::string>);
 };
