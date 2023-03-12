@@ -30,12 +30,14 @@ public:
     GetGlobal GetGlobal;
     SetGlobal SetGlobal;
 
+    int DoFunction(LuaFunction, std::vector<std::any>);
+
     int DoString(std::string);
 
     int DoFile(std::string);
 
     void HandleReturn(int);
-    
+
     std::vector<std::any> GetArguments(std::vector<int>);
 
 

@@ -27,6 +27,10 @@ LuaInstance::~LuaInstance()
     this->instance_list.erase(this->pointer_to_lua_state);
 }
 
+int DoFunction(LuaFunction function_object, vector<any> arguments){
+    
+}
+
 int LuaInstance::DoString(string code)
 {
     int response_code = luaL_dostring(this->pointer_to_lua_state, code.c_str());
