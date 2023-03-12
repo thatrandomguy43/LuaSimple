@@ -36,7 +36,6 @@ public:
 
     std::vector<std::any> GetArguments(std::vector<int>);
 
-    std::any GetValue();
 
     void ReturnResults(std::vector<std::any>);
 

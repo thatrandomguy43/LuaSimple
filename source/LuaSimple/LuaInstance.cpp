@@ -48,6 +48,11 @@ int LuaInstance::DoFile(string filename)
     }
     else
     {
+        this->lua_return_values.clear();
+        int num_returns = lua_gettop(this->pointer_to_lua_state);
+        for (int return_index = num_returns-1; return_index != 0; return_index--){
+            
+        };
     };
     return response_code;
 }
@@ -57,78 +62,21 @@ vector<any> LuaInstance::GetArguments(vector<int> types)
     vector<any> argument_values;
     int num_arguments = lua_gettop(this->pointer_to_lua_state);
     argument_values.resize(num_arguments);
-    for (int argument = num_arguments; argument != 0; argument--)
+    for (int argument_index = num_arguments-1; argument_index >= 0; argument_index--)
     {
         // only do a check if there is actualy a value to check against, extra args can be whatever and just go unused anyway
-        if (argument <= types.size())
+        if (argument_index <= types.size())
         {
-            luaL_checktype(this->pointer_to_lua_state, argument, types[(argument - 1)]);
+            luaL_checktype(this->pointer_to_lua_state, argument_index, types[(argument_index)]);
         };
 
+        argument_values[argument_index] = this->GetVariable.AnyValue();
         lua_pop(this->pointer_to_lua_state, 1);
     }
     return argument_values;
 }
 
-std::any LuaInstance::GetValue()
-{
-    switch (lua_type(this->pointer_to_lua_state, -1))
-    {
-    case LUA_TNIL:
-        return make_any<nullptr_t>(nullptr);
-        break;
-    case LUA_TBOOLEAN:
-    {
-        bool value = this->GetVariable.Boolean();
-        return make_any<bool>(value);
-    }
-    break;
 
-    case LUA_TLIGHTUSERDATA:
-    {
-        void* value = this->GetVariable.LightUserdata();
-        return make_any<void*>(value);
-    }
-    break;
-
-    case LUA_TNUMBER:
-    {
-        lua_Number value = this->GetVariable.Number();
-        return make_any<lua_Number>(value);
-    }
-    break;
-
-    case LUA_TSTRING:
-    {
-        string value = this->GetVariable.String();
-        return make_any<string>(value);
-    }
-    break;
-
-    case LUA_TTABLE:
-    {
-        lua_Table value = this->GetVariable.Table();
-        return make_any<lua_Table>(value);
-    }
-    break;
-    case LUA_TFUNCTION:
-    {
-        LuaFunction value = this->GetVariable.Function();
-        return make_any<LuaFunction>(value);
-    }
-    break;
-    case LUA_TUSERDATA:
-    {
-        any* value = this->GetVariable.Userdata();
-        return make_any<any*>(value);
-    }
-    break;
-
-    default:
-        return make_any<nullptr_t>(nullptr);
-        break;
-    }
-}
 
 void LuaInstance::ReturnResults(vector<any> values)
 {

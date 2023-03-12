@@ -31,4 +31,6 @@ public:
     LuaFunction Function();
 
     std::any* Userdata();
+
+    std::any AnyValue();
 };

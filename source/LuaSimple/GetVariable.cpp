@@ -135,3 +135,63 @@ any* GetVariable::Userdata()
     any* found_global = (any*)lua_touserdata(*(this->pointer_to_lua_state), -1);
     return found_global;
 }
+
+std::any GetVariable::AnyValue()
+{
+    switch (lua_type(*(this->pointer_to_lua_state), -1))
+    {
+    case LUA_TNIL:
+        return make_any<nullptr_t>(nullptr);
+        break;
+    case LUA_TBOOLEAN:
+    {
+        bool value = this->Boolean();
+        return make_any<bool>(value);
+    }
+    break;
+
+    case LUA_TLIGHTUSERDATA:
+    {
+        void* value = this->LightUserdata();
+        return make_any<void*>(value);
+    }
+    break;
+
+    case LUA_TNUMBER:
+    {
+        lua_Number value = this->Number();
+        return make_any<lua_Number>(value);
+    }
+    break;
+
+    case LUA_TSTRING:
+    {
+        string value = this->String();
+        return make_any<string>(value);
+    }
+    break;
+
+    case LUA_TTABLE:
+    {
+        lua_Table value = this->Table();
+        return make_any<lua_Table>(value);
+    }
+    break;
+    case LUA_TFUNCTION:
+    {
+        LuaFunction value = this->Function();
+        return make_any<LuaFunction>(value);
+    }
+    break;
+    case LUA_TUSERDATA:
+    {
+        any* value = this->Userdata();
+        return make_any<any*>(value);
+    }
+    break;
+
+    default:
+        return make_any<nullptr_t>(nullptr);
+        break;
+    }
+}
