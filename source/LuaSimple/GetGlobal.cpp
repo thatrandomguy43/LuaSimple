@@ -72,7 +72,7 @@ lua_Table GetGlobal::Table(string name){
     };
 }
 
-tuple<int,int,bool> GetGlobal::Function(string name){
+LuaFunction GetGlobal::Function(string name){
     lua_getglobal(*(this->pointer_to_lua_state), name.c_str());
     if (lua_type(*(this->pointer_to_lua_state), -1) == LUA_TFUNCTION){
         return get_variable->Function();

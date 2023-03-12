@@ -29,6 +29,8 @@ SetGlobal SetGlobal;
 
 int DoString(std::string);
 
+int DoFile(std::string);
+
 std::vector<std::any> GetArguments(std::vector<int>);
 
 void ReturnResults(std::vector<std::any>);

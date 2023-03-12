@@ -87,7 +87,6 @@ lua_Table GetVariable::Table(){
             case LUA_TFUNCTION:
             {
                 value_to_add = Function();
-                //slaps the function below the table
                 
             }
             break;
@@ -108,19 +107,21 @@ lua_Table GetVariable::Table(){
     return return_table;
 }
 
-tuple<int,int,bool> GetVariable::Function(){
+//so about this... i just learned what the lua registry actually is, and god damn do i feel like a moron
+LuaFunction GetVariable::Function(){
     lua_Debug debug;
+    //i have to copy the func first as this getinfo pops it
+    lua_pushvalue(*(this->pointer_to_lua_state), -1);
     lua_getinfo(*(this->pointer_to_lua_state), ">uS", &debug);
-    int functions_in_stack = 0;
-    while (lua_isfunction(*(this->pointer_to_lua_state), functions_in_stack))
-    {
-        functions_in_stack++;
-    }
-    lua_insert(*(this->pointer_to_lua_state), functions_in_stack+1);
-    return make_tuple<int,int,bool>(functions_in_stack+1, debug.nparams, debug.isvararg);
+    LuaFunction func;
+    //this fuction adds the function to a table (here the registy) with a guarenteed unique key
+    func.registry_key = luaL_ref(*(this->pointer_to_lua_state), LUA_REGISTRYINDEX);
+    func.argument_count = debug.nparams;
+    func.takes_extra_args = debug.isvararg;
+    return func;
 }
 
 any* GetVariable::Userdata(){
     any* found_global = (any*)lua_touserdata(*(this->pointer_to_lua_state),-1);
     return found_global;
-}
+} 

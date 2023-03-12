@@ -4,6 +4,7 @@
 #include <any>
 #include "luainclude/lua.hpp"
 #include <variant>
+#include "LuaFunction.hpp"
 
 #pragma once
 
@@ -28,7 +29,7 @@ std::string String();
 
 lua_Table Table();
 
-std::tuple<int,int,bool> Function();
+LuaFunction Function();
 
 std::any* Userdata();
 

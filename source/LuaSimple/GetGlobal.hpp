@@ -3,6 +3,7 @@
 #include <string>
 #include "luainclude/lua.hpp"
 #include "GetVariable.hpp"
+#include "LuaFunction.hpp"
 
 #pragma once
 
@@ -27,7 +28,7 @@ std::string String(std::string);
 
 lua_Table Table(std::string);
 
-std::tuple<int,int,bool> Function(std::string);
+LuaFunction Function(std::string);
 
 std::any* Userdata(std::string);
 };

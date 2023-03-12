@@ -6,19 +6,23 @@
 #include <variant>
 #include <iostream>
 #include <vector>
+#include "LuaSimple/LuaFunction.hpp"
 using namespace std;
 
 LuaInstance lua;
 
 int StringOfAs(lua_State* Lua){
-    vector<any> arguments = lua.GetArguments({LUA_TNUMBER});
+    LuaInstance& current_lua = LuaInstance::FindInstance(Lua);
+    vector<any> arguments = current_lua.GetArguments({LUA_TNUMBER});
     string help_aaaa;
     int count = any_cast<lua_Number>(arguments[0]);
     for (int itr = 0; itr != count; itr++){
         help_aaaa.append("A");
     };
-    lua.PushVariable.String(help_aaaa);
-    return 1;
+    vector<any> return_vals;
+    return_vals.push_back(make_any<string>(help_aaaa));
+    current_lua.ReturnResults(return_vals);
+    return return_vals.size();
 }
 
 class TestUserdata
@@ -27,11 +31,13 @@ private:
 int funny_number = 13;
 public:
 
-static int GetFunnyNumber (lua_State* L){
-    LuaInstance& current_lua = LuaInstance::FindInstance(L);
+static int GetFunnyNumber (lua_State* Lua){
+    LuaInstance& current_lua = LuaInstance::FindInstance(Lua);
     any* packed_self = static_cast<any*>(lua_touserdata(lua.pointer_to_lua_state, 1));
     TestUserdata* self = any_cast<TestUserdata>(packed_self);
-    lua.PushVariable.Number(self->funny_number);
+    vector<any> return_vals;
+    return_vals.push_back(make_any<lua_Number>(self->funny_number));
+    current_lua.ReturnResults(return_vals);
     return 1;
 }
 
@@ -97,9 +103,12 @@ lua.SetGlobal.Userdata(my_object,"my_userdata", "test_metatable");
 
 lua.DoString("print(my_userdata(my_userdata))");
 
-lua_getglobal(lua.pointer_to_lua_state, "print");
-tuple<int,int,bool> function_info = lua.GetVariable.Function();
+LuaFunction function_info = lua.GetGlobal.Function("print");
 
-cout << boolalpha << "Stack position: " << get<0>(function_info) << " Argument count: " << get<1>(function_info) << " Takes extra parameters: " << get<bool>(function_info) << endl;
+cout << boolalpha << "Stored in registry at: " << function_info.registry_key << " Argument count: " << function_info.argument_count << " Takes extra parameters: " << function_info.takes_extra_args << endl;
+
+lua.DoFile("C:/Users/Asger/Desktop/programming/LuaSimple/source/funny file.lua");
+vector<any> return_values = lua.GetArguments({LUA_TNUMBER});
+cout << any_cast<lua_Number>(return_values[0]) << endl;
 return 0;
 }
