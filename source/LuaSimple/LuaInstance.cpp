@@ -30,18 +30,19 @@ LuaInstance::~LuaInstance()
 int LuaInstance::DoString(string code)
 {
     int response_code = luaL_dostring(this->pointer_to_lua_state, code.c_str());
-    if (response_code != 0)
-    {
-        string error_message = luaL_tolstring(this->pointer_to_lua_state, -1, NULL);
-        cerr << error_message;
-    };
+    this->HandleReturn(response_code);
     return response_code;
 }
 
 int LuaInstance::DoFile(string filename)
 {
     int response_code = luaL_dofile(this->pointer_to_lua_state, filename.c_str());
-    if (response_code != 0)
+    this->HandleReturn(response_code);
+    return response_code;
+}
+
+void LuaInstance::HandleReturn(int response){
+    if (response != 0)
     {
         string error_message = luaL_tolstring(this->pointer_to_lua_state, -1, NULL);
         cerr << error_message;
@@ -54,7 +55,7 @@ int LuaInstance::DoFile(string filename)
             
         };
     };
-    return response_code;
+    return;
 }
 
 vector<any> LuaInstance::GetArguments(vector<int> types)

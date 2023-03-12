@@ -34,6 +34,8 @@ public:
 
     int DoFile(std::string);
 
+    void HandleReturn(int);
+    
     std::vector<std::any> GetArguments(std::vector<int>);
 
 
