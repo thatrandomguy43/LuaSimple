@@ -13,9 +13,9 @@ LuaInstance lua;
 
 int StringOfAs(lua_State* Lua){
     LuaInstance& current_lua = LuaInstance::FindInstance(Lua);
-    vector<any> arguments = current_lua.GetArguments({LUA_TNUMBER});
+    current_lua.GetArguments({LUA_TNUMBER});
     string help_aaaa;
-    int count = any_cast<lua_Number>(arguments[0]);
+    int count = any_cast<lua_Number>(current_lua.lua_argument_values[0]);
     for (int itr = 0; itr != count; itr++){
         help_aaaa.append("A");
     };
@@ -107,7 +107,8 @@ LuaFunction function_info = lua.GetGlobal.Function("print");
 
 cout << boolalpha << "Stored in registry at: " << function_info.registry_key << " Argument count: " << function_info.argument_count << " Takes extra parameters: " << function_info.takes_extra_args << endl;
 
-lua.DoFile("C:/Users/Asger/Desktop/programming/LuaSimple/source/funny file.lua");
+//lua.DoFile("C:/Users/Asger/Desktop/programming/LuaSimple/source/funny file.lua");
+lua.DoFile("C:/Users/Bruger/Skrivebord/LuaSimple/source/funny file.lua");
 
 cout << any_cast<lua_Number>(lua.lua_return_values[0]) << endl;
 

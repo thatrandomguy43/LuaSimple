@@ -20,6 +20,8 @@ public:
 
     std::vector<std::any> lua_return_values;
 
+    std::vector<std::any> lua_argument_values;
+
     static inline std::unordered_map<lua_State*, LuaInstance*> instance_list = std::unordered_map<lua_State*, LuaInstance*>();
 
     LuaInstance();
@@ -38,7 +40,7 @@ public:
 
     void HandleReturn(int);
 
-    std::vector<std::any> GetArguments(std::vector<int>);
+    void GetArguments(std::vector<int>);
 
 
     void ReturnResults(std::vector<std::any>);

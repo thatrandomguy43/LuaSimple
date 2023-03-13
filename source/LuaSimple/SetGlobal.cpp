@@ -24,7 +24,7 @@ void SetGlobal::Boolean(bool bool_to_set, string name)
     return;
 }
 
-void SetGlobal::Number(double number_to_set, string name)
+void SetGlobal::Number(lua_Number number_to_set, string name)
 {
     variable_maker->Number(number_to_set);
     lua_setglobal(*(this->pointer_to_lua_state), name.c_str());
@@ -48,6 +48,7 @@ void SetGlobal::Table(lua_Table table_to_set, string name, optional<string> meta
 {
     variable_maker->Table(table_to_set, true, metatable_name);
     lua_setglobal(*(this->pointer_to_lua_state), name.c_str());
+    return;
 }
 
 void SetGlobal::Metatable(lua_Table metatable_to_register, string name)
@@ -58,6 +59,7 @@ void SetGlobal::Metatable(lua_Table metatable_to_register, string name)
         luaL_newmetatable(*(this->pointer_to_lua_state), name.c_str());
     };
     variable_maker->Table(metatable_to_register, false, {});
+    lua_pop(*(this->pointer_to_lua_state), 1);
     return;
 }
 
@@ -65,6 +67,7 @@ void SetGlobal::Function(lua_CFunction function_to_set, string name)
 {
     variable_maker->Function(function_to_set);
     lua_setglobal(*(this->pointer_to_lua_state), name.c_str());
+    return;
 }
 
 any* SetGlobal::Userdata(any data, string name, optional<string> metatable_name /*,int uservalue_count*/)

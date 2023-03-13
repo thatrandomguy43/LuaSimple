@@ -56,38 +56,38 @@ int LuaInstance::DoFile(string filename)
 void LuaInstance::HandleReturn(int response){
     if (response != 0)
     {
-        string error_message = luaL_tolstring(this->pointer_to_lua_state, -1, NULL);
-        cerr << error_message;
+        this->lua_return_values.resize(1);
+        this->lua_return_values[0] = static_cast<string>(luaL_tolstring(this->pointer_to_lua_state, -1, NULL));
+        cerr << any_cast<string>(lua_return_values[0]) << endl;
     }
     else
     {
-        this->lua_return_values.clear();
         int num_returns = lua_gettop(this->pointer_to_lua_state);
         this->lua_return_values.resize(num_returns);
-        for (int return_index = num_returns-1; return_index > 0; return_index--){
+        for (int return_index = num_returns-1; return_index >= 0; return_index--){
             this->lua_return_values[return_index] = this->GetVariable.AnyValue();
         };
     };
     return;
 }
 
-vector<any> LuaInstance::GetArguments(vector<int> types)
+void LuaInstance::GetArguments(vector<int> types)
 {
-    vector<any> argument_values;
+
     int num_arguments = lua_gettop(this->pointer_to_lua_state);
-    argument_values.resize(num_arguments);
+    this->lua_argument_values.resize(num_arguments);
     for (int argument_index = num_arguments-1; argument_index >= 0; argument_index--)
     {
         // only do a check if there is actualy a value to check against, extra args can be whatever and just go unused anyway
         if (argument_index < types.size())
         {
-            luaL_checktype(this->pointer_to_lua_state, argument_index, types[(argument_index)]);
+            luaL_checktype(this->pointer_to_lua_state, argument_index+1, types[(argument_index)]);
         };
 
-        argument_values[argument_index] = this->GetVariable.AnyValue();
+        this->lua_argument_values[argument_index] = this->GetVariable.AnyValue();
         lua_pop(this->pointer_to_lua_state, 1);
     }
-    return argument_values;
+    return;
 }
 
 
