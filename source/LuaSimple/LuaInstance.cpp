@@ -29,12 +29,13 @@ LuaInstance::~LuaInstance()
 }
 
 int LuaInstance::DoFunction(LuaFunction function_object, vector<any> arguments){
+
     this->PushVariable.Number(function_object.registry_key);
     lua_gettable(this->pointer_to_lua_state, LUA_REGISTRYINDEX);
     for (auto itr = arguments.begin(); itr != arguments.end(); itr++){
         this->PushVariable.AnyValue(*itr);
     };
-    int response_code = lua_pcall(this->pointer_to_lua_state, function_object.argument_count, LUA_MULTRET, 0);
+    int response_code = lua_pcall(this->pointer_to_lua_state, arguments.size(), LUA_MULTRET, 0);
     this->HandleReturn(response_code);
     return response_code;
 }
