@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.26)
+cmake_minimum_required(VERSION 3.25.2)
 cmake_policy(SET CMP0141 NEW)
 project(LuaSimple_ExampleProject
 LANGUAGES CXX
