@@ -107,8 +107,8 @@ lua_Function function_info = lua.GetGlobal.LuaFunction("print");
 
 cout << boolalpha << "Stored in registry at: " << function_info.registry_key << " Argument count: " << function_info.argument_count << " Takes extra parameters: " << function_info.takes_extra_args << endl;
 
-//lua.DoFile("C:/Users/Asger/Desktop/programming/LuaSimple/source/funny file.lua");
-lua.DoFile("C:/Users/Bruger/Skrivebord/LuaSimple/source/funny file.lua");
+lua.DoFile("C:/Users/Asger/Desktop/programming/LuaSimple/source/funny file.lua");
+//lua.DoFile("C:/Users/Bruger/Skrivebord/LuaSimple/source/funny file.lua");
 
 
 cout << any_cast<lua_Number>(lua.lua_return_values[0]) << endl;
