@@ -107,7 +107,7 @@ lua_Function GetGlobal::LuaFunction(string name)
     lua_getglobal(*(this->pointer_to_lua_state), name.c_str());
     if (lua_type(*(this->pointer_to_lua_state), -1) == LUA_TFUNCTION)
     {
-        lua_Function found_global = get_variable->Function();
+        lua_Function found_global = get_variable->LuaFunction();
         return found_global;
     }
     else

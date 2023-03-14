@@ -9,7 +9,7 @@
 #include <cstring>
 #include "LuaInstance.hpp"
 #include "PushVariable.hpp"
-
+#include "LuaFunction.hpp"
 
 
 using namespace std;
@@ -92,10 +92,17 @@ void PushVariable::Table(lua_Table table_to_add, bool make_new /*if not set will
 
 // i dont really understand the purpose of c function upvalues, if you need to do stuff with other lua values for some reason just make them
 // this now works for at least basic funcs, yay
-void PushVariable::Function(lua_CFunction function)
+void PushVariable::CFunction(lua_CFunction function)
 {
     luaL_checkstack(*(this->pointer_to_lua_state), 1, "Error: cannot push additional variable to Lua. The Lua stack size limit has been reached, or the program is out of memory.");
     lua_pushcfunction(*(this->pointer_to_lua_state), function);
+    return;
+}
+
+void PushVariable::LuaFunction(lua_Function function){
+    this->Number(function.registry_key);
+    lua_gettable(*(this->pointer_to_lua_state), LUA_REGISTRYINDEX);
+    return;
 }
 
 // not doing uservalues quite yet
@@ -132,12 +139,15 @@ void PushVariable::AnyValue(any value) {
         }
         else if (value.type() == typeid(lua_Table))
         {
-            //i somehow completely forgot to add recursive table pushing
             this->Table(any_cast<lua_Table>(value), false, {});
+        }
+        else if (value.type() == typeid(lua_Function))
+        {
+            this->LuaFunction(any_cast<lua_Function>(value));
         }
         else if (value.type() == typeid(lua_CFunction))
         {
-            this->Function(any_cast<lua_CFunction>(value));
+            this->CFunction(any_cast<lua_CFunction>(value));
         }
         else
         {

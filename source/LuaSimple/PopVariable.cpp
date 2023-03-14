@@ -15,30 +15,30 @@ GetVariable::GetVariable(lua_State** pointer_passed): pointer_to_lua_state(point
 
 bool GetVariable::Boolean()
 {
-    bool found_global = lua_toboolean(*(this->pointer_to_lua_state), -1);
+    bool found = lua_toboolean(*(this->pointer_to_lua_state), -1);
     lua_pop(*(this->pointer_to_lua_state), 1);
-    return found_global;
+    return found;
 }
 
 void* GetVariable::LightUserdata()
 {
-    void* found_global = lua_touserdata(*(this->pointer_to_lua_state), -1);
+    void* found = lua_touserdata(*(this->pointer_to_lua_state), -1);
     lua_pop(*(this->pointer_to_lua_state), 1);
-    return found_global;
+    return found;
 }
 
 lua_Number GetVariable::Number()
 {
-    lua_Number found_global = lua_tonumber(*(this->pointer_to_lua_state), -1);
+    lua_Number found = lua_tonumber(*(this->pointer_to_lua_state), -1);
     lua_pop(*(this->pointer_to_lua_state), 1);
-    return found_global;
+    return found;
 }
 
 string GetVariable::String()
 {
-    string found_global = lua_tostring(*(this->pointer_to_lua_state), -1);
+    string found = lua_tostring(*(this->pointer_to_lua_state), -1);
     lua_pop(*(this->pointer_to_lua_state), 1);
-    return found_global;
+    return found;
 }
 
 lua_Table GetVariable::Table()
@@ -58,58 +58,7 @@ lua_Table GetVariable::Table()
             key_to_add = lua_tostring(*(this->pointer_to_lua_state), -2);
         };
         // we do a little copy pasting
-        switch (lua_type(*(this->pointer_to_lua_state), -1))
-        {
-
-        case LUA_TNIL:
-            value_to_add = nullptr;
-        break;
-        case LUA_TBOOLEAN:
-        {
-            value_to_add = this->Boolean();
-        }
-        break;
-
-        case LUA_TLIGHTUSERDATA:
-        {
-            value_to_add = this->LightUserdata();
-        }
-        break;
-
-        case LUA_TNUMBER:
-        {
-            value_to_add = this->Number();
-        }
-        break;
-
-        case LUA_TSTRING:
-        {
-            value_to_add = this->String();
-        }
-        break;
-
-        case LUA_TTABLE:
-        { // when the function is recursive! susjerma.jpg
-            value_to_add = this->Table();
-        }
-        break;
-
-        case LUA_TFUNCTION:
-        {
-            value_to_add = this->Function();
-        }
-        break;
-
-        case LUA_TUSERDATA:
-        {
-            value_to_add = this->Userdata();
-        }
-        break;
-
-        default:
-            value_to_add = nullptr;
-            break;
-        }
+        value_to_add = this->AnyValue();
         return_table.insert({ key_to_add, value_to_add });
     };
     lua_pop(*(this->pointer_to_lua_state), 1);
@@ -117,7 +66,7 @@ lua_Table GetVariable::Table()
 }
 
 // so about this... i just learned what the lua registry actually is, and god damn do i feel like a moron
-lua_Function GetVariable::Function()
+lua_Function GetVariable::LuaFunction()
 {
     lua_Debug debug;
     // i have to copy the func first as this getinfo pops it
@@ -131,10 +80,15 @@ lua_Function GetVariable::Function()
     return func;
 }
 
+lua_CFunction GetVariable::CFunction(){
+    lua_CFunction found = lua_tocfunction(*(this->pointer_to_lua_state),-1);
+    return found;
+}
+
 any* GetVariable::Userdata()
 {
-    any* found_global = (any*)lua_touserdata(*(this->pointer_to_lua_state), -1);
-    return found_global;
+    any* found = (any*)lua_touserdata(*(this->pointer_to_lua_state), -1);
+    return found;
 }
 
 std::any GetVariable::AnyValue()
@@ -180,8 +134,13 @@ std::any GetVariable::AnyValue()
     break;
     case LUA_TFUNCTION:
     {
-        lua_Function value = this->Function();
-        return make_any<lua_Function>(value);
+        if (lua_tocfunction(*(this->pointer_to_lua_state),-1) == NULL){
+            lua_Function value = this->LuaFunction();
+            return make_any<lua_Function>(value);
+        } else {
+            lua_CFunction value = this->CFunction();
+            return make_any<lua_CFunction>(value);
+        };
     }
     break;
     case LUA_TUSERDATA:

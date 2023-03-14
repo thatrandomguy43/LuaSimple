@@ -8,7 +8,7 @@
 #include <variant>
 #include <memory>
 #include <optional>
-
+#include "LuaFunction.hpp"
 #pragma once
 
 typedef std::unordered_map<std::variant<std::string, lua_Integer>, std::any> lua_Table;
@@ -33,7 +33,9 @@ public:
 
     void Metatable(lua_Table, std::string);
 
-    void Function(lua_CFunction, std::string);
+    void LuaFunction(lua_Function, std::string);
+
+    void CFunction(lua_CFunction, std::string);
 
     std::any* Userdata(std::any, std::string, std::optional<std::string>);
 };

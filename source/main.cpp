@@ -87,7 +87,7 @@ double* retrieved_value_ref_test = any_cast<double>(&ref_test);
 *retrieved_value_ref_test = 54.321;
 cout << any_cast<double>(ref_test) << endl;
 
-lua.SetGlobal.Function(&StringOfAs, "scream");
+lua.SetGlobal.CFunction(&StringOfAs, "scream");
 
 lua.DoString("help_me = scream(10) print(help_me)");
 

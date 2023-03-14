@@ -97,40 +97,7 @@ void LuaInstance::ReturnResults(vector<any> values)
 {
     for (auto itr = values.begin(); itr != values.end(); itr++)
     {
-        // if there's nothing in the any do nothing
-        if (itr->has_value())
-        {
-            // boolean
-            if (itr->type() == typeid(bool))
-            {
-                this->PushVariable.Boolean(any_cast<bool>(*itr));
-            }
-            // number
-            else if (itr->type() == typeid(lua_Number))
-            {
-                this->PushVariable.Number(any_cast<lua_Number>(*itr));
-            }
-            // light userdata
-            else if (itr->type() == typeid(void*))
-            {
-                this->PushVariable.LightUserdata(any_cast<void*>(*itr));
-            }
-            // string
-            else if (itr->type() == typeid(string))
-            {
-                this->PushVariable.String(any_cast<string>(*itr));
-            }
-            else if (itr->type() == typeid(lua_CFunction))
-            {
-                this->PushVariable.Function(any_cast<lua_CFunction>(*itr));
-            }
-            // nil
-            else
-            {
-                lua_pushnil(this->pointer_to_lua_state);
-            };
-            // full userdata would not work as you need to get a pointer to its location in lua back
-        };
+        this->PushVariable.AnyValue(*itr);
     };
 }
 

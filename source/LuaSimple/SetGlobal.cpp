@@ -63,9 +63,15 @@ void SetGlobal::Metatable(lua_Table metatable_to_register, string name)
     return;
 }
 
-void SetGlobal::Function(lua_CFunction function_to_set, string name)
+void SetGlobal::LuaFunction(lua_Function function_to_set, string name){
+    variable_maker->LuaFunction(function_to_set);
+    lua_setglobal(*(this->pointer_to_lua_state), name.c_str());
+    return;
+}
+
+void SetGlobal::CFunction(lua_CFunction function_to_set, string name)
 {
-    variable_maker->Function(function_to_set);
+    variable_maker->CFunction(function_to_set);
     lua_setglobal(*(this->pointer_to_lua_state), name.c_str());
     return;
 }

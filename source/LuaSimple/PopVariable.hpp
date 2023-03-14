@@ -28,7 +28,9 @@ public:
 
     lua_Table Table();
 
-    lua_Function Function();
+    lua_Function LuaFunction();
+
+    lua_CFunction CFunction();
 
     std::any* Userdata();
 

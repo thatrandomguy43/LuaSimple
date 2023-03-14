@@ -5,6 +5,7 @@
 #include <variant>
 #include <any>
 #include <optional>
+#include "LuaFunction.hpp"
 
 #pragma once
 
@@ -34,7 +35,9 @@ public:
 
     // i dont really understand the purpose of c function upvalues, if you need to do stuff with other lua values for some reason just make them
     // this now works for at least basic funcs, yay
-    void Function(lua_CFunction);
+    void CFunction(lua_CFunction);
+
+    void LuaFunction(lua_Function);
 
     // not doing uservalues quite yet
     std::any* Userdata(std::any, std::optional<std::string>);
