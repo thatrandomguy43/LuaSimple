@@ -16,24 +16,28 @@ GetVariable::GetVariable(lua_State** pointer_passed): pointer_to_lua_state(point
 bool GetVariable::Boolean()
 {
     bool found_global = lua_toboolean(*(this->pointer_to_lua_state), -1);
+    lua_pop(*(this->pointer_to_lua_state), 1);
     return found_global;
 }
 
 void* GetVariable::LightUserdata()
 {
     void* found_global = lua_touserdata(*(this->pointer_to_lua_state), -1);
+    lua_pop(*(this->pointer_to_lua_state), 1);
     return found_global;
 }
 
 lua_Number GetVariable::Number()
 {
     lua_Number found_global = lua_tonumber(*(this->pointer_to_lua_state), -1);
+    lua_pop(*(this->pointer_to_lua_state), 1);
     return found_global;
 }
 
 string GetVariable::String()
 {
     string found_global = lua_tostring(*(this->pointer_to_lua_state), -1);
+    lua_pop(*(this->pointer_to_lua_state), 1);
     return found_global;
 }
 
@@ -52,9 +56,6 @@ lua_Table GetVariable::Table()
         else if (lua_type(*(this->pointer_to_lua_state), -2) == LUA_TSTRING)
         {
             key_to_add = lua_tostring(*(this->pointer_to_lua_state), -2);
-        }
-        else
-        {
         };
         // we do a little copy pasting
         switch (lua_type(*(this->pointer_to_lua_state), -1))
@@ -62,46 +63,46 @@ lua_Table GetVariable::Table()
 
         case LUA_TNIL:
             value_to_add = nullptr;
-            break;
+        break;
         case LUA_TBOOLEAN:
         {
-            value_to_add = Boolean();
+            value_to_add = this->Boolean();
         }
         break;
 
         case LUA_TLIGHTUSERDATA:
         {
-            value_to_add = LightUserdata();
+            value_to_add = this->LightUserdata();
         }
         break;
 
         case LUA_TNUMBER:
         {
-            value_to_add = Number();
+            value_to_add = this->Number();
         }
         break;
 
         case LUA_TSTRING:
         {
-            value_to_add = String();
+            value_to_add = this->String();
         }
         break;
 
         case LUA_TTABLE:
         { // when the function is recursive! susjerma.jpg
-            value_to_add = Table();
+            value_to_add = this->Table();
         }
         break;
 
         case LUA_TFUNCTION:
         {
-            value_to_add = Function();
+            value_to_add = this->Function();
         }
         break;
 
         case LUA_TUSERDATA:
         {
-            value_to_add = (any*)(lua_touserdata(*(this->pointer_to_lua_state), -1));
+            value_to_add = this->Userdata();
         }
         break;
 
@@ -110,8 +111,8 @@ lua_Table GetVariable::Table()
             break;
         }
         return_table.insert({ key_to_add, value_to_add });
-        lua_pop(*(this->pointer_to_lua_state), 1);
     };
+    lua_pop(*(this->pointer_to_lua_state), 1);
     return return_table;
 }
 

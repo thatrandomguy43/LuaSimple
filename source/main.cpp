@@ -110,8 +110,6 @@ cout << boolalpha << "Stored in registry at: " << function_info.registry_key << 
 //lua.DoFile("C:/Users/Asger/Desktop/programming/LuaSimple/source/funny file.lua");
 lua.DoFile("C:/Users/Bruger/Skrivebord/LuaSimple/source/funny file.lua");
 
-//temporary hack
-lua_pop(lua.pointer_to_lua_state, 1);
 
 cout << any_cast<lua_Number>(lua.lua_return_values[0]) << endl;
 

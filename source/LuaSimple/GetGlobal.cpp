@@ -27,7 +27,6 @@ bool GetGlobal::Boolean(string name)
     if (lua_type(*(this->pointer_to_lua_state), -1) == LUA_TBOOLEAN)
     {
         bool found_global = get_variable->Boolean();
-        lua_pop(*(this->pointer_to_lua_state), 1);
         return found_global;
     }
     else
@@ -44,7 +43,6 @@ void* GetGlobal::LightUserdata(string name)
     if (lua_type(*(this->pointer_to_lua_state), -1) == LUA_TLIGHTUSERDATA)
     {
         void* found_global = get_variable->LightUserdata();
-        lua_pop(*(this->pointer_to_lua_state), 1);
         return found_global;
     }
     else
@@ -61,7 +59,6 @@ lua_Number GetGlobal::Number(string name)
     if (lua_type(*(this->pointer_to_lua_state), -1) == LUA_TNUMBER)
     {
         lua_Number found_global = get_variable->Number();
-        lua_pop(*(this->pointer_to_lua_state), 1);
         return found_global;
     }
     else
@@ -79,7 +76,6 @@ string GetGlobal::String(string name)
     if (lua_type(*(this->pointer_to_lua_state), -1) == LUA_TSTRING)
     {
         string found_global = get_variable->String();
-        lua_pop(*(this->pointer_to_lua_state), 1);
         return found_global;
     }
     else
@@ -96,7 +92,6 @@ lua_Table GetGlobal::Table(string name)
     if (lua_type(*(this->pointer_to_lua_state), -1) == LUA_TTABLE)
     {
         lua_Table found_global = get_variable->Table();
-        lua_pop(*(this->pointer_to_lua_state), 1);
         return found_global;
     }
     else
@@ -129,7 +124,6 @@ any* GetGlobal::Userdata(string name)
     if (lua_type(*(this->pointer_to_lua_state), -1) == LUA_TUSERDATA)
     {
         any* found_global = get_variable->Userdata();
-        lua_pop(*(this->pointer_to_lua_state), 1);
         return found_global;
     }
     else
@@ -138,4 +132,10 @@ any* GetGlobal::Userdata(string name)
         lua_pop(*(this->pointer_to_lua_state), 1);
         return nullptr;
     };
+}
+
+any GetGlobal::AnyValue(string name){
+    lua_getglobal(*(this->pointer_to_lua_state), name.c_str());
+    any* found_global = get_variable->Userdata();
+    return found_global;
 }
