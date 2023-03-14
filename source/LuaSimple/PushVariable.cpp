@@ -10,6 +10,8 @@
 #include "LuaInstance.hpp"
 #include "PushVariable.hpp"
 
+
+
 using namespace std;
 
 PushVariable::PushVariable(lua_State** pointer_passed): pointer_to_lua_state(pointer_passed)
@@ -18,30 +20,35 @@ PushVariable::PushVariable(lua_State** pointer_passed): pointer_to_lua_state(poi
 
 void PushVariable::Nil()
 {
+    luaL_checkstack(*(this->pointer_to_lua_state), 1, "Error: cannot push additional variable to Lua. The Lua stack size limit has been reached, or the program is out of memory.");
     lua_pushnil(*(this->pointer_to_lua_state));
     return;
 }
 
 void PushVariable::Boolean(bool boolean)
 {
+    luaL_checkstack(*(this->pointer_to_lua_state), 1, "Error: cannot push additional variable to Lua. The Lua stack size limit has been reached, or the program is out of memory.");
     lua_pushboolean(*(this->pointer_to_lua_state), boolean);
     return;
 }
 
 void PushVariable::Number(lua_Number number)
 {
+    luaL_checkstack(*(this->pointer_to_lua_state), 1, "Error: cannot push additional variable to Lua. The Lua stack size limit has been reached, or the program is out of memory.");
     lua_pushnumber(*(this->pointer_to_lua_state), number);
     return;
 }
 
 void PushVariable::LightUserdata(void* pointer)
 {
+    luaL_checkstack(*(this->pointer_to_lua_state), 1, "Error: cannot push additional variable to Lua. The Lua stack size limit has been reached, or the program is out of memory.");
     lua_pushlightuserdata(*(this->pointer_to_lua_state), pointer);
     return;
 }
 
 void PushVariable::String(string string)
 {
+    luaL_checkstack(*(this->pointer_to_lua_state), 1, "Error: cannot push additional variable to Lua. The Lua stack size limit has been reached, or the program is out of memory.");
     lua_pushlstring(*(this->pointer_to_lua_state), string.c_str(), string.size());
     return;
 }
@@ -68,6 +75,7 @@ void PushVariable::Table(lua_Table table_to_add, bool make_new /*if not set will
 {
     if (make_new)
     {
+        luaL_checkstack(*(this->pointer_to_lua_state), 1, "Error: cannot push additional variable to Lua. The Lua stack size limit has been reached, or the program is out of memory.");
         lua_newtable(*(this->pointer_to_lua_state));
     };
     for (auto itr = table_to_add.begin(); itr != table_to_add.end(); itr++)
@@ -86,12 +94,14 @@ void PushVariable::Table(lua_Table table_to_add, bool make_new /*if not set will
 // this now works for at least basic funcs, yay
 void PushVariable::Function(lua_CFunction function)
 {
+    luaL_checkstack(*(this->pointer_to_lua_state), 1, "Error: cannot push additional variable to Lua. The Lua stack size limit has been reached, or the program is out of memory.");
     lua_pushcfunction(*(this->pointer_to_lua_state), function);
 }
 
 // not doing uservalues quite yet
 any* PushVariable::Userdata(any data, optional<string> metatable_name /*,int uservalue_count*/)
 {
+    luaL_checkstack(*(this->pointer_to_lua_state), 1, "Error: cannot push additional variable to Lua. The Lua stack size limit has been reached, or the program is out of memory.");
     void* userdata_ptr = lua_newuserdatauv(*(this->pointer_to_lua_state), sizeof data, 0);
     if (metatable_name.has_value())
     {
@@ -106,32 +116,32 @@ void PushVariable::AnyValue(any value) {
     {
         if (value.type() == typeid(bool))
         {
-            Boolean(any_cast<bool>(value));
+            this->Boolean(any_cast<bool>(value));
         }
         else if (value.type() == typeid(lua_Number))
         {
-            Number(any_cast<lua_Number>(value));
+            this->Number(any_cast<lua_Number>(value));
         }
         else if (value.type() == typeid(void*))
         {
-            LightUserdata(any_cast<void*>(value));
+            this->LightUserdata(any_cast<void*>(value));
         }
         else if (value.type() == typeid(string))
         {
-            String(any_cast<string>(value));
+            this->String(any_cast<string>(value));
         }
         else if (value.type() == typeid(lua_Table))
         {
             //i somehow completely forgot to add recursive table pushing
-            Table(any_cast<lua_Table>(value), false, {});
+            this->Table(any_cast<lua_Table>(value), false, {});
         }
         else if (value.type() == typeid(lua_CFunction))
         {
-            Function(any_cast<lua_CFunction>(value));
+            this->Function(any_cast<lua_CFunction>(value));
         }
         else
         {
-            lua_pushnil(*(this->pointer_to_lua_state));
+            this->Nil();
         };
         // full userdata would not work as you need to get a pointer to its location in lua back
     };
