@@ -5,7 +5,7 @@
 #include "luainclude/lua.hpp"
 #include <variant>
 #include "LuaInstance.hpp"
-#include "GetVariable.hpp"
+#include "PopVariable.hpp"
 
 using namespace std;
 

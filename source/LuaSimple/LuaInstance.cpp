@@ -6,7 +6,7 @@
 #include "GetGlobal.hpp"
 #include <vector>
 #include <any>
-#include "GetVariable.hpp"
+#include "PopVariable.hpp"
 #include "LuaInstance.hpp"
 #include "LuaFunction.hpp"
 

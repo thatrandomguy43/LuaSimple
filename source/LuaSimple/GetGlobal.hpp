@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include "luainclude/lua.hpp"
-#include "GetVariable.hpp"
+#include "PopVariable.hpp"
 #include "LuaFunction.hpp"
 
 #pragma once

@@ -5,7 +5,7 @@
 #include <utility>
 #include "luainclude/lua.hpp"
 #include "PushVariable.hpp"
-#include "GetVariable.hpp"
+#include "PopVariable.hpp"
 #include "GetGlobal.hpp"
 #include "SetGlobal.hpp"
 

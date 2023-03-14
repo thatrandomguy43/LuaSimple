@@ -3,7 +3,7 @@
 #include <string>
 #include "luainclude/lua.hpp"
 #include "LuaInstance.hpp"
-#include "GetVariable.hpp"
+#include "PopVariable.hpp"
 #include "GetGlobal.hpp"
 
 using namespace std;
