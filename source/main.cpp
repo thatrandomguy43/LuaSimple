@@ -114,5 +114,12 @@ lua.DoFile("C:/Users/Bruger/Skrivebord/LuaSimple/source/funny file.lua");
 cout << any_cast<lua_Number>(lua.lua_return_values[0]) << endl;
 
 lua.DoFunction(function_info, {make_any<string>("my "), make_any<string>("balls "), make_any<string>("itch")});
+
+
+lua.DoString("function OnlyOneParam(argument) return (-argument) end");
+
+lua_Function one_param_lua_func = lua.GetGlobal.LuaFunction("OnlyOneParam");
+lua.DoFunction(one_param_lua_func, {make_any<lua_Number>(-6), make_any<lua_Number>(7)});
+cout << any_cast<lua_Number>(lua.lua_return_values[0]) << endl;
 return 0;
 }
