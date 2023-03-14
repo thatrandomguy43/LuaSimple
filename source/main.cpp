@@ -103,7 +103,7 @@ lua.SetGlobal.Userdata(my_object,"my_userdata", "test_metatable");
 
 lua.DoString("print(my_userdata(my_userdata))");
 
-LuaFunction function_info = lua.GetGlobal.Function("print");
+lua_Function function_info = lua.GetGlobal.LuaFunction("print");
 
 cout << boolalpha << "Stored in registry at: " << function_info.registry_key << " Argument count: " << function_info.argument_count << " Takes extra parameters: " << function_info.takes_extra_args << endl;
 

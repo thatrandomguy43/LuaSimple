@@ -32,7 +32,7 @@ public:
     GetGlobal GetGlobal;
     SetGlobal SetGlobal;
 
-    int DoFunction(LuaFunction, std::vector<std::any>);
+    int DoFunction(lua_Function, std::vector<std::any>);
 
     int DoString(std::string);
 

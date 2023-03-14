@@ -117,13 +117,13 @@ lua_Table GetVariable::Table()
 }
 
 // so about this... i just learned what the lua registry actually is, and god damn do i feel like a moron
-LuaFunction GetVariable::Function()
+lua_Function GetVariable::Function()
 {
     lua_Debug debug;
     // i have to copy the func first as this getinfo pops it
     lua_pushvalue(*(this->pointer_to_lua_state), -1);
     lua_getinfo(*(this->pointer_to_lua_state), ">uS", &debug);
-    LuaFunction func;
+    lua_Function func;
     // this fuction adds the function to a table (here the registry) with a guarenteed unique key
     func.registry_key = luaL_ref(*(this->pointer_to_lua_state), LUA_REGISTRYINDEX);
     func.argument_count = debug.nparams;
@@ -180,8 +180,8 @@ std::any GetVariable::AnyValue()
     break;
     case LUA_TFUNCTION:
     {
-        LuaFunction value = this->Function();
-        return make_any<LuaFunction>(value);
+        lua_Function value = this->Function();
+        return make_any<lua_Function>(value);
     }
     break;
     case LUA_TUSERDATA:

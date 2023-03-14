@@ -102,12 +102,12 @@ lua_Table GetGlobal::Table(string name)
     };
 }
 
-LuaFunction GetGlobal::Function(string name)
+lua_Function GetGlobal::LuaFunction(string name)
 {
     lua_getglobal(*(this->pointer_to_lua_state), name.c_str());
     if (lua_type(*(this->pointer_to_lua_state), -1) == LUA_TFUNCTION)
     {
-        LuaFunction found_global = get_variable->Function();
+        lua_Function found_global = get_variable->Function();
         return found_global;
     }
     else

@@ -28,7 +28,7 @@ LuaInstance::~LuaInstance()
     this->instance_list.erase(this->pointer_to_lua_state);
 }
 
-int LuaInstance::DoFunction(LuaFunction function_object, vector<any> arguments){
+int LuaInstance::DoFunction(lua_Function function_object, vector<any> arguments){
 
     this->PushVariable.Number(function_object.registry_key);
     lua_gettable(this->pointer_to_lua_state, LUA_REGISTRYINDEX);
