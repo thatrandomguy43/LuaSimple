@@ -110,7 +110,7 @@ cout << boolalpha << "Stored in registry at: " << function_info.registry_key << 
 lua.DoFile("C:/Users/Asger/Desktop/programming/LuaSimple/source/funny file.lua");
 //lua.DoFile("C:/Users/Bruger/Skrivebord/LuaSimple/source/funny file.lua");
 
-
+ 
 cout << any_cast<lua_Number>(lua.lua_return_values[0]) << endl;
 
 lua.DoFunction(function_info, {make_any<string>("my "), make_any<string>("balls "), make_any<string>("itch")});
