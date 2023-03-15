@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "MinSizeRel/example_project.exe"
+			"path" : "Debug/example_project.exe"
 		},
 		{
-			"path" : "MinSizeRel/example_project.pdb"
+			"path" : "Debug/example_project.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -14,8 +14,10 @@
 		"commands" : 
 		[
 			"add_executable",
+			"target_link_options",
 			"target_link_libraries",
 			"target_include_directories",
+			"add_subdirectory",
 			"target_sources"
 		],
 		"files" : 
@@ -35,31 +37,43 @@
 				"parent" : 0
 			},
 			{
-				"file" : 1
+				"command" : 1,
+				"file" : 0,
+				"line" : 16,
+				"parent" : 0
 			},
 			{
-				"command" : 1,
-				"file" : 1,
-				"line" : 13,
-				"parent" : 2
+				"file" : 1
 			},
 			{
 				"command" : 2,
 				"file" : 1,
-				"line" : 14,
-				"parent" : 2
+				"line" : 13,
+				"parent" : 3
 			},
 			{
 				"command" : 3,
+				"file" : 1,
+				"line" : 14,
+				"parent" : 3
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 26,
+				"parent" : 0
+			},
+			{
+				"command" : 5,
 				"file" : 0,
 				"line" : 9,
 				"parent" : 0
 			},
 			{
-				"command" : 3,
+				"command" : 5,
 				"file" : 1,
 				"line" : 11,
-				"parent" : 2
+				"parent" : 3
 			}
 		]
 	},
@@ -69,21 +83,29 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /EHsc /fsanitize=address /std:c++latest /O1 /Ob1 /DNDEBUG -MD"
+					"fragment" : "/DWIN32 /D_WINDOWS /EHsc /std:c++latest /Ob0 /Od /RTC1 -std:c++17 -MDd -Z7"
 				}
 			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 4,
+					"backtrace" : 5,
 					"path" : "C:/Users/Bruger/Skrivebord/LuaSimple/source/LuaSimple/luainclude"
 				},
 				{
-					"backtrace" : 3,
+					"backtrace" : 4,
 					"path" : "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-src/lua-5.4.3/include"
 				}
 			],
 			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					6
+				],
+				"standard" : "17"
+			},
 			"sourceIndexes" : 
 			[
 				0,
@@ -98,7 +120,7 @@
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 3,
+			"backtrace" : 4,
 			"id" : "lua_static::@cade2ac045f415a9dbe3"
 		},
 		{
@@ -111,16 +133,21 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /EHsc /fsanitize=address /std:c++latest /O1 /Ob1 /DNDEBUG -MD",
+				"fragment" : "/DWIN32 /D_WINDOWS /EHsc /std:c++latest /Ob0 /Od /RTC1 -MDd -Z7",
 				"role" : "flags"
 			},
 			{
-				"fragment" : "/machine:x64 /INCREMENTAL:NO /subsystem:console",
+				"fragment" : "/machine:x64 /debug /INCREMENTAL /subsystem:console",
 				"role" : "flags"
 			},
 			{
-				"backtrace" : 3,
-				"fragment" : "_deps\\lua-build\\lua-5.4.3\\MinSizeRel\\lua.lib",
+				"backtrace" : 2,
+				"fragment" : "/INCREMENTAL:NO",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "_deps\\lua-build\\lua-5.4.3\\Debug\\lua.lib",
 				"role" : "libraries"
 			},
 			{
@@ -166,62 +193,62 @@
 	"sources" : 
 	[
 		{
-			"backtrace" : 5,
+			"backtrace" : 7,
 			"compileGroupIndex" : 0,
 			"path" : "main.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 6,
+			"backtrace" : 8,
 			"path" : "LuaSimple/LuaInstance.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
-			"backtrace" : 6,
+			"backtrace" : 8,
 			"compileGroupIndex" : 0,
 			"path" : "LuaSimple/LuaInstance.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 6,
+			"backtrace" : 8,
 			"path" : "LuaSimple/SetGlobal.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
-			"backtrace" : 6,
+			"backtrace" : 8,
 			"compileGroupIndex" : 0,
 			"path" : "LuaSimple/SetGlobal.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 6,
+			"backtrace" : 8,
 			"path" : "LuaSimple/PushVariable.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
-			"backtrace" : 6,
+			"backtrace" : 8,
 			"compileGroupIndex" : 0,
 			"path" : "LuaSimple/PushVariable.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 6,
+			"backtrace" : 8,
 			"path" : "LuaSimple/GetGlobal.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
-			"backtrace" : 6,
+			"backtrace" : 8,
 			"compileGroupIndex" : 0,
 			"path" : "LuaSimple/GetGlobal.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 6,
+			"backtrace" : 8,
 			"path" : "LuaSimple/PopVariable.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
-			"backtrace" : 6,
+			"backtrace" : 8,
 			"compileGroupIndex" : 0,
 			"path" : "LuaSimple/PopVariable.cpp",
 			"sourceGroupIndex" : 0

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.25)
 
-set(CMAKE_CXX_STANDARD 23)
+set_property(TARGET ${EXECUTABLE_NAME} PROPERTY CXX_STANDARD 17)
 include(FetchContent)
 FetchContent_Declare(
   lua

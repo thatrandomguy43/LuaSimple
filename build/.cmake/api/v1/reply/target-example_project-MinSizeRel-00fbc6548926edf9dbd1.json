@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "Debug/example_project.exe"
+			"path" : "MinSizeRel/example_project.exe"
 		},
 		{
-			"path" : "Debug/example_project.pdb"
+			"path" : "MinSizeRel/example_project.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -14,9 +14,9 @@
 		"commands" : 
 		[
 			"add_executable",
-			"target_link_options",
 			"target_link_libraries",
 			"target_include_directories",
+			"add_subdirectory",
 			"target_sources"
 		],
 		"files" : 
@@ -36,25 +36,25 @@
 				"parent" : 0
 			},
 			{
-				"command" : 1,
-				"file" : 0,
-				"line" : 15,
-				"parent" : 0
+				"file" : 1
 			},
 			{
-				"file" : 1
+				"command" : 1,
+				"file" : 1,
+				"line" : 13,
+				"parent" : 2
 			},
 			{
 				"command" : 2,
 				"file" : 1,
-				"line" : 13,
-				"parent" : 3
+				"line" : 14,
+				"parent" : 2
 			},
 			{
 				"command" : 3,
-				"file" : 1,
-				"line" : 14,
-				"parent" : 3
+				"file" : 0,
+				"line" : 26,
+				"parent" : 0
 			},
 			{
 				"command" : 4,
@@ -66,7 +66,7 @@
 				"command" : 4,
 				"file" : 1,
 				"line" : 11,
-				"parent" : 3
+				"parent" : 2
 			}
 		]
 	},
@@ -76,21 +76,29 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /EHsc /fsanitize=address /std:c++latest /Ob0 /Od /RTC1 -MDd -Z7"
+					"fragment" : "/DWIN32 /D_WINDOWS /EHsc /std:c++latest /O1 /Ob1 /DNDEBUG -std:c++17 -MD"
 				}
 			],
 			"includes" : 
 			[
 				{
-					"backtrace" : 5,
+					"backtrace" : 4,
 					"path" : "C:/Users/Bruger/Skrivebord/LuaSimple/source/LuaSimple/luainclude"
 				},
 				{
-					"backtrace" : 4,
+					"backtrace" : 3,
 					"path" : "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-src/lua-5.4.3/include"
 				}
 			],
 			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					5
+				],
+				"standard" : "17"
+			},
 			"sourceIndexes" : 
 			[
 				0,
@@ -105,7 +113,7 @@
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 4,
+			"backtrace" : 3,
 			"id" : "lua_static::@cade2ac045f415a9dbe3"
 		},
 		{
@@ -118,21 +126,16 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /EHsc /fsanitize=address /std:c++latest /Ob0 /Od /RTC1 -MDd -Z7",
+				"fragment" : "/DWIN32 /D_WINDOWS /EHsc /std:c++latest /O1 /Ob1 /DNDEBUG -MD",
 				"role" : "flags"
 			},
 			{
-				"fragment" : "/machine:x64 /debug /INCREMENTAL /subsystem:console",
+				"fragment" : "/machine:x64 /INCREMENTAL:NO /subsystem:console",
 				"role" : "flags"
 			},
 			{
-				"backtrace" : 2,
-				"fragment" : "/INCREMENTAL:NO",
-				"role" : "flags"
-			},
-			{
-				"backtrace" : 4,
-				"fragment" : "_deps\\lua-build\\lua-5.4.3\\Debug\\lua.lib",
+				"backtrace" : 3,
+				"fragment" : "_deps\\lua-build\\lua-5.4.3\\MinSizeRel\\lua.lib",
 				"role" : "libraries"
 			},
 			{
