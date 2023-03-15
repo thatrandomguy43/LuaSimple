@@ -4,6 +4,9 @@
 #include "luainclude/lua.hpp"
 #include "PopVariable.hpp"
 #include "LuaFunction.hpp"
+#include <unordered_map>
+#include <any>
+#include <variant>
 
 #pragma once
 

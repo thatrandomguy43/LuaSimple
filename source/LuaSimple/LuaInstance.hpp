@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <any>
 #include <utility>
+#include <vector>
 #include "luainclude/lua.hpp"
 #include "PushVariable.hpp"
 #include "PopVariable.hpp"

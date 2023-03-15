@@ -5,6 +5,7 @@
 #include "luainclude/lua.hpp"
 #include <variant>
 #include "LuaFunction.hpp"
+#include <unordered_map>
 
 #pragma once
 

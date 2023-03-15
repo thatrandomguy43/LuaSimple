@@ -5,7 +5,7 @@
 		"commands" : [],
 		"files" : 
 		[
-			"C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-src/CMakeLists.txt"
+			"CMakeLists.txt"
 		],
 		"nodes" : 
 		[
@@ -17,22 +17,25 @@
 	"dependencies" : 
 	[
 		{
-			"id" : "lua_static::@cade2ac045f415a9dbe3"
+			"id" : "example_project::@6890427a1f51a3e7e1df"
 		},
 		{
 			"id" : "luac::@cade2ac045f415a9dbe3"
 		},
 		{
+			"id" : "lua_static::@cade2ac045f415a9dbe3"
+		},
+		{
 			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
 		}
 	],
-	"id" : "ALL_BUILD::@2dc84297423e1c3ed672",
+	"id" : "ALL_BUILD::@6890427a1f51a3e7e1df",
 	"isGeneratorProvided" : true,
 	"name" : "ALL_BUILD",
 	"paths" : 
 	{
-		"build" : "_deps/lua-build",
-		"source" : "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-src"
+		"build" : ".",
+		"source" : "."
 	},
 	"sources" : [],
 	"type" : "UTILITY"
