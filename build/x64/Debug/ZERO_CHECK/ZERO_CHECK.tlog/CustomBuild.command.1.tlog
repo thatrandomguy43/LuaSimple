@@ -1,0 +1,10 @@
+^C:\USERS\BRUGER\SKRIVEBORD\LUASIMPLE\BUILD\CMAKEFILES\BF2EB286A9C71CBAF15E3F7FBEA590E0\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Bruger/Skrivebord/LuaSimple/source -BC:/Users/Bruger/Skrivebord/LuaSimple/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Bruger/Skrivebord/LuaSimple/build/LuaSimple_ExampleProject.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

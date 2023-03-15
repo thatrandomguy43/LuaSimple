@@ -1,0 +1,43 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-src/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"id" : "lua_static::@cade2ac045f415a9dbe3"
+		},
+		{
+			"id" : "luac::@cade2ac045f415a9dbe3"
+		},
+		{
+			"id" : "ZERO_CHECK::@6890427a1f51a3e7e1df"
+		}
+	],
+	"folder" : 
+	{
+		"name" : "CMakePredefinedTargets"
+	},
+	"id" : "ALL_BUILD::@2dc84297423e1c3ed672",
+	"isGeneratorProvided" : true,
+	"name" : "ALL_BUILD",
+	"paths" : 
+	{
+		"build" : "_deps/lua-build",
+		"source" : "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-src"
+	},
+	"sources" : [],
+	"type" : "UTILITY"
+}

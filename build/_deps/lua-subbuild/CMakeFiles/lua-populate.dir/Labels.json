@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/lua-populate"
+		},
+		{
+			"file" : "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/6a099d130ef9aa243530d397c9d5b34e/lua-populate.rule"
+		},
+		{
+			"file" : "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/b1de65ebc8ca750ffb1b3d8fc3085345/lua-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/b6e092ee95615be1134f1f4edcf8b855/lua-populate-build.rule"
+		},
+		{
+			"file" : "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/b6e092ee95615be1134f1f4edcf8b855/lua-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/b6e092ee95615be1134f1f4edcf8b855/lua-populate-download.rule"
+		},
+		{
+			"file" : "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/b6e092ee95615be1134f1f4edcf8b855/lua-populate-install.rule"
+		},
+		{
+			"file" : "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/b6e092ee95615be1134f1f4edcf8b855/lua-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/b6e092ee95615be1134f1f4edcf8b855/lua-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/b6e092ee95615be1134f1f4edcf8b855/lua-populate-test.rule"
+		},
+		{
+			"file" : "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/b6e092ee95615be1134f1f4edcf8b855/lua-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"lua-populate"
+		],
+		"name" : "lua-populate"
+	}
+}
