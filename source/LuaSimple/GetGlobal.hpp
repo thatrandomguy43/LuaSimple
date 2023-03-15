@@ -15,10 +15,10 @@ class GetGlobal
 {
 private:
     lua_State** pointer_to_lua_state;
-    GetVariable* get_variable;
+    PopVariable* get_variable;
 
 public:
-    GetGlobal(lua_State**, GetVariable*);
+    GetGlobal(lua_State**, PopVariable*);
 
     int GetType(std::string);
 

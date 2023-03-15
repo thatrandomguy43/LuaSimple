@@ -8,7 +8,7 @@
 
 using namespace std;
 
-GetGlobal::GetGlobal(lua_State** pointer_passed, GetVariable* get_obj): pointer_to_lua_state(pointer_passed),
+GetGlobal::GetGlobal(lua_State** pointer_passed, PopVariable* get_obj): pointer_to_lua_state(pointer_passed),
 get_variable(get_obj)
 {
 }

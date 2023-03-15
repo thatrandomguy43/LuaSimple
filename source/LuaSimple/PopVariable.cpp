@@ -9,39 +9,39 @@
 
 using namespace std;
 
-GetVariable::GetVariable(lua_State** pointer_passed): pointer_to_lua_state(pointer_passed)
+PopVariable::PopVariable(lua_State** pointer_passed): pointer_to_lua_state(pointer_passed)
 {
 }
 
-bool GetVariable::Boolean()
+bool PopVariable::Boolean()
 {
     bool found = lua_toboolean(*(this->pointer_to_lua_state), -1);
     lua_pop(*(this->pointer_to_lua_state), 1);
     return found;
 }
 
-void* GetVariable::LightUserdata()
+void* PopVariable::LightUserdata()
 {
     void* found = lua_touserdata(*(this->pointer_to_lua_state), -1);
     lua_pop(*(this->pointer_to_lua_state), 1);
     return found;
 }
 
-lua_Number GetVariable::Number()
+lua_Number PopVariable::Number()
 {
     lua_Number found = lua_tonumber(*(this->pointer_to_lua_state), -1);
     lua_pop(*(this->pointer_to_lua_state), 1);
     return found;
 }
 
-string GetVariable::String()
+string PopVariable::String()
 {
     string found = lua_tostring(*(this->pointer_to_lua_state), -1);
     lua_pop(*(this->pointer_to_lua_state), 1);
     return found;
 }
 
-lua_Table GetVariable::Table()
+lua_Table PopVariable::Table()
 {
     lua_Table return_table;
     variant<string, lua_Integer> key_to_add;
@@ -66,7 +66,7 @@ lua_Table GetVariable::Table()
 }
 
 // so about this... i just learned what the lua registry actually is, and god damn do i feel like a moron
-lua_Function GetVariable::LuaFunction()
+lua_Function PopVariable::LuaFunction()
 {
     lua_Debug debug;
     // i have to copy the func first as this getinfo pops it
@@ -80,18 +80,18 @@ lua_Function GetVariable::LuaFunction()
     return func;
 }
 
-lua_CFunction GetVariable::CFunction(){
+lua_CFunction PopVariable::CFunction(){
     lua_CFunction found = lua_tocfunction(*(this->pointer_to_lua_state),-1);
     return found;
 }
 
-any* GetVariable::Userdata()
+any* PopVariable::Userdata()
 {
     any* found = (any*)lua_touserdata(*(this->pointer_to_lua_state), -1);
     return found;
 }
 
-std::any GetVariable::AnyValue()
+std::any PopVariable::AnyValue()
 {
     switch (lua_type(*(this->pointer_to_lua_state), -1))
     {

@@ -14,9 +14,9 @@ using namespace std;
 
 LuaInstance::LuaInstance(): pointer_to_lua_state(luaL_newstate()),
 PushVariable(&pointer_to_lua_state),
-GetVariable(&pointer_to_lua_state),
+PopVariable(&pointer_to_lua_state),
 SetGlobal(&pointer_to_lua_state, &PushVariable),
-GetGlobal(&pointer_to_lua_state, &GetVariable)
+GetGlobal(&pointer_to_lua_state, &PopVariable)
 {
     luaL_openlibs(this->pointer_to_lua_state);
     this->instance_list[this->pointer_to_lua_state] = this;
@@ -66,7 +66,7 @@ void LuaInstance::HandleReturn(int response){
         int num_returns = lua_gettop(this->pointer_to_lua_state);
         this->lua_return_values.resize(num_returns);
         for (int return_index = num_returns-1; return_index >= 0; return_index--){
-            this->lua_return_values[return_index] = this->GetVariable.AnyValue();
+            this->lua_return_values[return_index] = this->PopVariable.AnyValue();
         };
     };
     return;
@@ -85,7 +85,7 @@ void LuaInstance::GetArguments(vector<int> types)
             luaL_checktype(this->pointer_to_lua_state, argument_index+1, types[(argument_index)]);
         };
 
-        this->lua_argument_values[argument_index] = this->GetVariable.AnyValue();
+        this->lua_argument_values[argument_index] = this->PopVariable.AnyValue();
         lua_pop(this->pointer_to_lua_state, 1);
     }
     return;

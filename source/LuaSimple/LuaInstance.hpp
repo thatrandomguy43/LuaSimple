@@ -29,7 +29,7 @@ public:
     ~LuaInstance();
 
     PushVariable PushVariable;
-    GetVariable GetVariable;
+    PopVariable PopVariable;
     GetGlobal GetGlobal;
     SetGlobal SetGlobal;
 

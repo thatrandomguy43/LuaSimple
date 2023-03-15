@@ -11,13 +11,13 @@
 
 typedef std::unordered_map<std::variant<std::string, lua_Integer>, std::any> lua_Table;
 
-class GetVariable
+class PopVariable
 {
 private:
     lua_State** pointer_to_lua_state;
 
 public:
-    GetVariable(lua_State**);
+    PopVariable(lua_State**);
 
     bool Boolean();
 
