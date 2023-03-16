@@ -44,9 +44,9 @@ void SetGlobal::String(string string_to_set, string name)
     return;
 }
 
-void SetGlobal::Table(lua_Table table_to_set, string name, optional<string> metatable_name)
+void SetGlobal::Table(lua_Table table_to_set, string name)
 {
-    variable_maker->Table(table_to_set, true, metatable_name);
+    variable_maker->Table(table_to_set, true);
     lua_setglobal(*(this->pointer_to_lua_state), name.c_str());
     return;
 }
@@ -58,7 +58,7 @@ void SetGlobal::Metatable(lua_Table metatable_to_register, string name)
         lua_pop(*(this->pointer_to_lua_state), 1);
         luaL_newmetatable(*(this->pointer_to_lua_state), name.c_str());
     };
-    variable_maker->Table(metatable_to_register, false, {});
+    variable_maker->Table(metatable_to_register, false);
     lua_pop(*(this->pointer_to_lua_state), 1);
     return;
 }

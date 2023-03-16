@@ -9,7 +9,7 @@
 #include <cstring>
 #include "LuaInstance.hpp"
 #include "PushVariable.hpp"
-#include "LuaFunction.hpp"
+#include "LuaTypeClasses.hpp"
 
 
 using namespace std;
@@ -71,22 +71,22 @@ void PushVariable::TableKeyAdder(variant<string, lua_Integer> key)
     return;
 }
 
-void PushVariable::Table(lua_Table table_to_add, bool make_new /*if not set will instead merge the keys and values into existing table on top of stack, presubably overriding any duplicate keys with new ones*/, optional<string> metatable_name)
+void PushVariable::Table(lua_Table table_to_add, bool make_new /*if not set will instead merge the keys and values into existing table on top of stack, presubably overriding any duplicate keys with new ones*/)
 {
     if (make_new)
     {
         luaL_checkstack(*(this->pointer_to_lua_state), 1, "Error: cannot push additional variable to Lua. The Lua stack size limit has been reached, or the program is out of memory.");
         lua_newtable(*(this->pointer_to_lua_state));
     };
-    for (auto itr = table_to_add.begin(); itr != table_to_add.end(); itr++)
+    for (auto itr = table_to_add.table_contents.begin(); itr != table_to_add.table_contents.end(); itr++)
     {
         this->AnyValue(itr->second);
         this->TableKeyAdder(itr->first);
     };
-    if (metatable_name.has_value())
+    if (table_to_add.metatable_name.has_value())
     {
-        luaL_setmetatable(*(this->pointer_to_lua_state), metatable_name.value().c_str());
-    }
+        luaL_setmetatable(*(this->pointer_to_lua_state), table_to_add.metatable_name.value().c_str());
+    };
     return;
 }
 
@@ -139,7 +139,7 @@ void PushVariable::AnyValue(any value) {
         }
         else if (value.type() == typeid(lua_Table))
         {
-            this->Table(any_cast<lua_Table>(value), false, {});
+            this->Table(any_cast<lua_Table>(value), false);
         }
         else if (value.type() == typeid(lua_Function))
         {

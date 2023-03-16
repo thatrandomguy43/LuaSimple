@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 3.25)
 
-set_property(TARGET ${EXECUTABLE_NAME} PROPERTY CXX_STANDARD 17)
 include(FetchContent)
 FetchContent_Declare(
   lua
@@ -8,7 +7,7 @@ FetchContent_Declare(
   GIT_TAG        v5.4.3
 )
 FetchContent_MakeAvailable(lua)
-target_sources(${EXECUTABLE_NAME} PUBLIC LuaInstance.hpp LuaInstance.cpp SetGlobal.hpp SetGlobal.cpp PushVariable.hpp PushVariable.cpp GetGlobal.hpp GetGlobal.cpp PopVariable.hpp PopVariable.cpp)
+target_sources(${EXECUTABLE_NAME} PUBLIC LuaInstance.hpp LuaTypeClasses.hpp LuaInstance.cpp SetGlobal.hpp SetGlobal.cpp PushVariable.hpp PushVariable.cpp GetGlobal.hpp GetGlobal.cpp PopVariable.hpp PopVariable.cpp)
 
 target_link_libraries(${EXECUTABLE_NAME} lua_static)
 target_include_directories(${EXECUTABLE_NAME} PUBLIC luainclude)

@@ -6,7 +6,7 @@
 #include <variant>
 #include <iostream>
 #include <vector>
-#include "LuaSimple/LuaFunction.hpp"
+#include "LuaSimple/LuaTypeClasses.hpp"
 using namespace std;
 
 LuaInstance lua;
@@ -74,12 +74,12 @@ unordered_map<string,string> compound{
 
 lua.DoString("some_table = {} some_table.a_goofy_field = 20 some_table[2] = \"this is an index\" some_table.anotha_table = {} some_table.anotha_table.balls_status = \"itching\" ");
 
-unordered_map<variant<string,lua_Integer>,any> cpp_table = lua.GetGlobal.Table("some_table");
-cout << any_cast<lua_Number>(cpp_table.at("a_goofy_field")) << endl;
+lua_Table cpp_table = lua.GetGlobal.Table("some_table");
+cout << any_cast<lua_Number>(cpp_table.table_contents.at("a_goofy_field")) << endl;
 
-cout << any_cast<string>(cpp_table.at(2)) << endl;
+cout << any_cast<string>(cpp_table.table_contents.at(2)) << endl;
 
-auto subtable = any_cast<unordered_map<variant<string,lua_Integer>,any>>(cpp_table.at("anotha_table"));
+auto subtable = any_cast<unordered_map<variant<string,lua_Integer>,any>>(cpp_table.table_contents.at("anotha_table"));
 cout << any_cast<string>(subtable.at("balls_status")) << endl; 
 
 any ref_test = make_any<double>(69.420);
@@ -92,11 +92,11 @@ lua.SetGlobal.CFunction(&StringOfAs, "scream");
 lua.DoString("help_me = scream(10) print(help_me)");
 
 
-unordered_map<variant<string, lua_Integer>,any> my_metatable;
+lua_Table my_metatable;
 int (*metamethod_ptr)(lua_State*) = &TestUserdata::GetFunnyNumber;
 TestUserdata my_object;
 
-my_metatable["__call"] = make_any<lua_CFunction>(metamethod_ptr);
+my_metatable.table_contents["__call"] = make_any<lua_CFunction>(metamethod_ptr);
 
 lua.SetGlobal.Metatable(my_metatable, "test_metatable");
 lua.SetGlobal.Userdata(my_object,"my_userdata", "test_metatable");

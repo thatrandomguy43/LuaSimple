@@ -4,12 +4,12 @@
 #include <any>
 #include "luainclude/lua.hpp"
 #include <variant>
-#include "LuaFunction.hpp"
+#include "LuaTypeClasses.hpp"
 #include <unordered_map>
 
 #pragma once
 
-typedef std::unordered_map<std::variant<std::string, lua_Integer>, std::any> lua_Table;
+
 
 class PopVariable
 {

@@ -8,10 +8,10 @@
 #include <variant>
 #include <memory>
 #include <optional>
-#include "LuaFunction.hpp"
+#include "LuaTypeClasses.hpp"
 #pragma once
 
-typedef std::unordered_map<std::variant<std::string, lua_Integer>, std::any> lua_Table;
+
 class SetGlobal
 {
 private:
@@ -29,7 +29,7 @@ public:
 
     void String(std::string, std::string);
 
-    void Table(lua_Table, std::string, std::optional<std::string>);
+    void Table(lua_Table, std::string);
 
     void Metatable(lua_Table, std::string);
 

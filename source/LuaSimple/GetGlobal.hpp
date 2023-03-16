@@ -3,14 +3,14 @@
 #include <string>
 #include "luainclude/lua.hpp"
 #include "PopVariable.hpp"
-#include "LuaFunction.hpp"
+#include "LuaTypeClasses.hpp"
 #include <unordered_map>
 #include <any>
 #include <variant>
-
+#include <optional>
 #pragma once
 
-typedef std::unordered_map<std::variant<std::string, lua_Integer>, std::any> lua_Table;
+
 class GetGlobal
 {
 private:

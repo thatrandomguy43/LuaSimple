@@ -12,7 +12,7 @@
 
 #pragma once
 
-typedef std::unordered_map<std::variant<std::string, lua_Integer>, std::any> lua_Table;
+
 
 class LuaInstance
 {

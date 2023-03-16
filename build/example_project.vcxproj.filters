@@ -24,6 +24,9 @@
     <ClInclude Include="C:\Users\Bruger\Skrivebord\LuaSimple\source\LuaSimple\LuaInstance.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Users\Bruger\Skrivebord\LuaSimple\source\LuaSimple\LuaTypeClasses.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="C:\Users\Bruger\Skrivebord\LuaSimple\source\LuaSimple\SetGlobal.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>

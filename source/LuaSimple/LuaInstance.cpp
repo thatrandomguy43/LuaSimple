@@ -8,7 +8,7 @@
 #include <any>
 #include "PopVariable.hpp"
 #include "LuaInstance.hpp"
-#include "LuaFunction.hpp"
+#include "LuaTypeClasses.hpp"
 
 using namespace std;
 

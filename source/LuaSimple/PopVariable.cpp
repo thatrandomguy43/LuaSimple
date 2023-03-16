@@ -6,6 +6,7 @@
 #include <variant>
 #include "LuaInstance.hpp"
 #include "PopVariable.hpp"
+#include "LuaTypeClasses.hpp"
 
 using namespace std;
 
@@ -59,7 +60,7 @@ lua_Table PopVariable::Table()
         };
         // we do a little copy pasting
         value_to_add = this->AnyValue();
-        return_table.insert({ key_to_add, value_to_add });
+        return_table.table_contents.insert({ key_to_add, value_to_add });
     };
     lua_pop(*(this->pointer_to_lua_state), 1);
     return return_table;
