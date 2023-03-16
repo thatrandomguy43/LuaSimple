@@ -235,6 +235,12 @@ LUA_BUILD_BINARY:BOOL=OFF
 //Build luac compiler
 LUA_BUILD_COMPILER:BOOL=ON
 
+//Build dynamic liblua
+LUA_ENABLE_SHARED:BOOL=ON
+
+//Build and run tests
+LUA_ENABLE_TESTING:BOOL=ON
+
 //Support dynamic loading of compiled modules
 LUA_SUPPORT_DL:BOOL=OFF
 

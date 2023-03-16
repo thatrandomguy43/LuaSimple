@@ -4,7 +4,6 @@ include(FetchContent)
 FetchContent_Declare(
   lua
   GIT_REPOSITORY https://github.com/walterschell/Lua.git
-  GIT_TAG        v5.4.3
 )
 FetchContent_MakeAvailable(lua)
 target_sources(${EXECUTABLE_NAME} PUBLIC LuaInstance.hpp LuaTypeClasses.hpp LuaInstance.cpp SetGlobal.hpp SetGlobal.cpp PushVariable.hpp PushVariable.cpp GetGlobal.hpp GetGlobal.cpp PopVariable.hpp PopVariable.cpp)

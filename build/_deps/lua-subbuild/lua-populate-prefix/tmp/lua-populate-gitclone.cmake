@@ -41,12 +41,12 @@ endif()
 
 execute_process(
   COMMAND "C:/Program Files/Git/cmd/git.exe" 
-          checkout "v5.4.3" --
+          checkout "master" --
   WORKING_DIRECTORY "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-src"
   RESULT_VARIABLE error_code
 )
 if(error_code)
-  message(FATAL_ERROR "Failed to checkout tag: 'v5.4.3'")
+  message(FATAL_ERROR "Failed to checkout tag: 'master'")
 endif()
 
 set(init_submodules TRUE)

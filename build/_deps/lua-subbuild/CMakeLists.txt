@@ -21,7 +21,7 @@ set_property(GLOBAL PROPERTY _CMAKE_FindGit_GIT_EXECUTABLE_VERSION
 
 include(ExternalProject)
 ExternalProject_Add(lua-populate
-                     "UPDATE_DISCONNECTED" "False" "GIT_REPOSITORY" "https://github.com/walterschell/Lua.git" "GIT_TAG" "v5.4.3"
+                     "UPDATE_DISCONNECTED" "False" "GIT_REPOSITORY" "https://github.com/walterschell/Lua.git"
                     SOURCE_DIR          "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-src"
                     BINARY_DIR          "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-build"
                     CONFIGURE_COMMAND   ""

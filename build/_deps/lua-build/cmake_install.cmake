@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-build/lua-5.4.3/cmake_install.cmake")
+  include("C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-build/lua-5.4.4/cmake_install.cmake")
 
 endif()
 

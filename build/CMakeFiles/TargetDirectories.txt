@@ -1,6 +1,11 @@
 C:/Users/Bruger/Skrivebord/LuaSimple/build/CMakeFiles/example_project.dir
+C:/Users/Bruger/Skrivebord/LuaSimple/build/CMakeFiles/INSTALL.dir
 C:/Users/Bruger/Skrivebord/LuaSimple/build/CMakeFiles/ALL_BUILD.dir
 C:/Users/Bruger/Skrivebord/LuaSimple/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/Bruger/Skrivebord/LuaSimple/build/LuaSimple/CMakeFiles/INSTALL.dir
+C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-build/CMakeFiles/INSTALL.dir
 C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-build/CMakeFiles/ALL_BUILD.dir
-C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-build/lua-5.4.3/CMakeFiles/lua_static.dir
-C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-build/lua-5.4.3/CMakeFiles/luac.dir
+C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-build/lua-5.4.4/CMakeFiles/lua_shared.dir
+C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-build/lua-5.4.4/CMakeFiles/lua_static.dir
+C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-build/lua-5.4.4/CMakeFiles/luac.dir
+C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-build/lua-5.4.4/CMakeFiles/INSTALL.dir

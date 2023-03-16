@@ -177,11 +177,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-build\lua-5.4.3\lua_static.vcxproj">
+    <ProjectReference Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-build\lua-5.4.4\lua_static.vcxproj">
       <Project>{1CEF4289-E012-3B81-A45C-5FD4DC431F59}</Project>
       <Name>lua_static</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-build\lua-5.4.3\luac.vcxproj">
+    <ProjectReference Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-build\lua-5.4.4\luac.vcxproj">
       <Project>{B6FC12BE-7C02-3510-BAEF-D379B6095303}</Project>
       <Name>luac</Name>
     </ProjectReference>
