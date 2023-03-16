@@ -7,6 +7,9 @@
 #pragma once
 
 
+
+
+
 class lua_Table
 {
 public:
@@ -28,3 +31,13 @@ public:
 std::any* object;
 std::optional<std::string> metatable_name;
 };
+
+
+
+class notlua_Table
+{
+public:
+    std::unordered_map<std::variant<nullptr_t, bool, void*, lua_Integer, lua_Number, std::string, notlua_Table*, lua_Function, lua_Userdata>, std::variant<nullptr_t, bool, void*, lua_Integer, lua_Number, std::string, notlua_Table*, lua_Function, lua_Userdata>> table_contents;
+    std::optional<std::string> metatable_name;
+};
+

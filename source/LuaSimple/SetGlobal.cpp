@@ -76,10 +76,9 @@ void SetGlobal::CFunction(lua_CFunction function_to_set, string name)
     return;
 }
 
-lua_Userdata SetGlobal::Userdata(lua_Userdata data, string name)
+void SetGlobal::Userdata(lua_Userdata data, string name)
 {
-    lua_Userdata userdata_obj = variable_maker->Userdata(data);
-
+    variable_maker->Userdata(data);
     lua_setglobal(*(this->pointer_to_lua_state), name.c_str());
-    return userdata_obj;
+    return;
 }

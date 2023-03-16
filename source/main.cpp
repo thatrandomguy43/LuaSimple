@@ -11,6 +11,9 @@ using namespace std;
 
 LuaInstance lua;
 
+
+
+
 int StringOfAs(lua_State* Lua){
     LuaInstance& current_lua = LuaInstance::FindInstance(Lua);
     current_lua.GetArguments({LUA_TNUMBER});
@@ -98,8 +101,12 @@ TestUserdata my_object;
 
 my_metatable.table_contents["__call"] = make_any<lua_CFunction>(metamethod_ptr);
 
+lua_Userdata userdata_object;
+any any_my_object = make_any<TestUserdata>(my_object);
+userdata_object.object = &any_my_object;
+userdata_object.metatable_name = "test_metatable";
 lua.SetGlobal.Metatable(my_metatable, "test_metatable");
-lua.SetGlobal.Userdata(my_object,"my_userdata", "test_metatable");
+lua.SetGlobal.Userdata(userdata_object,"my_userdata");
 
 lua.DoString("print(my_userdata(my_userdata))");
 
@@ -107,8 +114,8 @@ lua_Function function_info = lua.GetGlobal.LuaFunction("print");
 
 cout << boolalpha << "Stored in registry at: " << function_info.registry_key << " Argument count: " << function_info.argument_count << " Takes extra parameters: " << function_info.takes_extra_args << endl;
 
-//lua.DoFile("C:/Users/Asger/Desktop/programming/LuaSimple/source/funny file.lua");
-lua.DoFile("C:/Users/Bruger/Skrivebord/LuaSimple/source/funny file.lua");
+lua.DoFile("C:/Users/Asger/Desktop/programming/LuaSimple/source/funny file.lua");
+//lua.DoFile("C:/Users/Bruger/Skrivebord/LuaSimple/source/funny file.lua");
 
  
 cout << any_cast<lua_Number>(lua.lua_return_values[0]) << endl;

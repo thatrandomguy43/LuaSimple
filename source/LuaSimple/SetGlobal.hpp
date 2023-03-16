@@ -37,5 +37,5 @@ public:
 
     void CFunction(lua_CFunction, std::string);
 
-    lua_Userdata Userdata(lua_Userdata, std::string);
+    void Userdata(lua_Userdata, std::string);
 };
