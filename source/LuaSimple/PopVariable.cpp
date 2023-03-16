@@ -62,6 +62,9 @@ lua_Table PopVariable::Table()
         value_to_add = this->AnyValue();
         return_table.table_contents.insert({ key_to_add, value_to_add });
     };
+    if (luaL_getmetafield(*(this->pointer_to_lua_state), -1, "__name")){
+        return_table.metatable_name = this->String();
+    }
     lua_pop(*(this->pointer_to_lua_state), 1);
     return return_table;
 }
@@ -83,12 +86,14 @@ lua_Function PopVariable::LuaFunction()
 
 lua_CFunction PopVariable::CFunction(){
     lua_CFunction found = lua_tocfunction(*(this->pointer_to_lua_state),-1);
+    lua_pop(*(this->pointer_to_lua_state), 1);
     return found;
 }
 
 any* PopVariable::Userdata()
 {
     any* found = (any*)lua_touserdata(*(this->pointer_to_lua_state), -1);
+    lua_pop(*(this->pointer_to_lua_state), 1);
     return found;
 }
 

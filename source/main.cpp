@@ -79,8 +79,8 @@ cout << any_cast<lua_Number>(cpp_table.table_contents.at("a_goofy_field")) << en
 
 cout << any_cast<string>(cpp_table.table_contents.at(2)) << endl;
 
-auto subtable = any_cast<unordered_map<variant<string,lua_Integer>,any>>(cpp_table.table_contents.at("anotha_table"));
-cout << any_cast<string>(subtable.at("balls_status")) << endl; 
+auto subtable = any_cast<lua_Table>(cpp_table.table_contents.at("anotha_table"));
+cout << any_cast<string>(subtable.table_contents.at("balls_status")) << endl; 
 
 any ref_test = make_any<double>(69.420);
 double* retrieved_value_ref_test = any_cast<double>(&ref_test);
@@ -107,8 +107,8 @@ lua_Function function_info = lua.GetGlobal.LuaFunction("print");
 
 cout << boolalpha << "Stored in registry at: " << function_info.registry_key << " Argument count: " << function_info.argument_count << " Takes extra parameters: " << function_info.takes_extra_args << endl;
 
-lua.DoFile("C:/Users/Asger/Desktop/programming/LuaSimple/source/funny file.lua");
-//lua.DoFile("C:/Users/Bruger/Skrivebord/LuaSimple/source/funny file.lua");
+//lua.DoFile("C:/Users/Asger/Desktop/programming/LuaSimple/source/funny file.lua");
+lua.DoFile("C:/Users/Bruger/Skrivebord/LuaSimple/source/funny file.lua");
 
  
 cout << any_cast<lua_Number>(lua.lua_return_values[0]) << endl;
