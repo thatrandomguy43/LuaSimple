@@ -105,17 +105,20 @@ void PushVariable::LuaFunction(lua_Function function){
     return;
 }
 
-// not doing uservalues quite yet
-any* PushVariable::Userdata(any data, optional<string> metatable_name /*,int uservalue_count*/)
+
+lua_Userdata PushVariable::Userdata(lua_Userdata data)
 {
     luaL_checkstack(*(this->pointer_to_lua_state), 1, "Error: cannot push additional variable to Lua. The Lua stack size limit has been reached, or the program is out of memory.");
     void* userdata_ptr = lua_newuserdatauv(*(this->pointer_to_lua_state), sizeof data, 0);
-    if (metatable_name.has_value())
+    if (data.metatable_name.has_value())
     {
-        luaL_setmetatable(*(this->pointer_to_lua_state), metatable_name.value().c_str());
+        luaL_setmetatable(*(this->pointer_to_lua_state), data.metatable_name.value().c_str());
     }
     memmove(userdata_ptr, &data, sizeof data);
-    return (any*)userdata_ptr;
+    lua_Userdata return_obj;
+    return_obj.object = (any*)userdata_ptr;
+    return_obj.metatable_name = data.metatable_name;
+    return return_obj;
 }
 
 void PushVariable::AnyValue(any value) {

@@ -40,7 +40,7 @@ public:
     void LuaFunction(lua_Function);
 
     // not doing uservalues quite yet
-    std::any* Userdata(std::any, std::optional<std::string>);
+    lua_Userdata Userdata(lua_Userdata);
 
     void AnyValue(std::any);
 };

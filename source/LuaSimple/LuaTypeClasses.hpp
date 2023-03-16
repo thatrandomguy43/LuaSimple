@@ -26,5 +26,5 @@ class lua_Userdata
 {
 public:
 std::any* object;
-std::string metatable_name;
+std::optional<std::string> metatable_name;
 };

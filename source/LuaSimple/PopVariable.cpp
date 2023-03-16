@@ -44,7 +44,7 @@ string PopVariable::String()
 
 lua_Table PopVariable::Table()
 {
-    lua_Table return_table;
+    lua_Table found;
     variant<string, lua_Integer> key_to_add;
     any value_to_add;
     lua_pushnil(*(this->pointer_to_lua_state));
@@ -60,13 +60,13 @@ lua_Table PopVariable::Table()
         };
         // we do a little copy pasting
         value_to_add = this->AnyValue();
-        return_table.table_contents.insert({ key_to_add, value_to_add });
+        found.table_contents.insert({ key_to_add, value_to_add });
     };
     if (luaL_getmetafield(*(this->pointer_to_lua_state), -1, "__name")){
-        return_table.metatable_name = this->String();
+        found.metatable_name = this->String();
     }
     lua_pop(*(this->pointer_to_lua_state), 1);
-    return return_table;
+    return found;
 }
 
 // so about this... i just learned what the lua registry actually is, and god damn do i feel like a moron
@@ -90,10 +90,14 @@ lua_CFunction PopVariable::CFunction(){
     return found;
 }
 
-any* PopVariable::Userdata()
+lua_Userdata PopVariable::Userdata()
 {
-    any* found = (any*)lua_touserdata(*(this->pointer_to_lua_state), -1);
+    lua_Userdata found;
+    found.object = (any*)lua_touserdata(*(this->pointer_to_lua_state), -1);
     lua_pop(*(this->pointer_to_lua_state), 1);
+     if (luaL_getmetafield(*(this->pointer_to_lua_state), -1, "__name")){
+        found.metatable_name = this->String();
+    }
     return found;
 }
 
@@ -151,8 +155,8 @@ std::any PopVariable::AnyValue()
     break;
     case LUA_TUSERDATA:
     {
-        any* value = this->Userdata();
-        return make_any<any*>(value);
+        lua_Userdata value = this->Userdata();
+        return make_any<lua_Userdata>(value);
     }
     break;
 

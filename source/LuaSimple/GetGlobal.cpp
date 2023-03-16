@@ -118,24 +118,26 @@ lua_Function GetGlobal::LuaFunction(string name)
     };
 }
 
-any* GetGlobal::Userdata(string name)
+lua_Userdata GetGlobal::Userdata(string name)
 {
     lua_getglobal(*(this->pointer_to_lua_state), name.c_str());
     if (lua_type(*(this->pointer_to_lua_state), -1) == LUA_TUSERDATA)
     {
-        any* found_global = get_variable->Userdata();
+        lua_Userdata found_global = get_variable->Userdata();
         return found_global;
     }
     else
     {
         cerr << "Global Lua variable " << name << " is not a userdata." << endl;
         lua_pop(*(this->pointer_to_lua_state), 1);
-        return nullptr;
+        lua_Userdata null_userdata;
+        null_userdata.object = nullptr;
+        return null_userdata;
     };
 }
 
 any GetGlobal::AnyValue(string name){
     lua_getglobal(*(this->pointer_to_lua_state), name.c_str());
-    any* found_global = get_variable->Userdata();
+    any found_global = get_variable->AnyValue();
     return found_global;
 }

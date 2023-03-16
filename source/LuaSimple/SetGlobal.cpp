@@ -76,10 +76,10 @@ void SetGlobal::CFunction(lua_CFunction function_to_set, string name)
     return;
 }
 
-any* SetGlobal::Userdata(any data, string name, optional<string> metatable_name /*,int uservalue_count*/)
+lua_Userdata SetGlobal::Userdata(lua_Userdata data, string name)
 {
-    any* userdata_ptr = variable_maker->Userdata(data, metatable_name);
+    lua_Userdata userdata_obj = variable_maker->Userdata(data);
 
     lua_setglobal(*(this->pointer_to_lua_state), name.c_str());
-    return userdata_ptr;
+    return userdata_obj;
 }
