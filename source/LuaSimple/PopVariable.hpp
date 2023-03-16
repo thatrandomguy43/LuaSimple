@@ -33,7 +33,7 @@ public:
 
     lua_CFunction CFunction();
 
-    std::any* Userdata();
+    lua_Userdata Userdata();
 
     std::any AnyValue();
 };
