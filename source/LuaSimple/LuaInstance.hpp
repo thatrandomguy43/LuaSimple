@@ -9,10 +9,11 @@
 #include "PopVariable.hpp"
 #include "GetGlobal.hpp"
 #include "SetGlobal.hpp"
+#include <memory>
 
 #pragma once
 
-
+typedef std::variant<nullptr_t, bool, void*, lua_Integer, lua_Number, std::string, std::unique_ptr<notlua_Table>, lua_CFunction, lua_Function, lua_Userdata> lua_Value;
 
 class LuaInstance
 {
@@ -43,6 +44,9 @@ public:
 
     void GetArguments(std::vector<int>);
 
+    void PushValue(lua_Value);
+
+    lua_Value PopValue();
 
     void ReturnResults(std::vector<std::any>);
 

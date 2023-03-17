@@ -3,7 +3,8 @@
 #include <unordered_map>
 #include <any>
 #include "luainclude/lua.hpp"
-
+#include <memory>
+#include <optional>
 #pragma once
 
 
@@ -37,7 +38,7 @@ std::optional<std::string> metatable_name;
 class notlua_Table
 {
 public:
-    std::unordered_map<std::variant<nullptr_t, bool, void*, lua_Integer, lua_Number, std::string, notlua_Table*, lua_Function, lua_Userdata>, std::variant<nullptr_t, bool, void*, lua_Integer, lua_Number, std::string, notlua_Table*, lua_Function, lua_Userdata>> table_contents;
+    std::unordered_map<std::variant<nullptr_t, bool, void*, lua_Integer, lua_Number, std::string, std::unique_ptr<notlua_Table>, lua_CFunction, lua_Function, lua_Userdata>, std::variant<nullptr_t, bool, void*, lua_Integer, lua_Number, std::string, notlua_Table*, lua_Function, lua_Userdata>> table_contents;
     std::optional<std::string> metatable_name;
 };
 

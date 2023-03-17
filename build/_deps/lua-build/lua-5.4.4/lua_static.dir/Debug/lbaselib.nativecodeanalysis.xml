@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-src\lua-5.4.4\src\</FILEPATH>
+      <FILENAME>lbaselib.c</FILENAME>
+      <LINE>441</LINE>
+      <COLUMN>24</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '-' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '-' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>luaB_select</FUNCTION>
+    <DECORATED>luaB_select</DECORATED>
+    <FUNCLINE>438</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\Bruger\Skrivebord\LuaSimple\source\LuaSimple\</FILEPATH>
+      <FILENAME>LuaTypeClasses.hpp</FILENAME>
+      <LINE>33</LINE>
+      <COLUMN>0</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'lua_Userdata::object' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>lua_Userdata::{ctor}</FUNCTION>
+    <DECORATED>??0lua_Userdata@@QEAA@XZ</DECORATED>
+    <FUNCLINE>33</FUNCLINE>
+    <ADDITIONALINFO>
+      <targetSymbol>lua_Userdata::object</targetSymbol>
+    </ADDITIONALINFO>
+    <PATH></PATH>
+  </DEFECT>
+</DEFECTS>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DEFECTS>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-src\lua-5.4.4\src\</FILEPATH>
+      <FILENAME>liolib.c</FILENAME>
+      <LINE>41</LINE>
+      <COLUMN>2</COLUMN>
+    </SFA>
+    <DEFECTCODE>6011</DEFECTCODE>
+    <DESCRIPTION>Dereferencing NULL pointer 'mode'. See line 41 for an earlier location where this can occur</DESCRIPTION>
+    <FUNCTION>l_checkmode</FUNCTION>
+    <DECORATED>l_checkmode</DECORATED>
+    <FUNCLINE>40</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-src\lua-5.4.4\src\</FILEPATH>
+        <FILENAME>liolib.c</FILENAME>
+        <LINE>41</LINE>
+        <COLUMN>2</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'mode' is an Input to 'strspn' (declared at c:\program files (x86)\windows kits\10\include\10.0.22000.0\ucrt\string.h:430)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-src\lua-5.4.4\src\</FILEPATH>
+        <FILENAME>liolib.c</FILENAME>
+        <LINE>41</LINE>
+        <COLUMN>2</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'mode' is dereferenced, but may still be NULL</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+  <DEFECT>
+    <SFA>
+      <FILEPATH>C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-src\lua-5.4.4\src\</FILEPATH>
+      <FILENAME>liolib.c</FILENAME>
+      <LINE>41</LINE>
+      <COLUMN>2</COLUMN>
+    </SFA>
+    <DEFECTCODE>6387</DEFECTCODE>
+    <DESCRIPTION>'mode' could be '0'.</DESCRIPTION>
+    <FUNCTION>l_checkmode</FUNCTION>
+    <DECORATED>l_checkmode</DECORATED>
+    <FUNCLINE>40</FUNCLINE>
+    <PROBABILITY>1</PROBABILITY>
+    <RANK>4</RANK>
+    <CATEGORY>
+      <RULECATEGORY>mspft</RULECATEGORY>
+    </CATEGORY>
+    <PATH>
+      <SFA>
+        <FILEPATH>C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-src\lua-5.4.4\src\</FILEPATH>
+        <FILENAME>liolib.c</FILENAME>
+        <LINE>41</LINE>
+        <COLUMN>2</COLUMN>
+        <KEYEVENT>
+          <ID>1</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Full</IMPORTANCE>
+          <MESSAGE>'mode' is an Input to 'strspn' (declared at c:\program files (x86)\windows kits\10\include\10.0.22000.0\ucrt\string.h:430)</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+      <SFA>
+        <FILEPATH>C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-src\lua-5.4.4\src\</FILEPATH>
+        <FILENAME>liolib.c</FILENAME>
+        <LINE>41</LINE>
+        <COLUMN>2</COLUMN>
+        <KEYEVENT>
+          <ID>2</ID>
+          <KIND>usage</KIND>
+          <IMPORTANCE>Essential</IMPORTANCE>
+          <MESSAGE>'mode' should not be NULL, because this is not consistent with the SAL annotation on 'strspn'</MESSAGE>
+        </KEYEVENT>
+      </SFA>
+    </PATH>
+  </DEFECT>
+</DEFECTS>
