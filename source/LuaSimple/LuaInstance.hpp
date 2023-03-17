@@ -48,6 +48,8 @@ public:
 
     lua_Value PopValue();
 
+    void PushValue(lua_Value);
+
     void ReturnResults(std::vector<std::any>);
 
     static LuaInstance& FindInstance(lua_State*);

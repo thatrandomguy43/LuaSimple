@@ -184,3 +184,46 @@ lua_Value LuaInstance::PopValue() {
     lua_pop(this->pointer_to_lua_state, 1);
     return popped;
 }
+
+void LuaInstance::PushValue(lua_Value to_push){
+    if (holds_alternative<nullptr_t>(to_push))
+    {
+
+    } 
+    else if (holds_alternative<bool>(to_push))
+    {
+
+    }
+    else if (holds_alternative<void*>(to_push))
+    {
+
+    }
+    else if (holds_alternative<lua_Integer>(to_push))
+    {
+
+    }
+    else if (holds_alternative<lua_Number>(to_push))
+    {
+
+    }
+    else if (holds_alternative<string>(to_push))
+    {
+
+    }
+    else if (holds_alternative<unique_ptr<lua_Table>>(to_push))
+    {
+
+    }
+    else if (holds_alternative<lua_CFunction>(to_push))
+    {
+
+    }
+    else if (holds_alternative<lua_Function>(to_push))
+    {
+
+    }
+    else if (holds_alternative<lua_Userdata>(to_push))
+    {
+
+    }
+}
