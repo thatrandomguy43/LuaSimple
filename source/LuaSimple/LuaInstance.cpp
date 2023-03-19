@@ -68,16 +68,21 @@ lua_Value LuaInstance::PopValue() {
         this->PushValue(nullptr);
         lua_Value key;
         lua_Value value;
+        auto popped_ptr = get<shared_ptr<lua_Table>>(popped);
         while (lua_next(this->pointer_to_lua_state, -1) != 0)
         {
             value = this->PopValue();
             lua_pushvalue(this->pointer_to_lua_state, -1);
             key = this->PopValue();
-            get<shared_ptr<lua_Table>>(popped)->table_contents.insert({key, value});
+            //popped_ptr->table_contents[key] = value;
+            unordered_map<lua_Value, lua_Value> ballmap;
+            ballmap[key] = value;
+            
         }
         if (luaL_getmetafield(this->pointer_to_lua_state, -1, "__name") != LUA_TNIL){
             get<shared_ptr<lua_Table>>(popped)->metatable_name = get<string>(this->PopValue());
         };
+        
         
     }
     break;
