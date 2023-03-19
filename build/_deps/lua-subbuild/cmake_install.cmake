@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild
+# Install script for directory: C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

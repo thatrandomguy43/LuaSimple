@@ -1,2 +1,0 @@
-C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-build\lua-5.4.4\Debug\lua_static.lib.lastcodeanalysissucceeded
-C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-build\lua-5.4.4\lua_static.dir\Debug\NativeCodeAnalysis.read.1.tlog

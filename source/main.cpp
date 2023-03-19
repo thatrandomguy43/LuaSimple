@@ -13,7 +13,7 @@ LuaInstance lua;
 
 
 
-
+/*
 int StringOfAs(lua_State* Lua){
     LuaInstance& current_lua = LuaInstance::FindInstance(Lua);
     current_lua.GetArguments({LUA_TNUMBER});
@@ -46,12 +46,12 @@ static int GetFunnyNumber (lua_State* Lua){
 
 };
 
-
+*/
 
 
 
 int main(){
-
+/*
 lua.DoString("for i=1,10 do print(\"hi\") end");
 
 lua.SetGlobal.Number(80, "some_number");
@@ -114,8 +114,8 @@ lua_Function function_info = lua.GetGlobal.LuaFunction("print");
 
 cout << boolalpha << "Stored in registry at: " << function_info.registry_key << " Argument count: " << function_info.argument_count << " Takes extra parameters: " << function_info.takes_extra_args << endl;
 
-//lua.DoFile("C:/Users/Asger/Desktop/programming/LuaSimple/source/funny file.lua");
-lua.DoFile("C:/Users/Bruger/Skrivebord/LuaSimple/source/funny file.lua");
+lua.DoFile("C:/Users/Asger/Desktop/programming/LuaSimple/source/funny file.lua");
+//lua.DoFile("C:/Users/Bruger/Skrivebord/LuaSimple/source/funny file.lua");
 
  
 cout << any_cast<lua_Number>(lua.lua_return_values[0]) << endl;
@@ -128,5 +128,6 @@ lua.DoString("function OnlyOneParam(argument) return (-argument) end");
 lua_Function one_param_lua_func = lua.GetGlobal.LuaFunction("OnlyOneParam");
 lua.DoFunction(one_param_lua_func, {make_any<lua_Number>(-6), make_any<lua_Number>(7)});
 cout << any_cast<lua_Number>(lua.lua_return_values[0]) << endl;
+*/
 return 0;
 }
