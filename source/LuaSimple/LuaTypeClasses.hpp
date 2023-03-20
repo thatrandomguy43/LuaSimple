@@ -64,7 +64,7 @@ size_t operator()(const lua_Userdata& udata){
 class lua_Table
 {
 public:
-    std::unordered_map<std::variant<bool, void*, lua_Integer, lua_Number, std::string, std::shared_ptr<lua_Table>, lua_CFunction, lua_Function, lua_Userdata>, std::variant<bool, void*, lua_Integer, lua_Number, std::string, std::shared_ptr<lua_Table>, lua_CFunction, lua_Function, lua_Userdata>> table_contents;
+    std::unordered_map<std::variant<nullptr_t, bool, void*, lua_Integer, lua_Number, std::string, std::shared_ptr<lua_Table>, lua_CFunction, lua_Function, lua_Userdata>, std::variant<nullptr_t, bool, void*, lua_Integer, lua_Number, std::string, std::shared_ptr<lua_Table>, lua_CFunction, lua_Function, lua_Userdata>> table_contents;
     std::optional<std::string> metatable_name;
 
    
