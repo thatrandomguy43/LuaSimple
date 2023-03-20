@@ -11,9 +11,9 @@ using namespace std;
 
 LuaInstance lua;
 
-
-
 /*
+
+
 int StringOfAs(lua_State* Lua){
     LuaInstance& current_lua = LuaInstance::FindInstance(Lua);
     current_lua.GetArguments({LUA_TNUMBER});
@@ -46,8 +46,8 @@ static int GetFunnyNumber (lua_State* Lua){
 
 };
 
-*/
 
+*/
 
 
 int main(){

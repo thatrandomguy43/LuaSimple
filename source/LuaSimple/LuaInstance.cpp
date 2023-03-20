@@ -168,8 +168,16 @@ lua_Value LuaInstance::PopValue() {
     return popped;
 }
 
+void LuaInstance::SetGlobal(lua_Value value, string name){
+    this->PushValue(value);
+    lua_setglobal(this->pointer_to_lua_state, name.c_str());
+    return;
+}
 
-
+lua_Value LuaInstance::GetGlobal(string name){
+    lua_getglobal(this->pointer_to_lua_state, name.c_str());
+    return this->PopValue();
+}
 
 int LuaInstance::DoFunction(lua_Function function_object, vector<lua_Value> arguments) {
 

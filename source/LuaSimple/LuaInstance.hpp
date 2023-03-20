@@ -42,6 +42,9 @@ public:
 
     lua_Value PopValue();
 
+    void SetGlobal(lua_Value, std::string);
+
+    lua_Value GetGlobal(std::string);
 
     void ReturnResults(std::vector<lua_Value>);
 
