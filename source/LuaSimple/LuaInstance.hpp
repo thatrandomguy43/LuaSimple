@@ -10,6 +10,8 @@
 #pragma once
 
 typedef std::variant<nullptr_t, bool, void*, lua_Integer, lua_Number, std::string, std::shared_ptr<lua_Table>, lua_CFunction, lua_Function, lua_Userdata> lua_Value;
+typedef std::variant<bool, void*, lua_Integer, lua_Number, std::string, std::shared_ptr<lua_Table>, lua_CFunction, lua_Function, lua_Userdata> lua_TableValue;
+
 
 class LuaInstance
 {
@@ -39,6 +41,10 @@ public:
     void PushValue(lua_Value);
 
     lua_Value PopValue();
+
+    void PushTableValue(lua_TableValue);
+
+    lua_TableValue PopTableValue();
 
     void ReturnResults(std::vector<lua_Value>);
 

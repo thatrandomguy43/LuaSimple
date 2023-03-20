@@ -10,7 +10,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{3636CA1E-3CF3-356F-8B15-4F1506EEFBB2}</ProjectGuid>
+    <ProjectGuid>{6677B7D8-A000-370E-BB6C-1D8233FAB583}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
@@ -45,13 +45,13 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\0ebf7499c9b8716238d345fde05c1f84\lua-populate-mkdir.rule">
+    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\b6e092ee95615be1134f1f4edcf8b855\lua-populate-mkdir.rule">
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Creating directories for 'lua-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -Dcfgdir=/Debug -P C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/tmp/lua-populate-mkdirs.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -Dcfgdir=/Debug -P C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/tmp/lua-populate-mkdirs.cmake
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp/Debug/lua-populate-mkdir
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp/Debug/lua-populate-mkdir
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -60,21 +60,21 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-mkdir</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-mkdir</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\0ebf7499c9b8716238d345fde05c1f84\lua-populate-download.rule">
+    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\b6e092ee95615be1134f1f4edcf8b855\lua-populate-download.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing download step (git clone) for 'lua-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-cd C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps
+cd C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/tmp/lua-populate-gitclone.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/tmp/lua-populate-gitclone.cmake
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp/Debug/lua-populate-download
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp/Debug/lua-populate-download
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -82,20 +82,20 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\lua-populate-gitinfo.txt;C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-mkdir;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-download</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\lua-populate-gitinfo.txt;C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-mkdir;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-download</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\0ebf7499c9b8716238d345fde05c1f84\lua-populate-update.rule">
+    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\b6e092ee95615be1134f1f4edcf8b855\lua-populate-update.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing update step for 'lua-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-cd C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-src
+cd C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-src
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/tmp/lua-populate-gitupdate.cmake
+"C:\Program Files\CMake\bin\cmake.exe" -P C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/tmp/lua-populate-gitupdate.cmake
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -103,19 +103,19 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-download;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-update</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-download;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-update</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\0ebf7499c9b8716238d345fde05c1f84\lua-populate-patch.rule">
+    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\b6e092ee95615be1134f1f4edcf8b855\lua-populate-patch.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No patch step for 'lua-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp/Debug/lua-populate-patch
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp/Debug/lua-populate-patch
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -123,24 +123,24 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-update;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-patch</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-update;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-patch</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\0ebf7499c9b8716238d345fde05c1f84\lua-populate-configure.rule">
+    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\b6e092ee95615be1134f1f4edcf8b855\lua-populate-configure.rule">
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No configure step for 'lua-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-cd C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-build
+cd C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp/Debug/lua-populate-configure
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp/Debug/lua-populate-configure
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -148,23 +148,23 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\tmp\lua-populate-cfgcmd.txt;C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-patch;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-configure</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\tmp\lua-populate-cfgcmd.txt;C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-patch;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-configure</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\0ebf7499c9b8716238d345fde05c1f84\lua-populate-build.rule">
+    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\b6e092ee95615be1134f1f4edcf8b855\lua-populate-build.rule">
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No build step for 'lua-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-cd C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-build
+cd C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp/Debug/lua-populate-build
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp/Debug/lua-populate-build
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -172,23 +172,23 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-configure;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-build</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-configure;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-build</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\0ebf7499c9b8716238d345fde05c1f84\lua-populate-install.rule">
+    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\b6e092ee95615be1134f1f4edcf8b855\lua-populate-install.rule">
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No install step for 'lua-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-cd C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-build
+cd C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp/Debug/lua-populate-install
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp/Debug/lua-populate-install
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -196,23 +196,23 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-build;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-install</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-install</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\0ebf7499c9b8716238d345fde05c1f84\lua-populate-test.rule">
+    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\b6e092ee95615be1134f1f4edcf8b855\lua-populate-test.rule">
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No test step for 'lua-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-cd C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-build
+cd C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-build
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E echo_append
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp/Debug/lua-populate-test
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp/Debug/lua-populate-test
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -220,21 +220,21 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-install;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-test</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-install;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-test</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\ebfc97c7262216536438fadb86070176\lua-populate-complete.rule">
+    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\b1de65ebc8ca750ffb1b3d8fc3085345\lua-populate-complete.rule">
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Completed 'lua-populate'</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/Debug
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/Debug
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/Debug/lua-populate-complete
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/Debug/lua-populate-complete
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp/Debug/lua-populate-done
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp/Debug/lua-populate-done
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -242,14 +242,14 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-install;C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-mkdir;C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-download;C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-update;C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-patch;C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-configure;C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-build;C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-test;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\Debug\lua-populate-complete</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-install;C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-mkdir;C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-download;C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-update;C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-patch;C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-configure;C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-build;C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\src\lua-populate-stamp\Debug\lua-populate-test;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\Debug\lua-populate-complete</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\6a144b257276a6f0db853898e36d528d\lua-populate.rule">
+    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\6a099d130ef9aa243530d397c9d5b34e\lua-populate.rule">
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"></Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
@@ -259,19 +259,19 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\Debug\lua-populate-complete;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\lua-populate</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\Debug\lua-populate-complete;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\lua-populate</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeLists.txt">
+    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild -BC:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild --check-stamp-file C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild -BC:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild --check-stamp-file C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -279,18 +279,18 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject\RepositoryInfo.txt.in;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject\cfgcmd.txt.in;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject\gitclone.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject\gitupdate.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject\mkdirs.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\WindowsPaths.cmake;C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\3.26.0-rc5\CMakeSystem.cmake;C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\tmp\lua-populate-mkdirs.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject\RepositoryInfo.txt.in;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject\cfgcmd.txt.in;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject\gitclone.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject\gitupdate.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject\mkdirs.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\WindowsPaths.cmake;C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\3.26.0-rc4\CMakeSystem.cmake;C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\tmp\lua-populate-mkdirs.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\lua-populate">
+    <None Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\lua-populate">
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\ZERO_CHECK.vcxproj">
-      <Project>{DAA434D6-9052-3DA4-A6E1-FDCB7AD3BF9B}</Project>
+    <ProjectReference Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\ZERO_CHECK.vcxproj">
+      <Project>{A886B819-7518-3BA1-ACD9-1328D1D5CF25}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

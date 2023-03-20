@@ -19,7 +19,13 @@ public:
     lua_Integer argument_count;
     bool takes_extra_args;
 
-
+    bool operator==(const lua_Function& other) const{
+        if (this->registry_key == other.registry_key){
+            return true;
+        } else {
+            return false;
+        };
+    }
 };
 
 
@@ -37,6 +43,13 @@ public:
 std::any* object;
 std::optional<std::string> metatable_name;
 
+bool operator==(const lua_Userdata& other) const {
+    if (this->object == other.object){
+        return true;
+    } else {
+        return false;
+    }
+}
 
 };
 

@@ -7,7 +7,7 @@ events:
       - "C:/Program Files/CMake/share/cmake-3.26/Modules/CMakeDetermineSystem.cmake:204 (message)"
       - "CMakeLists.txt:3 (project)"
     message: |
-      The system is: Windows - 10.0.22000 - AMD64
+      The system is: Windows - 10.0.22621 - AMD64
   -
     kind: "message-v1"
     backtrace:
@@ -24,10 +24,10 @@ events:
       The output was:
       0
       MSBuild version 17.5.0+6f08c67f3 for .NET Framework
-      Build started 18-03-2023 00:11:48.
+      Build started 20-03-2023 10:07:12.
       Included response file: C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\MSBuild\\Current\\Bin\\amd64\\MSBuild.rsp
       
-      Project "C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\build\\CMakeFiles\\3.26.0-rc5\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
+      Project "C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\build\\CMakeFiles\\3.26.0-rc4\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
         Creating directory "Debug\\".
         Creating directory "Debug\\CompilerIdCXX.tlog\\".
@@ -38,7 +38,7 @@ events:
         CMakeCXXCompilerId.cpp
       Link:
         C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
-        CompilerIdCXX.vcxproj -> C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\build\\CMakeFiles\\3.26.0-rc5\\CompilerIdCXX\\CompilerIdCXX.exe
+        CompilerIdCXX.vcxproj -> C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\build\\CMakeFiles\\3.26.0-rc4\\CompilerIdCXX\\CompilerIdCXX.exe
       PostBuildEvent:
         for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
         :VCEnd
@@ -46,13 +46,13 @@ events:
       FinalizeBuildStatus:
         Deleting file "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
         Touching "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
-      Done Building Project "C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\build\\CMakeFiles\\3.26.0-rc5\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (default targets).
+      Done Building Project "C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\build\\CMakeFiles\\3.26.0-rc4\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (default targets).
       
       Build succeeded.
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.70
+      Time Elapsed 00:00:01.41
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -60,7 +60,7 @@ events:
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
       
       The CXX compiler identification is MSVC, found in:
-        C:/Users/Asger/Desktop/programming/LuaSimple/build/CMakeFiles/3.26.0-rc5/CompilerIdCXX/CompilerIdCXX.exe
+        C:/Users/Bruger/Skrivebord/LuaSimple/build/CMakeFiles/3.26.0-rc4/CompilerIdCXX/CompilerIdCXX.exe
       
   -
     kind: "try_compile-v1"
@@ -71,8 +71,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/Asger/Desktop/programming/LuaSimple/build/CMakeFiles/CMakeScratch/TryCompile-pzvvfm"
-      binary: "C:/Users/Asger/Desktop/programming/LuaSimple/build/CMakeFiles/CMakeScratch/TryCompile-pzvvfm"
+      source: "C:/Users/Bruger/Skrivebord/LuaSimple/build/CMakeFiles/CMakeScratch/TryCompile-m8k9kp"
+      binary: "C:/Users/Bruger/Skrivebord/LuaSimple/build/CMakeFiles/CMakeScratch/TryCompile-m8k9kp"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
@@ -81,38 +81,38 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: C:/Users/Asger/Desktop/programming/LuaSimple/build/CMakeFiles/CMakeScratch/TryCompile-pzvvfm
+        Change Dir: C:/Users/Bruger/Skrivebord/LuaSimple/build/CMakeFiles/CMakeScratch/TryCompile-m8k9kp
         
-        Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_8c3e5.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n && MSBuild version 17.5.0+6f08c67f3 for .NET Framework
-        Build started 18-03-2023 00:11:49.
+        Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_de648.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n && MSBuild version 17.5.0+6f08c67f3 for .NET Framework
+        Build started 20-03-2023 10:07:14.
         Included response file: C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\MSBuild\\Current\\Bin\\amd64\\MSBuild.rsp
         
-        Project "C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pzvvfm\\cmTC_8c3e5.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\build\\CMakeFiles\\CMakeScratch\\TryCompile-m8k9kp\\cmTC_de648.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_8c3e5.dir\\Debug\\".
-          Creating directory "C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pzvvfm\\Debug\\".
-          Creating directory "cmTC_8c3e5.dir\\Debug\\cmTC_8c3e5.tlog\\".
+          Creating directory "cmTC_de648.dir\\Debug\\".
+          Creating directory "C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\build\\CMakeFiles\\CMakeScratch\\TryCompile-m8k9kp\\Debug\\".
+          Creating directory "cmTC_de648.dir\\Debug\\cmTC_de648.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_8c3e5.dir\\Debug\\cmTC_8c3e5.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Creating "cmTC_de648.dir\\Debug\\cmTC_de648.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
         ClCompile:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_8c3e5.dir\\Debug\\\\" /Fd"cmTC_8c3e5.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_de648.dir\\Debug\\\\" /Fd"cmTC_de648.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.35.32215 for x64
           CMakeCXXCompilerABI.cpp
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_8c3e5.dir\\Debug\\\\" /Fd"cmTC_8c3e5.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_de648.dir\\Debug\\\\" /Fd"cmTC_de648.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp"
         Link:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pzvvfm\\Debug\\cmTC_8c3e5.exe" /INCREMENTAL /ILK:"cmTC_8c3e5.dir\\Debug\\cmTC_8c3e5.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Asger/Desktop/programming/LuaSimple/build/CMakeFiles/CMakeScratch/TryCompile-pzvvfm/Debug/cmTC_8c3e5.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Asger/Desktop/programming/LuaSimple/build/CMakeFiles/CMakeScratch/TryCompile-pzvvfm/Debug/cmTC_8c3e5.lib" /MACHINE:X64  /machine:x64 cmTC_8c3e5.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_8c3e5.vcxproj -> C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pzvvfm\\Debug\\cmTC_8c3e5.exe
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\build\\CMakeFiles\\CMakeScratch\\TryCompile-m8k9kp\\Debug\\cmTC_de648.exe" /INCREMENTAL /ILK:"cmTC_de648.dir\\Debug\\cmTC_de648.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Bruger/Skrivebord/LuaSimple/build/CMakeFiles/CMakeScratch/TryCompile-m8k9kp/Debug/cmTC_de648.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Bruger/Skrivebord/LuaSimple/build/CMakeFiles/CMakeScratch/TryCompile-m8k9kp/Debug/cmTC_de648.lib" /MACHINE:X64  /machine:x64 cmTC_de648.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_de648.vcxproj -> C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\build\\CMakeFiles\\CMakeScratch\\TryCompile-m8k9kp\\Debug\\cmTC_de648.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_8c3e5.dir\\Debug\\cmTC_8c3e5.tlog\\unsuccessfulbuild".
-          Touching "cmTC_8c3e5.dir\\Debug\\cmTC_8c3e5.tlog\\cmTC_8c3e5.lastbuildstate".
-        Done Building Project "C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\build\\CMakeFiles\\CMakeScratch\\TryCompile-pzvvfm\\cmTC_8c3e5.vcxproj" (default targets).
+          Deleting file "cmTC_de648.dir\\Debug\\cmTC_de648.tlog\\unsuccessfulbuild".
+          Touching "cmTC_de648.dir\\Debug\\cmTC_de648.tlog\\cmTC_de648.lastbuildstate".
+        Done Building Project "C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\build\\CMakeFiles\\CMakeScratch\\TryCompile-m8k9kp\\cmTC_de648.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.45
+        Time Elapsed 00:00:00.95
         
       exitCode: 0
   -
@@ -121,7 +121,7 @@ events:
       - "C:/Program Files/CMake/share/cmake-3.26/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
       - "C:/Program Files/CMake/share/cmake-3.26/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
       - "C:/Program Files/CMake/share/cmake-3.26/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-src/CMakeLists.txt:2 (project)"
+      - "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-src/CMakeLists.txt:2 (project)"
     message: |
       Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
       Compiler:  
@@ -131,10 +131,10 @@ events:
       The output was:
       0
       MSBuild version 17.5.0+6f08c67f3 for .NET Framework
-      Build started 18-03-2023 00:11:55.
+      Build started 20-03-2023 10:07:23.
       Included response file: C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\MSBuild\\Current\\Bin\\amd64\\MSBuild.rsp
       
-      Project "C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\build\\CMakeFiles\\3.26.0-rc5\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
+      Project "C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\build\\CMakeFiles\\3.26.0-rc4\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
       PrepareForBuild:
         Creating directory "Debug\\".
         Creating directory "Debug\\CompilerIdC.tlog\\".
@@ -145,7 +145,7 @@ events:
         CMakeCCompilerId.c
       Link:
         C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
-        CompilerIdC.vcxproj -> C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\build\\CMakeFiles\\3.26.0-rc5\\CompilerIdC\\CompilerIdC.exe
+        CompilerIdC.vcxproj -> C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\build\\CMakeFiles\\3.26.0-rc4\\CompilerIdC\\CompilerIdC.exe
       PostBuildEvent:
         for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
         :VCEnd
@@ -153,13 +153,13 @@ events:
       FinalizeBuildStatus:
         Deleting file "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
         Touching "Debug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstate".
-      Done Building Project "C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\build\\CMakeFiles\\3.26.0-rc5\\CompilerIdC\\CompilerIdC.vcxproj" (default targets).
+      Done Building Project "C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\build\\CMakeFiles\\3.26.0-rc4\\CompilerIdC\\CompilerIdC.vcxproj" (default targets).
       
       Build succeeded.
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.43
+      Time Elapsed 00:00:00.90
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -167,57 +167,57 @@ events:
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
       
       The C compiler identification is MSVC, found in:
-        C:/Users/Asger/Desktop/programming/LuaSimple/build/CMakeFiles/3.26.0-rc5/CompilerIdC/CompilerIdC.exe
+        C:/Users/Bruger/Skrivebord/LuaSimple/build/CMakeFiles/3.26.0-rc4/CompilerIdC/CompilerIdC.exe
       
   -
     kind: "try_compile-v1"
     backtrace:
       - "C:/Program Files/CMake/share/cmake-3.26/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
       - "C:/Program Files/CMake/share/cmake-3.26/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-src/CMakeLists.txt:2 (project)"
+      - "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-src/CMakeLists.txt:2 (project)"
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/Asger/Desktop/programming/LuaSimple/build/CMakeFiles/CMakeScratch/TryCompile-caeber"
-      binary: "C:/Users/Asger/Desktop/programming/LuaSimple/build/CMakeFiles/CMakeScratch/TryCompile-caeber"
+      source: "C:/Users/Bruger/Skrivebord/LuaSimple/build/CMakeFiles/CMakeScratch/TryCompile-vhxy7n"
+      binary: "C:/Users/Bruger/Skrivebord/LuaSimple/build/CMakeFiles/CMakeScratch/TryCompile-vhxy7n"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
     buildResult:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: C:/Users/Asger/Desktop/programming/LuaSimple/build/CMakeFiles/CMakeScratch/TryCompile-caeber
+        Change Dir: C:/Users/Bruger/Skrivebord/LuaSimple/build/CMakeFiles/CMakeScratch/TryCompile-vhxy7n
         
-        Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_ab29e.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n && MSBuild version 17.5.0+6f08c67f3 for .NET Framework
-        Build started 18-03-2023 00:11:55.
+        Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_cefd3.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n && MSBuild version 17.5.0+6f08c67f3 for .NET Framework
+        Build started 20-03-2023 10:07:24.
         Included response file: C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\MSBuild\\Current\\Bin\\amd64\\MSBuild.rsp
         
-        Project "C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\build\\CMakeFiles\\CMakeScratch\\TryCompile-caeber\\cmTC_ab29e.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\build\\CMakeFiles\\CMakeScratch\\TryCompile-vhxy7n\\cmTC_cefd3.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_ab29e.dir\\Debug\\".
-          Creating directory "C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\build\\CMakeFiles\\CMakeScratch\\TryCompile-caeber\\Debug\\".
-          Creating directory "cmTC_ab29e.dir\\Debug\\cmTC_ab29e.tlog\\".
+          Creating directory "cmTC_cefd3.dir\\Debug\\".
+          Creating directory "C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\build\\CMakeFiles\\CMakeScratch\\TryCompile-vhxy7n\\Debug\\".
+          Creating directory "cmTC_cefd3.dir\\Debug\\cmTC_cefd3.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_ab29e.dir\\Debug\\cmTC_ab29e.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Creating "cmTC_cefd3.dir\\Debug\\cmTC_cefd3.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
         ClCompile:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ab29e.dir\\Debug\\\\" /Fd"cmTC_ab29e.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_cefd3.dir\\Debug\\\\" /Fd"cmTC_cefd3.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.35.32215 for x64
           CMakeCCompilerABI.c
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_ab29e.dir\\Debug\\\\" /Fd"cmTC_ab29e.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_cefd3.dir\\Debug\\\\" /Fd"cmTC_cefd3.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.26\\Modules\\CMakeCCompilerABI.c"
         Link:
-          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\build\\CMakeFiles\\CMakeScratch\\TryCompile-caeber\\Debug\\cmTC_ab29e.exe" /INCREMENTAL /ILK:"cmTC_ab29e.dir\\Debug\\cmTC_ab29e.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Asger/Desktop/programming/LuaSimple/build/CMakeFiles/CMakeScratch/TryCompile-caeber/Debug/cmTC_ab29e.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Asger/Desktop/programming/LuaSimple/build/CMakeFiles/CMakeScratch/TryCompile-caeber/Debug/cmTC_ab29e.lib" /MACHINE:X64  /machine:x64 cmTC_ab29e.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_ab29e.vcxproj -> C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\build\\CMakeFiles\\CMakeScratch\\TryCompile-caeber\\Debug\\cmTC_ab29e.exe
+          C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.35.32215\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\build\\CMakeFiles\\CMakeScratch\\TryCompile-vhxy7n\\Debug\\cmTC_cefd3.exe" /INCREMENTAL /ILK:"cmTC_cefd3.dir\\Debug\\cmTC_cefd3.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Bruger/Skrivebord/LuaSimple/build/CMakeFiles/CMakeScratch/TryCompile-vhxy7n/Debug/cmTC_cefd3.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Bruger/Skrivebord/LuaSimple/build/CMakeFiles/CMakeScratch/TryCompile-vhxy7n/Debug/cmTC_cefd3.lib" /MACHINE:X64  /machine:x64 cmTC_cefd3.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_cefd3.vcxproj -> C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\build\\CMakeFiles\\CMakeScratch\\TryCompile-vhxy7n\\Debug\\cmTC_cefd3.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_ab29e.dir\\Debug\\cmTC_ab29e.tlog\\unsuccessfulbuild".
-          Touching "cmTC_ab29e.dir\\Debug\\cmTC_ab29e.tlog\\cmTC_ab29e.lastbuildstate".
-        Done Building Project "C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\build\\CMakeFiles\\CMakeScratch\\TryCompile-caeber\\cmTC_ab29e.vcxproj" (default targets).
+          Deleting file "cmTC_cefd3.dir\\Debug\\cmTC_cefd3.tlog\\unsuccessfulbuild".
+          Touching "cmTC_cefd3.dir\\Debug\\cmTC_cefd3.tlog\\cmTC_cefd3.lastbuildstate".
+        Done Building Project "C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\build\\CMakeFiles\\CMakeScratch\\TryCompile-vhxy7n\\cmTC_cefd3.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.41
+        Time Elapsed 00:00:00.82
         
       exitCode: 0
 ...

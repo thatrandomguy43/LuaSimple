@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Asger/Desktop/programming/LuaSimple/source/LuaSimple
+# Install script for directory: C:/Users/Bruger/Skrivebord/LuaSimple/source/LuaSimple
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,6 +34,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-build/cmake_install.cmake")
+  include("C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-build/cmake_install.cmake")
 endif()
 
