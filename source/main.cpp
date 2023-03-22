@@ -109,24 +109,33 @@ lua.SetGlobal(userdata_object,"my_userdata");
 
 lua.DoString("print(my_userdata())");
 
-lua_Function function_info = get<lua_Function>(lua.GetGlobal("print"));
+lua.DoString("function GetCharOfStrings(character_index, ...)\n "
+"result_string = \"\"\n "
+"inputs = {...}\n "
+"for k,v in pairs(inputs) do\n "
+"result_string = result_string .. v:sub(character_index, character_index)\n "
+"end\n "
+"return result_string\n "
+"end\n ");
+
+lua_Function function_info = get<lua_Function>(lua.GetGlobal("GetCharOfStrings"));
 
 cout << boolalpha << "Stored in registry at: " << function_info.registry_key << " Argument count: " << function_info.argument_count << " Takes extra parameters: " << function_info.takes_extra_args << endl;
 
 //lua.DoFile("C:/Users/Asger/Desktop/programming/LuaSimple/source/funny file.lua");
 lua.DoFile("C:/Users/Bruger/Skrivebord/LuaSimple/source/funny file.lua");
-
  
-cout << any_cast<lua_Number>(lua.lua_return_values[0]) << endl;
+cout << get<lua_Number>(lua.lua_return_values[0]) << endl;
 
-lua.DoFunction(function_info, {"my ", "balls ", "itch"});
+lua.DoFunction(function_info, {2 , "my", "balls", "itch"});
 
+cout << get<string>(lua.lua_return_values[0]) << endl;
 
 lua.DoString("function OnlyOneParam(argument) return (-argument) end");
 
 lua_Function one_param_lua_func = get<lua_Function>(lua.GetGlobal("OnlyOneParam"));
 lua.DoFunction(one_param_lua_func, {-6, 7});
-cout << get<lua_Number>(lua.lua_return_values[0]) << endl;
+cout << get<lua_Integer>(lua.lua_return_values[0]) << endl;
 
 return 0;
 }

@@ -68,7 +68,9 @@ void LuaInstance::PushValue(lua_Value to_push){
     }
     else if (holds_alternative<lua_Userdata>(to_push))
     {
-        lua_newuserdata(this->pointer_to_lua_state, sizeof *(get<lua_Userdata>(to_push).object));
+        any* userdata_buffer = static_cast<any*>(lua_newuserdata(this->pointer_to_lua_state, sizeof *(get<lua_Userdata>(to_push).object)));
+        //memmove bad, but this is what i found to work
+        memmove(userdata_buffer, get<lua_Userdata>(to_push).object, sizeof *(get<lua_Userdata>(to_push).object));
         if (get<lua_Userdata>(to_push).metatable_name.has_value())
         {
             luaL_setmetatable(this->pointer_to_lua_state, get<lua_Userdata>(to_push).metatable_name.value().c_str());
@@ -147,7 +149,7 @@ lua_Value LuaInstance::PopValue() {
         {
             lua_Debug info_getter;
             lua_pushvalue(this->pointer_to_lua_state, -1);
-            lua_getinfo(this->pointer_to_lua_state, "u", &info_getter);
+            lua_getinfo(this->pointer_to_lua_state, ">u", &info_getter);
             lua_Function func;
             func.argument_count = info_getter.nparams;
             func.takes_extra_args = info_getter.isvararg;
