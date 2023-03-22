@@ -1,3 +1,0 @@
-C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/lua-populate.dir
-C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/ALL_BUILD.dir
-C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/ZERO_CHECK.dir
