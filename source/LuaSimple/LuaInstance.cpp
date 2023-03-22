@@ -68,7 +68,7 @@ void LuaInstance::PushValue(lua_Value to_push){
     }
     else if (holds_alternative<lua_Userdata>(to_push))
     {
-        any* userdata_buffer = static_cast<any*>(lua_newuserdata(this->pointer_to_lua_state, sizeof *(get<lua_Userdata>(to_push).object)));
+        any* userdata_buffer = static_cast<any*>(lua_newuserdatauv(this->pointer_to_lua_state, sizeof *(get<lua_Userdata>(to_push).object),0));
         //memmove bad, but this is what i found to work
         memmove(userdata_buffer, get<lua_Userdata>(to_push).object, sizeof *(get<lua_Userdata>(to_push).object));
         if (get<lua_Userdata>(to_push).metatable_name.has_value())
