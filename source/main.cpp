@@ -18,12 +18,12 @@ int StringOfAs(lua_State* Lua){
     LuaInstance& current_lua = LuaInstance::FindInstance(Lua);
     current_lua.GetArguments({LUA_TNUMBER});
     string help_aaaa;
-    int count = any_cast<lua_Number>(current_lua.lua_argument_values[0]);
+    int count = get<lua_Integer>(current_lua.lua_argument_values[0]);
     for (int itr = 0; itr != count; itr++){
         help_aaaa.append("A");
     };
-    vector<any> return_vals;
-    return_vals.push_back(make_any<string>(help_aaaa));
+    vector<lua_Value> return_vals;
+    return_vals.push_back(help_aaaa);
     current_lua.ReturnResults(return_vals);
     return return_vals.size();
 }
@@ -36,10 +36,11 @@ public:
 
 static int GetFunnyNumber (lua_State* Lua){
     LuaInstance& current_lua = LuaInstance::FindInstance(Lua);
-    any* packed_self = static_cast<any*>(lua_touserdata(lua.pointer_to_lua_state, 1));
-    TestUserdata* self = any_cast<TestUserdata>(packed_self);
-    vector<any> return_vals;
-    return_vals.push_back(make_any<lua_Number>(self->funny_number));
+    current_lua.GetArguments({LUA_TUSERDATA});
+    lua_Userdata userdata_self = get<lua_Userdata>(current_lua.lua_argument_values[0]);
+    TestUserdata* self = any_cast<TestUserdata>(userdata_self.object);
+    vector<lua_Value> return_vals;
+    return_vals.push_back(self->funny_number);
     current_lua.ReturnResults(return_vals);
     return 1;
 }
@@ -78,7 +79,7 @@ unordered_map<string,string> compound{
 lua.DoString("some_table = {} some_table.a_goofy_field = 20 some_table[2] = \"this is an index\" some_table.anotha_table = {} some_table.anotha_table.balls_status = \"itching\" ");
 
 shared_ptr<lua_Table> cpp_table = get<shared_ptr<lua_Table>>(lua.GetGlobal("some_table"));
-cout << get<lua_Number>(cpp_table->table_contents.at("a_goofy_field")) << endl;
+cout << get<lua_Integer>(cpp_table->table_contents.at("a_goofy_field")) << endl;
 
 cout << get<string>(cpp_table->table_contents.at(2)) << endl;
 
@@ -92,27 +93,28 @@ lua.SetGlobal(&StringOfAs, "scream");
 lua.DoString("help_me = scream(10) print(help_me)");
 
 
-lua_Table my_metatable;
-int (*metamethod_ptr)(lua_State*) = &TestUserdata::GetFunnyNumber;
+shared_ptr<lua_Table> my_metatable = make_shared<lua_Table>();
+lua_CFunction metamethod_ptr = &TestUserdata::GetFunnyNumber;
+
+
+my_metatable->table_contents["__call"] = metamethod_ptr;
+lua.SetMetatable(my_metatable, "test_metatable");
+
 TestUserdata my_object;
-
-my_metatable.table_contents["__call"] = metamethod_ptr;
-
 lua_Userdata userdata_object;
 any any_my_object = make_any<TestUserdata>(my_object);
 userdata_object.object = &any_my_object;
 userdata_object.metatable_name = "test_metatable";
-lua.SetGlobal.Metatable(my_metatable, "test_metatable");
 lua.SetGlobal(userdata_object,"my_userdata");
 
-lua.DoString("print(my_userdata(my_userdata))");
+lua.DoString("print(my_userdata())");
 
 lua_Function function_info = get<lua_Function>(lua.GetGlobal("print"));
 
 cout << boolalpha << "Stored in registry at: " << function_info.registry_key << " Argument count: " << function_info.argument_count << " Takes extra parameters: " << function_info.takes_extra_args << endl;
 
-lua.DoFile("C:/Users/Asger/Desktop/programming/LuaSimple/source/funny file.lua");
-//lua.DoFile("C:/Users/Bruger/Skrivebord/LuaSimple/source/funny file.lua");
+//lua.DoFile("C:/Users/Asger/Desktop/programming/LuaSimple/source/funny file.lua");
+lua.DoFile("C:/Users/Bruger/Skrivebord/LuaSimple/source/funny file.lua");
 
  
 cout << any_cast<lua_Number>(lua.lua_return_values[0]) << endl;
