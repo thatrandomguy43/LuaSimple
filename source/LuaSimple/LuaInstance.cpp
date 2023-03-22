@@ -52,7 +52,10 @@ void LuaInstance::PushValue(lua_Value to_push){
             this->PushValue(itr->first);
             this->PushValue(itr->second);
             lua_settable(this->pointer_to_lua_state, -3);
-        };   
+        };
+        if (get<shared_ptr<lua_Table>>(to_push)->metatable_name.has_value()){
+            luaL_setmetatable(this->pointer_to_lua_state, get<shared_ptr<lua_Table>>(to_push)->metatable_name.value().c_str());
+        };
     }
     else if (holds_alternative<lua_CFunction>(to_push))
     {
@@ -120,7 +123,7 @@ lua_Value LuaInstance::PopValue() {
         lua_Value key;
         lua_Value value;
         auto popped_ptr = get<shared_ptr<lua_Table>>(popped);
-        while (lua_next(this->pointer_to_lua_state, -1) != 0)
+        while (lua_next(this->pointer_to_lua_state, -2) != 0)
         {
             value = this->PopValue();
             lua_pushvalue(this->pointer_to_lua_state, -1);
@@ -161,6 +164,7 @@ lua_Value LuaInstance::PopValue() {
             udata.metatable_name = get<string>(this->PopValue());
         };
         udata.object = static_cast<any*>(lua_touserdata(this->pointer_to_lua_state, -1));
+        popped = udata; 
     }
     break;
     };
@@ -168,15 +172,22 @@ lua_Value LuaInstance::PopValue() {
     return popped;
 }
 
-void LuaInstance::SetGlobal(lua_Value value, string name){
-    this->PushValue(value);
-    lua_setglobal(this->pointer_to_lua_state, name.c_str());
+void LuaInstance::HandleReturn(int response) {
+    if (response != 0)
+    {
+        this->lua_return_values.resize(1);
+        this->lua_return_values[0] = static_cast<string>(luaL_tolstring(this->pointer_to_lua_state, -1, NULL));
+        cerr << get<string>(lua_return_values[0]) << endl;
+    }
+    else
+    {
+        int num_returns = lua_gettop(this->pointer_to_lua_state);
+        this->lua_return_values.resize(num_returns);
+        for (int return_index = num_returns - 1; return_index >= 0; return_index--) {
+            this->lua_return_values[return_index] = this->PopValue();
+        };
+    };
     return;
-}
-
-lua_Value LuaInstance::GetGlobal(string name){
-    lua_getglobal(this->pointer_to_lua_state, name.c_str());
-    return this->PopValue();
 }
 
 int LuaInstance::DoFunction(lua_Function function_object, vector<lua_Value> arguments) {
@@ -205,24 +216,6 @@ int LuaInstance::DoFile(string filename)
     return response_code;
 }
 
-void LuaInstance::HandleReturn(int response) {
-    if (response != 0)
-    {
-        this->lua_return_values.resize(1);
-        this->lua_return_values[0] = static_cast<string>(luaL_tolstring(this->pointer_to_lua_state, -1, NULL));
-        cerr << get<string>(lua_return_values[0]) << endl;
-    }
-    else
-    {
-        int num_returns = lua_gettop(this->pointer_to_lua_state);
-        this->lua_return_values.resize(num_returns);
-        for (int return_index = num_returns - 1; return_index >= 0; return_index--) {
-            this->lua_return_values[return_index] = this->PopValue();
-        };
-    };
-    return;
-}
-
 void LuaInstance::GetArguments(vector<int> types)
 {
 
@@ -237,12 +230,9 @@ void LuaInstance::GetArguments(vector<int> types)
         };
 
         this->lua_argument_values[argument_index] = this->PopValue();
-        lua_pop(this->pointer_to_lua_state, 1);
     }
     return;
 }
-
-
 
 void LuaInstance::ReturnResults(vector<lua_Value> values)
 {
@@ -250,6 +240,34 @@ void LuaInstance::ReturnResults(vector<lua_Value> values)
     {
         this->PushValue(*itr);
     };
+}
+
+void LuaInstance::SetGlobal(lua_Value value, string name){
+    this->PushValue(value);
+    lua_setglobal(this->pointer_to_lua_state, name.c_str());
+    return;
+}
+
+lua_Value LuaInstance::GetGlobal(string name){
+    lua_getglobal(this->pointer_to_lua_state, name.c_str());
+    return this->PopValue();
+}
+
+void LuaInstance::SetMetatable(shared_ptr<lua_Table> table_to_set, string name){
+    
+    luaL_newmetatable(this->pointer_to_lua_state, name.c_str());
+    for (auto itr = table_to_set->table_contents.begin(); itr != table_to_set->table_contents.end(); itr++){
+            this->PushValue(itr->first);
+            this->PushValue(itr->second);
+            lua_settable(this->pointer_to_lua_state, -3);
+        };
+    lua_pop(this->pointer_to_lua_state, 1);
+    return;
+}
+
+shared_ptr<lua_Table> LuaInstance::GetMetatable(string name){
+    luaL_getmetatable(this->pointer_to_lua_state, name.c_str());
+    return get<shared_ptr<lua_Table>>(this->PopValue());
 }
 
 LuaInstance& LuaInstance::FindInstance(lua_State* pointer_from_lua)

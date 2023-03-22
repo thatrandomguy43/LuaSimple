@@ -15,6 +15,16 @@ typedef std::variant<nullptr_t, bool, void*, lua_Integer, lua_Number, std::strin
 
 class LuaInstance
 {
+
+private: 
+    void PushValue(lua_Value);
+
+    lua_Value PopValue();
+
+    void HandleReturn(int);
+
+    static inline std::unordered_map<lua_State*, LuaInstance*> instance_list = std::unordered_map<lua_State*, LuaInstance*>();
+
 public:
     lua_State* pointer_to_lua_state;
 
@@ -22,11 +32,8 @@ public:
 
     std::vector<lua_Value> lua_argument_values;
 
-    static inline std::unordered_map<lua_State*, LuaInstance*> instance_list = std::unordered_map<lua_State*, LuaInstance*>();
-
     LuaInstance();
     ~LuaInstance();
-
 
     int DoFunction(lua_Function, std::vector<lua_Value>);
 
@@ -34,19 +41,19 @@ public:
 
     int DoFile(std::string);
 
-    void HandleReturn(int);
-
     void GetArguments(std::vector<int>);
 
-    void PushValue(lua_Value);
-
-    lua_Value PopValue();
+    void ReturnResults(std::vector<lua_Value>);
 
     void SetGlobal(lua_Value, std::string);
 
     lua_Value GetGlobal(std::string);
 
-    void ReturnResults(std::vector<lua_Value>);
+    void SetMetatable(std::shared_ptr<lua_Table>, std::string);
+
+    std::shared_ptr<lua_Table> GetMetatable(std::string);
 
     static LuaInstance& FindInstance(lua_State*);
+
+
 };

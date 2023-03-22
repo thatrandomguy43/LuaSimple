@@ -31,4 +31,5 @@
 *.out
 *.app
 
-backup source/*
+build/*
+!build/_deps/*
