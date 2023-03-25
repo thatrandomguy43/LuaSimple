@@ -31,5 +31,7 @@
 *.out
 *.app
 
-build/*
-!build/_deps/*
+build/.cmake
+build/Debug
+build/example_project.dir
+

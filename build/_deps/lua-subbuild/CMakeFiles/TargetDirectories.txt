@@ -1,0 +1,3 @@
+C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/lua-populate.dir
+C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/ALL_BUILD.dir
+C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/ZERO_CHECK.dir
