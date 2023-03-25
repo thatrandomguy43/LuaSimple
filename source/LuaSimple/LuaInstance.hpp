@@ -16,7 +16,9 @@ typedef std::variant<nullptr_t, bool, void*, lua_Integer, lua_Number, std::strin
 class LuaInstance
 {
 
-private: 
+private:
+    static int FunctionDumper(lua_State*, const void*, size_t, void*);
+
     void PushValue(lua_Value);
 
     lua_Value PopValue();
@@ -35,7 +37,7 @@ public:
     LuaInstance();
     ~LuaInstance();
 
-    int DoFunction(lua_Function, std::vector<lua_Value>);
+    int DoFunction(lua_Function, std::vector<lua_Value>, std::optional<std::string>);
 
     int DoString(std::string);
 

@@ -5,6 +5,8 @@
 #include "luainclude/lua.hpp"
 #include <memory>
 #include <optional>
+#include <vector>
+#include <cstddef>
 #pragma once
 
 
@@ -15,12 +17,10 @@
 class lua_Function
 {
 public:
-    lua_Integer registry_key;
-    lua_Integer argument_count;
-    bool takes_extra_args;
+    std::vector<unsigned char> bytecode;
 
     bool operator==(const lua_Function& other) const{
-        if (this->registry_key == other.registry_key){
+        if (this->bytecode == other.bytecode){
             return true;
         } else {
             return false;
@@ -28,14 +28,22 @@ public:
     }
 };
 
-
-template <> struct std::hash<lua_Function>
-{
-size_t operator()(const lua_Function& func){
-    return std::hash<lua_Integer>()(func.registry_key << func.argument_count ^ static_cast<lua_Integer>(func.takes_extra_args));
-}
+template <> struct std::hash<std::vector<std::byte>> {
+    size_t operator()(const std::vector<unsigned char>& vect){
+        size_t result_hash = 0;
+        for (auto itr : vect){
+            result_hash = result_hash ^ std::hash<unsigned char>()(itr);
+        };
+        return result_hash;
+    }
 };
 
+
+template <> struct std::hash<lua_Function>{
+    size_t operator()(const lua_Function& func){
+        return std::hash<std::vector<std::byte>>()(func.bytecode);
+    }
+};
 
 class lua_Userdata 
 {
@@ -57,7 +65,7 @@ bool operator==(const lua_Userdata& other) const {
 template <> struct std::hash<lua_Userdata>
 {
 size_t operator()(const lua_Userdata& udata){
-    return std::hash<any*>()(udata.object);
+    return std::hash<std::any*>()(udata.object);
 }
 };
 

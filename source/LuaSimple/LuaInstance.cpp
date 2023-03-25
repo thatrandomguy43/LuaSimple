@@ -8,6 +8,7 @@
 
 using namespace std;
 
+
 LuaInstance::LuaInstance(): pointer_to_lua_state(luaL_newstate())
 {
     luaL_openlibs(this->pointer_to_lua_state);
@@ -18,6 +19,15 @@ LuaInstance::~LuaInstance()
 {
     lua_close(this->pointer_to_lua_state);
     this->instance_list.erase(this->pointer_to_lua_state);
+}
+
+int LuaInstance::FunctionDumper(lua_State* lua_ptr, const void* data_buffer, size_t length, void* target_void){
+    unsigned char* data = (unsigned char*)data_buffer;
+    lua_Function* target = (lua_Function*)target_void;
+    for (size_t idx = 0; idx < length; idx++){
+        target->bytecode.push_back(data[idx]);
+    }
+    return 0;
 }
 
 void LuaInstance::PushValue(lua_Value to_push){
@@ -52,10 +62,10 @@ void LuaInstance::PushValue(lua_Value to_push){
             this->PushValue(itr->first);
             this->PushValue(itr->second);
             lua_settable(this->pointer_to_lua_state, -3);
-        };
+        }
         if (get<shared_ptr<lua_Table>>(to_push)->metatable_name.has_value()){
             luaL_setmetatable(this->pointer_to_lua_state, get<shared_ptr<lua_Table>>(to_push)->metatable_name.value().c_str());
-        };
+        }
     }
     else if (holds_alternative<lua_CFunction>(to_push))
     {
@@ -63,8 +73,7 @@ void LuaInstance::PushValue(lua_Value to_push){
     }
     else if (holds_alternative<lua_Function>(to_push))
     {
-        this->PushValue(get<lua_Function>(to_push).argument_count);
-        lua_gettable(this->pointer_to_lua_state, LUA_REGISTRYINDEX);
+        luaL_loadbufferx(this->pointer_to_lua_state, (const char *)get<lua_Function>(to_push).bytecode.data(), get<lua_Function>(to_push).bytecode.size(), "unnamed_lua_function", "b");
     }
     else if (holds_alternative<lua_Userdata>(to_push))
     {
@@ -74,7 +83,7 @@ void LuaInstance::PushValue(lua_Value to_push){
         if (get<lua_Userdata>(to_push).metatable_name.has_value())
         {
             luaL_setmetatable(this->pointer_to_lua_state, get<lua_Userdata>(to_push).metatable_name.value().c_str());
-        };
+        }
     }
     return;
 }
@@ -134,7 +143,7 @@ lua_Value LuaInstance::PopValue() {
         }
         if (luaL_getmetafield(this->pointer_to_lua_state, -1, "__name") != LUA_TNIL){
             get<shared_ptr<lua_Table>>(popped)->metatable_name = get<string>(this->PopValue());
-        };
+        }
         
         
     }
@@ -147,16 +156,10 @@ lua_Value LuaInstance::PopValue() {
         }
         else
         {
-            lua_Debug info_getter;
-            lua_pushvalue(this->pointer_to_lua_state, -1);
-            lua_getinfo(this->pointer_to_lua_state, ">u", &info_getter);
-            lua_Function func;
-            func.argument_count = info_getter.nparams;
-            func.takes_extra_args = info_getter.isvararg;
-            lua_pushvalue(this->pointer_to_lua_state, -1); //both of these are because getinfo and ref pop the stack, so i need to counteract that
-            func.registry_key = luaL_ref(this->pointer_to_lua_state, LUA_REGISTRYINDEX);
-            popped = func;
-        };
+            lua_Function temp_container;
+            lua_dump(this->pointer_to_lua_state, &(this->FunctionDumper), &temp_container, false);
+            popped = temp_container;
+        }
     };
     break;
     case LUA_TUSERDATA:
@@ -169,7 +172,7 @@ lua_Value LuaInstance::PopValue() {
         popped = udata; 
     }
     break;
-    };
+    }
     lua_pop(this->pointer_to_lua_state, 1);
     return popped;
 }
@@ -187,18 +190,20 @@ void LuaInstance::HandleReturn(int response) {
         this->lua_return_values.resize(num_returns);
         for (int return_index = num_returns - 1; return_index >= 0; return_index--) {
             this->lua_return_values[return_index] = this->PopValue();
-        };
-    };
+        }
+    }
     return;
 }
 
-int LuaInstance::DoFunction(lua_Function function_object, vector<lua_Value> arguments) {
-
-    this->PushValue(function_object.registry_key);
-    lua_gettable(this->pointer_to_lua_state, LUA_REGISTRYINDEX);
+int LuaInstance::DoFunction(lua_Function function_object, vector<lua_Value> arguments, optional<string> debug_name) {
+    if (debug_name.has_value()){
+        luaL_loadbufferx(this->pointer_to_lua_state, (const char *)function_object.bytecode.data(), function_object.bytecode.size(), debug_name.value().c_str(), "b");
+    } else {
+        luaL_loadbufferx(this->pointer_to_lua_state, (const char *)function_object.bytecode.data(), function_object.bytecode.size(), "unnamed lua function", "b");
+    }
     for (auto itr = arguments.begin(); itr != arguments.end(); itr++) {
         this->PushValue(*itr);
-    };
+    }
     int response_code = lua_pcall(this->pointer_to_lua_state, arguments.size(), LUA_MULTRET, 0);
     this->HandleReturn(response_code);
     return response_code;
@@ -229,7 +234,7 @@ void LuaInstance::GetArguments(vector<int> types)
         if (argument_index < types.size())
         {
             luaL_checktype(this->pointer_to_lua_state, argument_index + 1, types[(argument_index)]);
-        };
+        }
 
         this->lua_argument_values[argument_index] = this->PopValue();
     }
@@ -241,7 +246,7 @@ void LuaInstance::ReturnResults(vector<lua_Value> values)
     for (auto itr = values.begin(); itr != values.end(); itr++)
     {
         this->PushValue(*itr);
-    };
+    }
 }
 
 void LuaInstance::SetGlobal(lua_Value value, string name){
@@ -262,7 +267,7 @@ void LuaInstance::SetMetatable(shared_ptr<lua_Table> table_to_set, string name){
             this->PushValue(itr->first);
             this->PushValue(itr->second);
             lua_settable(this->pointer_to_lua_state, -3);
-        };
+        }
     lua_pop(this->pointer_to_lua_state, 1);
     return;
 }
