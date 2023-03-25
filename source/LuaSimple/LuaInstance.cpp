@@ -5,6 +5,7 @@
 #include <any>
 #include "LuaInstance.hpp"
 #include "LuaTypeClasses.hpp"
+#include <cstring>
 
 using namespace std;
 
