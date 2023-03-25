@@ -34,4 +34,4 @@
 build/.cmake
 build/Debug
 build/example_project.dir
-build/CMakeFiles
+build/CMakeFiles/*
