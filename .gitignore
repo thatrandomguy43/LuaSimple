@@ -36,3 +36,4 @@ build/Debug
 build/example_project.dir
 build/CMakeFiles/*
 build/x64
+build/_deps/lua-build/
