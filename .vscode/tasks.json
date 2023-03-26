@@ -9,15 +9,6 @@
           "kind": "build",
           "isDefault": true
         }
-      },
-      {
-        "label": "Run code analysis with MSBuild",
-        "type": "shell",
-        "command": "msbuild build/example_project.vcxproj /p:RunCodeAnalysis=true",
-        "problemMatcher": "$msCompile",
-        "group": {
-          "kind": "build",
-        }
       }
     ],
     "windows": {
