@@ -68,14 +68,14 @@ lua.DoString("print(\"The earth is flat? \" .. tostring(some_bool))");
     
 
 lua.DoString("print(\"Your girlfriend is \" .. tostring(girlfriend))");
-
+/*
 unordered_map<string,string> compound{
     {"scoundrel","polish"},
     {"zak","british"},
     {"bobot","serbian"},
     {"goose","georgian"}
 };
-
+*/
 lua.DoString("some_table = {} some_table.a_goofy_field = 20 some_table[2] = \"this is an index\" some_table.anotha_table = {} some_table.anotha_table.balls_status = \"itching\" ");
 
 shared_ptr<lua_Table> cpp_table = get<shared_ptr<lua_Table>>(lua.GetGlobal("some_table"));

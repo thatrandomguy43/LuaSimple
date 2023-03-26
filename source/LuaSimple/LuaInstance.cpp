@@ -23,8 +23,8 @@ LuaInstance::~LuaInstance()
 }
 
 int LuaInstance::FunctionDumper(lua_State* lua_ptr, const void* data_buffer, size_t length, void* target_void){
-    unsigned char* data = (unsigned char*)data_buffer;
-    lua_Function* target = (lua_Function*)target_void;
+    const unsigned char* data = static_cast<const unsigned char*>(data_buffer);
+    lua_Function* target = static_cast<lua_Function*>(target_void);
     for (size_t idx = 0; idx < length; idx++){
         target->bytecode.push_back(data[idx]);
     }
@@ -74,7 +74,7 @@ void LuaInstance::PushValue(lua_Value to_push){
     }
     else if (holds_alternative<lua_Function>(to_push))
     {
-        luaL_loadbufferx(this->pointer_to_lua_state, (const char *)get<lua_Function>(to_push).bytecode.data(), get<lua_Function>(to_push).bytecode.size(), "unnamed_lua_function", "b");
+        luaL_loadbufferx(this->pointer_to_lua_state, reinterpret_cast<char*>(get<lua_Function>(to_push).bytecode.data()), get<lua_Function>(to_push).bytecode.size(), "unnamed_lua_function", "b");
     }
     else if (holds_alternative<lua_Userdata>(to_push))
     {
@@ -198,9 +198,9 @@ void LuaInstance::HandleReturn(int response) {
 
 int LuaInstance::DoFunction(lua_Function function_object, vector<lua_Value> arguments, optional<string> debug_name) {
     if (debug_name.has_value()){
-        luaL_loadbufferx(this->pointer_to_lua_state, (const char *)function_object.bytecode.data(), function_object.bytecode.size(), debug_name.value().c_str(), "b");
+        luaL_loadbufferx(this->pointer_to_lua_state, reinterpret_cast<char*>(function_object.bytecode.data()), function_object.bytecode.size(), debug_name.value().c_str(), "b");
     } else {
-        luaL_loadbufferx(this->pointer_to_lua_state, (const char *)function_object.bytecode.data(), function_object.bytecode.size(), "unnamed lua function", "b");
+        luaL_loadbufferx(this->pointer_to_lua_state, reinterpret_cast<char*>(function_object.bytecode.data()), function_object.bytecode.size(), "unnamed lua function", "b");
     }
     for (auto itr = arguments.begin(); itr != arguments.end(); itr++) {
         this->PushValue(*itr);
