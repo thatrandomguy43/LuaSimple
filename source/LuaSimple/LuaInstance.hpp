@@ -37,23 +37,23 @@ public:
     LuaInstance();
     ~LuaInstance();
 
-    int DoFunction(lua_Function, std::vector<lua_Value>, std::optional<std::string>);
+    int DoFunction(lua_Function, std::vector<lua_Value>, const std::optional<std::string>&);
 
-    int DoString(std::string);
+    int DoString(const std::string&);
 
-    int DoFile(std::string);
+    int DoFile(const std::string&);
 
     void GetArguments(std::vector<int>);
 
     void ReturnResults(std::vector<lua_Value>);
 
-    void SetGlobal(lua_Value, std::string);
+    void SetGlobal(lua_Value, const std::string&);
 
-    lua_Value GetGlobal(std::string);
+    lua_Value GetGlobal(const std::string&);
 
-    void SetMetatable(std::shared_ptr<lua_Table>, std::string);
+    void SetMetatable(std::shared_ptr<lua_Table>, const std::string&);
 
-    std::shared_ptr<lua_Table> GetMetatable(std::string);
+    std::shared_ptr<lua_Table> GetMetatable(const std::string&);
 
     static LuaInstance& FindInstance(lua_State*);
 

@@ -196,7 +196,7 @@ void LuaInstance::HandleReturn(int response) {
     return;
 }
 
-int LuaInstance::DoFunction(lua_Function function_object, vector<lua_Value> arguments, optional<string> debug_name) {
+int LuaInstance::DoFunction(lua_Function function_object, vector<lua_Value> arguments, const optional<string>& debug_name) {
     if (debug_name.has_value()){
         luaL_loadbufferx(this->pointer_to_lua_state, reinterpret_cast<char*>(function_object.bytecode.data()), function_object.bytecode.size(), debug_name.value().c_str(), "b");
     } else {
@@ -210,14 +210,14 @@ int LuaInstance::DoFunction(lua_Function function_object, vector<lua_Value> argu
     return response_code;
 }
 
-int LuaInstance::DoString(string code)
+int LuaInstance::DoString(const string& code)
 {
     int response_code = luaL_dostring(this->pointer_to_lua_state, code.c_str());
     this->HandleReturn(response_code);
     return response_code;
 }
 
-int LuaInstance::DoFile(string filename)
+int LuaInstance::DoFile(const string& filename)
 {
     int response_code = luaL_dofile(this->pointer_to_lua_state, filename.c_str());
     this->HandleReturn(response_code);
@@ -250,18 +250,18 @@ void LuaInstance::ReturnResults(vector<lua_Value> values)
     }
 }
 
-void LuaInstance::SetGlobal(lua_Value value, string name){
+void LuaInstance::SetGlobal(lua_Value value, const string& name){
     this->PushValue(value);
     lua_setglobal(this->pointer_to_lua_state, name.c_str());
     return;
 }
 
-lua_Value LuaInstance::GetGlobal(string name){
+lua_Value LuaInstance::GetGlobal(const string& name){
     lua_getglobal(this->pointer_to_lua_state, name.c_str());
     return this->PopValue();
 }
 
-void LuaInstance::SetMetatable(shared_ptr<lua_Table> table_to_set, string name){
+void LuaInstance::SetMetatable(shared_ptr<lua_Table> table_to_set, const std::string& name){
     
     luaL_newmetatable(this->pointer_to_lua_state, name.c_str());
     for (auto itr = table_to_set->table_contents.begin(); itr != table_to_set->table_contents.end(); itr++){
@@ -273,7 +273,7 @@ void LuaInstance::SetMetatable(shared_ptr<lua_Table> table_to_set, string name){
     return;
 }
 
-shared_ptr<lua_Table> LuaInstance::GetMetatable(string name){
+shared_ptr<lua_Table> LuaInstance::GetMetatable(const std::string& name){
     luaL_getmetatable(this->pointer_to_lua_state, name.c_str());
     return get<shared_ptr<lua_Table>>(this->PopValue());
 }
