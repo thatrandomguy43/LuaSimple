@@ -13,19 +13,14 @@
 
 
 
-
 class lua_Function
 {
 public:
     std::vector<unsigned char> bytecode;
 
     bool operator==(const lua_Function& other) const{
-        if (this->bytecode == other.bytecode){
-            return true;
-        } else {
-            return false;
-        };
-    }
+       return this->bytecode == other.bytecode;
+    };
 };
 
 template <> struct std::hash<std::vector<std::byte>> {
@@ -39,7 +34,7 @@ template <> struct std::hash<std::vector<std::byte>> {
 };
 
 
-template <> struct std::hash<lua_Function>{
+template <> struct std::hash<lua_Function> {
     size_t operator()(const lua_Function& func){
         return std::hash<std::vector<std::byte>>()(func.bytecode);
     }
@@ -52,11 +47,7 @@ std::any* object;
 std::optional<std::string> metatable_name;
 
 bool operator==(const lua_Userdata& other) const {
-    if (this->object == other.object){
-        return true;
-    } else {
-        return false;
-    }
+    return this->object == other.object;
 }
 
 };
