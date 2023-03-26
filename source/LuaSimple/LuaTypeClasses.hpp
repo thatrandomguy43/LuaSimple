@@ -20,7 +20,7 @@ public:
 
     bool operator==(const lua_Function& other) const{
        return this->bytecode == other.bytecode;
-    };
+    }
 };
 
 template <> struct std::hash<std::vector<std::byte>> {
@@ -34,7 +34,8 @@ template <> struct std::hash<std::vector<std::byte>> {
 };
 
 
-template <> struct std::hash<lua_Function> {
+template <> 
+struct std::hash<lua_Function> {
     size_t operator()(const lua_Function& func){
         return std::hash<std::vector<std::byte>>()(func.bytecode);
     }
@@ -52,8 +53,8 @@ bool operator==(const lua_Userdata& other) const {
 
 };
 
-
-template <> struct std::hash<lua_Userdata>
+template <>
+struct std::hash<lua_Userdata>
 {
 size_t operator()(const lua_Userdata& udata){
     return std::hash<std::any*>()(udata.object);
