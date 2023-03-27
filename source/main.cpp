@@ -120,8 +120,8 @@ lua.DoString("function GetCharOfStrings(character_index, ...)\n "
 
 lua_Function function_info = get<lua_Function>(lua.GetGlobal("GetCharOfStrings"));
 
-lua.DoFile("C:/Users/Asger/Desktop/programming/LuaSimple/source/funny file.lua");
-//lua.DoFile("C:/Users/Bruger/Skrivebord/LuaSimple/source/funny file.lua");
+//lua.DoFile("C:/Users/Asger/Desktop/programming/LuaSimple/source/funny file.lua");
+lua.DoFile("C:/Users/Bruger/Skrivebord/LuaSimple/source/funny file.lua");
  
 cout << get<lua_Number>(lua.lua_return_values[0]) << endl;
 

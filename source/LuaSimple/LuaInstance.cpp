@@ -197,6 +197,9 @@ void LuaInstance::HandleReturn(int response) {
 }
 
 int LuaInstance::DoFunction(lua_Function function_object, vector<lua_Value> arguments, const optional<string>& debug_name) {
+    lua_getglobal(this->pointer_to_lua_state, "debug");
+    lua_getfield(this->pointer_to_lua_state, 1, "traceback");
+    lua_remove(this->pointer_to_lua_state, 1);
     if (debug_name.has_value()){
         luaL_loadbufferx(this->pointer_to_lua_state, reinterpret_cast<char*>(function_object.bytecode.data()), function_object.bytecode.size(), debug_name.value().c_str(), "b");
     } else {
@@ -205,7 +208,8 @@ int LuaInstance::DoFunction(lua_Function function_object, vector<lua_Value> argu
     for (auto itr = arguments.begin(); itr != arguments.end(); itr++) {
         this->PushValue(*itr);
     }
-    int response_code = lua_pcall(this->pointer_to_lua_state, arguments.size(), LUA_MULTRET, 0);
+    int response_code = lua_pcall(this->pointer_to_lua_state, arguments.size(), LUA_MULTRET, 1);
+    lua_remove(this->pointer_to_lua_state, 1);
     this->HandleReturn(response_code);
     return response_code;
 }
