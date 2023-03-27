@@ -120,8 +120,8 @@ lua.DoString("function GetCharOfStrings(character_index, ...)\n "
 
 lua_Function function_info = get<lua_Function>(lua.GetGlobal("GetCharOfStrings"));
 
-//lua.DoFile("C:/Users/Asger/Desktop/programming/LuaSimple/source/funny file.lua");
-lua.DoFile("C:/Users/Bruger/Skrivebord/LuaSimple/source/funny file.lua");
+lua.DoFile("C:/Users/Asger/Desktop/programming/LuaSimple/source/funny file.lua");
+//lua.DoFile("C:/Users/Bruger/Skrivebord/LuaSimple/source/funny file.lua");
  
 cout << get<lua_Number>(lua.lua_return_values[0]) << endl;
 
@@ -134,6 +134,24 @@ lua.DoString("function OnlyOneParam(argument) return (-argument) end");
 lua_Function one_param_lua_func = get<lua_Function>(lua.GetGlobal("OnlyOneParam"));
 lua.DoFunction(one_param_lua_func, {-6, 7}, "OnlyOneParam");
 cout << get<lua_Integer>(lua.lua_return_values[0]) << endl;
+
+
+lua.DoString(
+"function TracebackTest3()\n"
+"local z = 3\n"
+"error(\"skill issue\")\n"
+"end\n"
+"function TracebackTest2()\n"
+"local y = 2\n"
+"TracebackTest3()\n"
+"end\n"
+"function TracebackTest1()\n"
+"local x = 1\n"
+"TracebackTest2()\n"
+"end\n"
+);
+auto traceback_tester = lua.GetGlobal("TracebackTest1");
+lua.DoFunction(get<lua_Function>(traceback_tester), {}, "TracebackTester");
 
 return 0;
 }

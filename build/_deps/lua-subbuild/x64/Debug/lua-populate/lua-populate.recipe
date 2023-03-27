@@ -2,10 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\x64\Debug\ZERO_CHECK</FullPath>
+      <FullPath>C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\x64\Debug\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\x64\Debug\lua-populate</FullPath>
+      <FullPath>C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\x64\Debug\lua-populate</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

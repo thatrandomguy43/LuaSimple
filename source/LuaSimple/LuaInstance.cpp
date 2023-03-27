@@ -201,9 +201,9 @@ int LuaInstance::DoFunction(lua_Function function_object, vector<lua_Value> argu
     lua_getfield(this->pointer_to_lua_state, 1, "traceback");
     lua_remove(this->pointer_to_lua_state, 1);
     if (debug_name.has_value()){
-        luaL_loadbufferx(this->pointer_to_lua_state, reinterpret_cast<char*>(function_object.bytecode.data()), function_object.bytecode.size(), debug_name.value().c_str(), "b");
+        luaL_loadbuffer(this->pointer_to_lua_state, reinterpret_cast<char*>(function_object.bytecode.data()), function_object.bytecode.size(), debug_name.value().c_str());
     } else {
-        luaL_loadbufferx(this->pointer_to_lua_state, reinterpret_cast<char*>(function_object.bytecode.data()), function_object.bytecode.size(), "unnamed lua function", "b");
+        luaL_loadbuffer(this->pointer_to_lua_state, reinterpret_cast<char*>(function_object.bytecode.data()), function_object.bytecode.size(), "unnamed lua function");
     }
     for (auto itr = arguments.begin(); itr != arguments.end(); itr++) {
         this->PushValue(*itr);
@@ -216,14 +216,24 @@ int LuaInstance::DoFunction(lua_Function function_object, vector<lua_Value> argu
 
 int LuaInstance::DoString(const string& code)
 {
-    int response_code = luaL_dostring(this->pointer_to_lua_state, code.c_str());
+    lua_getglobal(this->pointer_to_lua_state, "debug");
+    lua_getfield(this->pointer_to_lua_state, 1, "traceback");
+    lua_remove(this->pointer_to_lua_state, 1);
+    luaL_loadstring(this->pointer_to_lua_state, code.c_str());
+    int response_code = lua_pcall(this->pointer_to_lua_state, 0, LUA_MULTRET, 1);
+    lua_remove(this->pointer_to_lua_state, 1);
     this->HandleReturn(response_code);
     return response_code;
 }
 
 int LuaInstance::DoFile(const string& filename)
 {
-    int response_code = luaL_dofile(this->pointer_to_lua_state, filename.c_str());
+    lua_getglobal(this->pointer_to_lua_state, "debug");
+    lua_getfield(this->pointer_to_lua_state, 1, "traceback");
+    lua_remove(this->pointer_to_lua_state, 1);
+    luaL_loadfile(this->pointer_to_lua_state, filename.c_str());
+    int response_code = lua_pcall(this->pointer_to_lua_state, 0, LUA_MULTRET, 1);
+    lua_remove(this->pointer_to_lua_state, 1);
     this->HandleReturn(response_code);
     return response_code;
 }
