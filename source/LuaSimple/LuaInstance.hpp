@@ -28,7 +28,7 @@ private:
     static inline std::unordered_map<lua_State*, LuaInstance*> instance_list = std::unordered_map<lua_State*, LuaInstance*>();
 
 public:
-    lua_State* pointer_to_lua_state;
+    lua_State* lua_ptr;
 
     std::vector<lua_Value> lua_return_values;
 
@@ -43,8 +43,6 @@ public:
 
     int DoFile(const std::string&);
 
-    void GetArguments(std::vector<int>);
-
     void ReturnResults(std::vector<lua_Value>);
 
     void SetGlobal(lua_Value, const std::string&);
@@ -55,7 +53,7 @@ public:
 
     std::shared_ptr<lua_Table> GetMetatable(const std::string&);
 
-    static LuaInstance& FindInstance(lua_State*);
+    static LuaInstance& GetLuaData(lua_State*, std::vector<int>);
 
 
 };

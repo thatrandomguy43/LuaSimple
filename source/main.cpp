@@ -9,23 +9,21 @@
 #include "LuaSimple/LuaTypeClasses.hpp"
 using namespace std;
 
-LuaInstance lua;
+LuaInstance LUA_INST;
 
 
 
 
-int StringOfAs(lua_State* Lua){
-    LuaInstance& current_lua = LuaInstance::FindInstance(Lua);
-    current_lua.GetArguments({LUA_TNUMBER});
+int StringOfAs(lua_State* lua_ptr){
+    LuaInstance& current_lua = LuaInstance::GetLuaData(lua_ptr, {LUA_TNUMBER});
     string help_aaaa;
     int count = get<lua_Integer>(current_lua.lua_argument_values[0]);
     for (int itr = 0; itr != count; itr++){
         help_aaaa.append("A");
     };
-    vector<lua_Value> return_vals;
-    return_vals.push_back(help_aaaa);
-    current_lua.ReturnResults(return_vals);
-    return return_vals.size();
+
+    current_lua.ReturnResults({help_aaaa});
+    return 1;
 }
 
 class TestUserdata
@@ -34,14 +32,11 @@ private:
 int funny_number = 13;
 public:
 
-static int GetFunnyNumber (lua_State* Lua){
-    LuaInstance& current_lua = LuaInstance::FindInstance(Lua);
-    current_lua.GetArguments({LUA_TUSERDATA});
+static int GetFunnyNumber (lua_State* lua_ptr){
+    LuaInstance& current_lua = LuaInstance::GetLuaData(lua_ptr, {LUA_TUSERDATA});
     lua_Userdata userdata_self = get<lua_Userdata>(current_lua.lua_argument_values[0]);
     TestUserdata* self = any_cast<TestUserdata>(userdata_self.object);
-    vector<lua_Value> return_vals;
-    return_vals.push_back(self->funny_number);
-    current_lua.ReturnResults(return_vals);
+    current_lua.ReturnResults({self->funny_number});
     return 1;
 }
 
@@ -53,6 +48,10 @@ static int GetFunnyNumber (lua_State* Lua){
 
 int main(){
 
+
+return 0;
+}
+/*
 lua.DoString("for i=1,10 do print(\"hi\") end");
 
 lua.SetGlobal(80, "some_number");
@@ -68,14 +67,14 @@ lua.DoString("print(\"The earth is flat? \" .. tostring(some_bool))");
     
 
 lua.DoString("print(\"Your girlfriend is \" .. tostring(girlfriend))");
-/*
+
 unordered_map<string,string> compound{
     {"scoundrel","polish"},
     {"zak","british"},
     {"bobot","serbian"},
     {"goose","georgian"}
 };
-*/
+
 lua.DoString("some_table = {} some_table.a_goofy_field = 20 some_table[2] = \"this is an index\" some_table.anotha_table = {} some_table.anotha_table.balls_status = \"itching\" ");
 
 shared_ptr<lua_Table> cpp_table = get<shared_ptr<lua_Table>>(lua.GetGlobal("some_table"));
@@ -152,6 +151,4 @@ lua.DoString(
 );
 auto traceback_tester = lua.GetGlobal("TracebackTest1");
 lua.DoFunction(get<lua_Function>(traceback_tester), {}, "TracebackTester");
-
-return 0;
-}
+*/
