@@ -42,7 +42,9 @@ static int GetFunnyNumber (lua_State* lua_ptr){
 
 };
 
-
+int DigitSequenceNumber(int length){
+    
+}
 
 
 
