@@ -13,7 +13,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{DA2633B9-15D7-314A-920F-6EB923A2C2D8}</ProjectGuid>
+    <ProjectGuid>{E12211FE-6D12-3376-A54A-55453FA1B172}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
@@ -48,12 +48,12 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeLists.txt">
+    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild -BC:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild --check-stamp-file C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild -BC:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild --check-stamp-file C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -61,22 +61,22 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject\RepositoryInfo.txt.in;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject\cfgcmd.txt.in;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject\gitclone.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject\gitupdate.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject\mkdirs.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\WindowsPaths.cmake;C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\3.26.0-rc4\CMakeSystem.cmake;C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\tmp\lua-populate-mkdirs.cmake;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject\RepositoryInfo.txt.in;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject\cfgcmd.txt.in;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject\gitclone.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject\gitupdate.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\ExternalProject\mkdirs.cmake.in;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.26\Modules\Platform\WindowsPaths.cmake;C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\3.26.0-rc5\CMakeSystem.cmake;C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate-prefix\tmp\lua-populate-mkdirs.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\ZERO_CHECK.vcxproj">
-      <Project>{A886B819-7518-3BA1-ACD9-1328D1D5CF25}</Project>
+    <ProjectReference Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\ZERO_CHECK.vcxproj">
+      <Project>{DAA434D6-9052-3DA4-A6E1-FDCB7AD3BF9B}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\lua-populate.vcxproj">
-      <Project>{6677B7D8-A000-370E-BB6C-1D8233FAB583}</Project>
+    <ProjectReference Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\lua-populate.vcxproj">
+      <Project>{3636CA1E-3CF3-356F-8B15-4F1506EEFBB2}</Project>
       <Name>lua-populate</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

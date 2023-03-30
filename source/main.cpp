@@ -97,15 +97,47 @@ LUA_INST.DoString("ToKVpair = function(key, value)\n"
 "return result_table\n"
 "end\n");
 lua_Function key_value_function = get<lua_Function>(LUA_INST.GetGlobal("ToKVpair"));
+LUA_INST.DoFunction(key_value_function, {false, "Nope!"}, nullopt);
 
-lua_Value table_pair = LUA_INST.DoFunction(key_value_function, {false, "Nope!"}, nullopt);
+lua_Value table_pair = LUA_INST.lua_return_values[0];
 
 lua_Value table_pair_value = get<shared_ptr<lua_Table>>(table_pair)->table_contents.at(false);
 if (get<string>(table_pair_value) != string{"Nope!"}){
     throw "Test 3 failed!";
 }
+
+
+shared_ptr<lua_Table> add_method_metatable = make_shared<lua_Table>();
+
+LUA_INST.DoString("table_add = function(operand1, operand2)\n"
+"return operand1[1] + operand2[1]\n"
+"end\n");
+add_method_metatable->table_contents.insert({"__add", LUA_INST.GetGlobal("table_add")});
+
+LUA_INST.SetMetatable(add_method_metatable, "numeric_table");
+
+shared_ptr<lua_Table> number_table1 = make_shared<lua_Table>();
+number_table1->table_contents.insert({1, 10.5});
+number_table1->metatable_name = "numeric_table";
+
+shared_ptr<lua_Table> number_table2 = make_shared<lua_Table>();
+number_table2->table_contents.insert({1, 15.25});
+number_table2->metatable_name = "numeric_table";
+
+LUA_INST.SetGlobal(number_table1, "num_table1");
+LUA_INST.SetGlobal(number_table2, "num_table2");
+LUA_INST.DoString("return num_table1 + num_table2");
+
+if (get<lua_Number>(LUA_INST.lua_return_values[0]) != 25.75){
+    throw "Test 4 failed!";
+}
 return 0;
 }
+
+
+
+
+
 /*
 
 lua.DoString(
