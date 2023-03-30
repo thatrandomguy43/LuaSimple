@@ -69,6 +69,17 @@ int main(){
 
 LUA_INST.DoString("print(\"Hey everyone, Lua here! My favorite number is\", 8*8)");
 
+shared_ptr<lua_Table> test_table = make_shared<lua_Table>();
+test_table->table_contents = {{"name","John"},{"age", 42},{"employed",true}};
+test_table->metatable_name = nullopt;
+LUA_INST.SetGlobal(test_table, "person_record");
+LUA_INST.DoString("return person_record.age");
+
+lua_Integer person_age = get<lua_Integer>(LUA_INST.lua_return_values[0]); 
+if (person_age != 42){
+    throw "Test Failed!";
+}
+
 return 0;
 }
 /*

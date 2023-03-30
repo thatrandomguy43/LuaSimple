@@ -67,7 +67,7 @@
 			"xhash": "cpp",
 			"any": "cpp",
 			"variant": "cpp",
-			"optional": "cpp"
+			"optional": "cpp",
 		}
 	}
 }
