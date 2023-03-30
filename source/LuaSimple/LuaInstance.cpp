@@ -196,14 +196,14 @@ void LuaInstance::HandleReturn(int response) {
     return;
 }
 
-int LuaInstance::DoFunction(lua_Function function_object, vector<lua_Value> arguments, const optional<string>& debug_name) {
+int LuaInstance::DoFunction(const lua_Function& function_object, const vector<lua_Value>& arguments, const optional<string>& debug_name) {
     lua_getglobal(this->lua_ptr, "debug");
     lua_getfield(this->lua_ptr, 1, "traceback");
     lua_remove(this->lua_ptr, 1);
     if (debug_name.has_value()){
-        luaL_loadbuffer(this->lua_ptr, reinterpret_cast<char*>(function_object.bytecode.data()), function_object.bytecode.size(), debug_name.value().c_str());
+        luaL_loadbuffer(this->lua_ptr, reinterpret_cast<const char*>(function_object.bytecode.data()), function_object.bytecode.size(), debug_name.value().c_str());
     } else {
-        luaL_loadbuffer(this->lua_ptr, reinterpret_cast<char*>(function_object.bytecode.data()), function_object.bytecode.size(), "unnamed lua function");
+        luaL_loadbuffer(this->lua_ptr, reinterpret_cast<const char*>(function_object.bytecode.data()), function_object.bytecode.size(), "unnamed lua function");
     }
     for (auto itr = arguments.begin(); itr != arguments.end(); itr++) {
         this->PushValue(*itr);
