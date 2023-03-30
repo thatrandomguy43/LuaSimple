@@ -21,7 +21,7 @@ if(MSVC)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++latest")
 set_property(TARGET ${EXECUTABLE_NAME} PROPERTY MSVC_DEBUG_INFORMATION_FORMAT "$<$<CONFIG:Debug,RelWithDebInfo>:Embedded>")
 target_link_options(${EXECUTABLE_NAME} PUBLIC "$<$<CONFIG:Debug>:/INCREMENTAL:NO>")
-target_compile_options(${EXECUTABLE_NAME} PRIVATE /W3 /WX)
+target_compile_options(${EXECUTABLE_NAME} PRIVATE /W3)
 endif(MSVC)
 
 add_subdirectory(LuaSimple)

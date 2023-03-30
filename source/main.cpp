@@ -17,8 +17,8 @@ LuaInstance LUA_INST;
 int StringOfAs(lua_State* lua_ptr){
     LuaInstance& current_lua = LuaInstance::GetLuaData(lua_ptr, {LUA_TNUMBER});
     string help_aaaa;
-    int count = get<lua_Integer>(current_lua.lua_argument_values[0]);
-    for (int itr = 0; itr != count; itr++){
+    lua_Integer count = get<lua_Integer>(current_lua.lua_argument_values[0]);
+    for (long long int itr = 0; itr != count; itr++){
         help_aaaa.append("A");
     };
 
