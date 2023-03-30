@@ -239,12 +239,13 @@ int LuaInstance::DoFile(const string& filename)
 }
 
 
-void LuaInstance::ReturnResults(vector<lua_Value> values)
+int LuaInstance::ReturnResults(const vector<lua_Value>& values)
 {
     for (auto itr = values.begin(); itr != values.end(); itr++)
     {
         this->PushValue(*itr);
     }
+    return values.size();
 }
 
 void LuaInstance::SetGlobal(lua_Value value, const string& name){
@@ -275,7 +276,7 @@ shared_ptr<lua_Table> LuaInstance::GetMetatable(const std::string& name){
     return get<shared_ptr<lua_Table>>(this->PopValue());
 }
 
-LuaInstance& LuaInstance::GetLuaData(lua_State* pointer_from_lua, vector<int> types)
+LuaInstance& LuaInstance::GetLuaData(lua_State* pointer_from_lua, const vector<int>& types)
 {
     LuaInstance& found_instance = *(LuaInstance::instance_list[pointer_from_lua]);
     int num_arguments = lua_gettop(found_instance.lua_ptr);

@@ -1,14 +1,14 @@
 # Target labels
  lua-populate
 # Source files and their labels
-C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/lua-populate
-C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/6a144b257276a6f0db853898e36d528d/lua-populate.rule
-C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/ebfc97c7262216536438fadb86070176/lua-populate-complete.rule
-C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/0ebf7499c9b8716238d345fde05c1f84/lua-populate-build.rule
-C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/0ebf7499c9b8716238d345fde05c1f84/lua-populate-configure.rule
-C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/0ebf7499c9b8716238d345fde05c1f84/lua-populate-download.rule
-C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/0ebf7499c9b8716238d345fde05c1f84/lua-populate-install.rule
-C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/0ebf7499c9b8716238d345fde05c1f84/lua-populate-mkdir.rule
-C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/0ebf7499c9b8716238d345fde05c1f84/lua-populate-patch.rule
-C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/0ebf7499c9b8716238d345fde05c1f84/lua-populate-test.rule
-C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/0ebf7499c9b8716238d345fde05c1f84/lua-populate-update.rule
+C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/lua-populate
+C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/6a099d130ef9aa243530d397c9d5b34e/lua-populate.rule
+C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/b1de65ebc8ca750ffb1b3d8fc3085345/lua-populate-complete.rule
+C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/b6e092ee95615be1134f1f4edcf8b855/lua-populate-build.rule
+C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/b6e092ee95615be1134f1f4edcf8b855/lua-populate-configure.rule
+C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/b6e092ee95615be1134f1f4edcf8b855/lua-populate-download.rule
+C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/b6e092ee95615be1134f1f4edcf8b855/lua-populate-install.rule
+C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/b6e092ee95615be1134f1f4edcf8b855/lua-populate-mkdir.rule
+C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/b6e092ee95615be1134f1f4edcf8b855/lua-populate-patch.rule
+C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/b6e092ee95615be1134f1f4edcf8b855/lua-populate-test.rule
+C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/CMakeFiles/b6e092ee95615be1134f1f4edcf8b855/lua-populate-update.rule

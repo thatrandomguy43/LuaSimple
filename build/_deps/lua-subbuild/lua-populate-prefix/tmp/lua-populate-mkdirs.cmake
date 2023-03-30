@@ -4,19 +4,19 @@
 cmake_minimum_required(VERSION 3.5)
 
 file(MAKE_DIRECTORY
-  "C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-src"
-  "C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-build"
-  "C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix"
-  "C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/tmp"
-  "C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp"
-  "C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src"
-  "C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp"
+  "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-src"
+  "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-build"
+  "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix"
+  "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/tmp"
+  "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp"
+  "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src"
+  "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp"
 )
 
 set(configSubDirs Debug)
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp/${subDir}")
+    file(MAKE_DIRECTORY "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "C:/Users/Asger/Desktop/programming/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "C:/Users/Bruger/Skrivebord/LuaSimple/build/_deps/lua-subbuild/lua-populate-prefix/src/lua-populate-stamp${cfgdir}") # cfgdir has leading slash
 endif()

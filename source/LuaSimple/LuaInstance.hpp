@@ -43,7 +43,7 @@ public:
 
     int DoFile(const std::string&);
 
-    void ReturnResults(std::vector<lua_Value>);
+    int ReturnResults(const std::vector<lua_Value>&);
 
     void SetGlobal(lua_Value, const std::string&);
 
@@ -53,7 +53,7 @@ public:
 
     std::shared_ptr<lua_Table> GetMetatable(const std::string&);
 
-    static LuaInstance& GetLuaData(lua_State*, std::vector<int>);
+    static LuaInstance& GetLuaData(lua_State*, const std::vector<int>&);
 
 
 };

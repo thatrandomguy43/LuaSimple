@@ -1,30 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\Asger\Desktop\programming\LuaSimple\source\main.cpp">
+    <ClCompile Include="C:\Users\Bruger\Skrivebord\LuaSimple\source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Asger\Desktop\programming\LuaSimple\source\LuaSimple\LuaInstance.cpp">
+    <ClCompile Include="C:\Users\Bruger\Skrivebord\LuaSimple\source\LuaSimple\LuaInstance.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Users\Asger\Desktop\programming\LuaSimple\source\LuaSimple\LuaInstance.hpp">
+    <ClInclude Include="C:\Users\Bruger\Skrivebord\LuaSimple\source\LuaSimple\LuaInstance.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\Asger\Desktop\programming\LuaSimple\source\LuaSimple\LuaTypeClasses.hpp">
+    <ClInclude Include="C:\Users\Bruger\Skrivebord\LuaSimple\source\LuaSimple\LuaTypeClasses.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\source\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\source\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{A93CDEC4-AC1C-3C67-BBCB-4F93DB151CFF}</UniqueIdentifier>
+      <UniqueIdentifier>{CDED832A-9968-3D46-A6FB-CBEFDC4FF22B}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{716896A1-C6E0-3109-95B4-CA5C1433E13B}</UniqueIdentifier>
+      <UniqueIdentifier>{E8463C92-F9D9-333A-B0F9-BCA9339022BF}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
