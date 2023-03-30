@@ -54,6 +54,4 @@ public:
     std::shared_ptr<lua_Table> GetMetatable(const std::string&);
 
     static LuaInstance& GetLuaData(lua_State*, const std::vector<int>&);
-
-
 };
