@@ -3,7 +3,7 @@
       {
         "label": "Build project with MSBuild",
         "type": "shell",
-        "command": "msbuild build/example_project.vcxproj /t:rebuild",
+        "command": "msbuild build/example_project.vcxproj /t:rebuild /fileLogger",
         "problemMatcher": "$msCompile",
         "group": {
           "kind": "build",
