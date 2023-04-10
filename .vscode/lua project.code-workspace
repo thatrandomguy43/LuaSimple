@@ -68,6 +68,9 @@
 			"any": "cpp",
 			"variant": "cpp",
 			"optional": "cpp",
-		}
+		},
+		"Lua.diagnostics.globals": [
+			"DigitSequenceNumber"
+		]
 	}
 }

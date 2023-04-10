@@ -183,7 +183,7 @@ void LuaInstance::HandleReturn(int response) {
     {
         this->lua_return_values.resize(1);
         this->lua_return_values[0] = static_cast<string>(luaL_tolstring(this->lua_ptr, -1, NULL));
-        cerr << get<string>(lua_return_values[0]) << endl;
+        cerr << get<string>(this->lua_return_values[0]) << endl;
     }
     else
     {
@@ -229,11 +229,17 @@ int LuaInstance::DoString(const string& code)
 int LuaInstance::DoFile(const string& filename)
 {
     lua_getglobal(this->lua_ptr, "debug");
-    lua_getfield(this->lua_ptr, 1, "traceback");
-    lua_remove(this->lua_ptr, 1);
+    lua_getfield(this->lua_ptr, -1, "traceback");
+    lua_remove(this->lua_ptr, -2);
     luaL_loadfile(this->lua_ptr, filename.c_str());
-    int response_code = lua_pcall(this->lua_ptr, 0, LUA_MULTRET, 1);
-    lua_remove(this->lua_ptr, 1);
+    //check the height of the stack before the call, deducting two for the error handler and file  
+    int return_value_count = lua_gettop(this->lua_ptr)-2;
+    int response_code = lua_pcall(this->lua_ptr, 0, LUA_MULTRET, -2);
+    //then figure out how many more objects there are now to count where the handler, still gotta avoid counting the handler
+    return_value_count = lua_gettop(this->lua_ptr) - return_value_count - 1;
+    //-1 is the top of the stack, so return_value_count is how many positions below that to remove at
+    lua_remove(this->lua_ptr, (-1)-return_value_count);
+    //this should hopefully fix any edge cases where the stack has unexpected stuff on it
     this->HandleReturn(response_code);
     return response_code;
 }

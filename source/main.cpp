@@ -7,6 +7,8 @@
 #include <iostream>
 #include <vector>
 #include "LuaSimple/LuaTypeClasses.hpp"
+#include <array>
+#include <locale>
 using namespace std;
 
 LuaInstance LUA_INST;
@@ -42,7 +44,7 @@ static int GetFunnyNumber (lua_State* lua_ptr){
 
 };
 
-int DigitSequenceNumber(lua_State* lua_ptr){
+/*int*/ int DigitSequenceNumber(lua_State* lua_ptr){
     LuaInstance& lua_object = LuaInstance::GetLuaData(lua_ptr, {LUA_TNUMBER});
     lua_Integer length;
     if (holds_alternative<lua_Integer>(lua_object.lua_argument_values[0])) {
@@ -55,15 +57,45 @@ int DigitSequenceNumber(lua_State* lua_ptr){
     } else if (length < 1) {
         length = 1;
     }
-    lua_Integer result = 0;
-    for (int itr = 1; not (itr > length); itr++){
-        result = result + pow(itr, length-itr);
+    string result{};
+    for (int idx = 1; not (idx > length); idx++){
+        result.append(to_string(idx % 10));
     }
-    lua_object.ReturnResults({result});
+    lua_object.ReturnResults({stoll(result,nullptr,10)});
     return 1;
 }
 
 
+/*bool*/ int IsAlphabetical(lua_State* lua_ptr){
+    const string ALPHABET{"ABCDEFGHIJKLMNOPQRSTUVWXYZ"};
+
+    auto& current_lua = LuaInstance::GetLuaData(lua_ptr, {LUA_TSTRING});
+    string& checked_string = get<string>(current_lua.lua_argument_values[0]);
+    bool follows_rules = true;
+    for (int idx = 0; idx != checked_string.size(); idx++){
+        if (idx != 0){
+            if (ALPHABET.find(toupper(checked_string.at(idx)),0) < ALPHABET.find(toupper(checked_string.at(idx-1)),0)) {
+                follows_rules = false;
+            }
+        }
+    };
+    return current_lua.ReturnResults({follows_rules});
+} 
+
+/*lua_Table*/ int CallLuaOnContents(lua_State* lua_ptr){
+    auto& current_lua = LuaInstance::GetLuaData(lua_ptr, {LUA_TTABLE, LUA_TFUNCTION});
+    shared_ptr<lua_Table> table_to_call_on = get<shared_ptr<lua_Table>>(current_lua.lua_argument_values[0]);
+    shared_ptr<lua_Table> results_table = make_shared<lua_Table>();
+    if (holds_alternative<lua_Function>(current_lua.lua_argument_values[1])){
+        lua_Function input_function = get<lua_Function>(current_lua.lua_argument_values[1]);
+        for (auto kv_pair : table_to_call_on->table_contents){
+            current_lua.DoFunction(input_function, {kv_pair.first, kv_pair.second}, nullopt);
+            results_table->table_contents.insert({kv_pair.first, current_lua.lua_return_values[0]});
+            current_lua.lua_return_values.clear();
+        }
+    }
+    return current_lua.ReturnResults({results_table});
+}
 
 int main(){
 
@@ -131,6 +163,39 @@ LUA_INST.DoString("return num_table1 + num_table2");
 if (get<lua_Number>(LUA_INST.lua_return_values[0]) != 25.75){
     throw "Test 4 failed!";
 }
+
+LUA_INST.SetGlobal(&DigitSequenceNumber, "DigitSequenceNumber");
+LUA_INST.SetGlobal(&IsAlphabetical, "IsAlphabetical");
+LUA_INST.SetGlobal(&CallLuaOnContents, "CallLuaOnContents");
+LUA_INST.DoFile("C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\source\\CFunctionCalls.lua");
+
+shared_ptr<lua_Table> expected_table = make_shared<lua_Table>();
+expected_table->table_contents[true] = true;
+expected_table->table_contents["score"] = false;
+expected_table->table_contents["team"] = true;
+expected_table->table_contents[20LL] = false;
+
+if ((get<lua_Integer>(LUA_INST.lua_return_values[0]) != 1234567890) or (get<bool>(LUA_INST.lua_return_values[1]) != false) or (get<shared_ptr<lua_Table>>(LUA_INST.lua_return_values[2])->table_contents != expected_table->table_contents)){
+    throw "Test 5 failed!";
+}
+
+
+LUA_INST.DoString(
+"function TracebackTest3()\n"
+"error(\"Attempeted to write a program without errors\")\n"
+"end\n"
+"function TracebackTest2()\n"
+"TracebackTest3()\n"
+"end\n"
+"function TracebackTest1()\n"
+"TracebackTest2()\n"
+"end\n"
+);
+auto traceback_tester = LUA_INST.GetGlobal("TracebackTest1");
+LUA_INST.DoFunction(get<lua_Function>(traceback_tester), {}, "TracebackTester");
+
+
+
 return 0;
 }
 
