@@ -184,6 +184,7 @@ void LuaInstance::HandleReturn(int response) {
         this->lua_return_values.resize(1);
         this->lua_return_values[0] = static_cast<string>(luaL_tolstring(this->lua_ptr, -1, NULL));
         cerr << get<string>(this->lua_return_values[0]) << endl;
+        lua_pop(this->lua_ptr, 1);
     }
     else
     {
