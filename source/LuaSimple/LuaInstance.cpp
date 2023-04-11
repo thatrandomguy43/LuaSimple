@@ -125,6 +125,8 @@ lua_Value LuaInstance::PopValue() {
     case LUA_TSTRING:
     {
         popped = lua_tostring(this->lua_ptr, -1);
+        //for some godforsaken reason tostring pushes a duplicate of the string to the stack
+        lua_pop(this->lua_ptr, 1);
     }
     break;
 
@@ -182,7 +184,7 @@ void LuaInstance::HandleReturn(int response) {
     if (response != LUA_OK)
     {
         this->lua_return_values.resize(1);
-        this->lua_return_values[0] = static_cast<string>(luaL_tolstring(this->lua_ptr, -1, NULL));
+        this->lua_return_values[0] = this->PopValue();
         cerr << get<string>(this->lua_return_values[0]) << endl;
         lua_pop(this->lua_ptr, 1);
     }
