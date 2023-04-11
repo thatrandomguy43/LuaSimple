@@ -1,44 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\b6e092ee95615be1134f1f4edcf8b855\lua-populate-mkdir.rule">
+    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\0ebf7499c9b8716238d345fde05c1f84\lua-populate-mkdir.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\b6e092ee95615be1134f1f4edcf8b855\lua-populate-download.rule">
+    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\0ebf7499c9b8716238d345fde05c1f84\lua-populate-download.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\b6e092ee95615be1134f1f4edcf8b855\lua-populate-update.rule">
+    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\0ebf7499c9b8716238d345fde05c1f84\lua-populate-update.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\b6e092ee95615be1134f1f4edcf8b855\lua-populate-patch.rule">
+    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\0ebf7499c9b8716238d345fde05c1f84\lua-populate-patch.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\b6e092ee95615be1134f1f4edcf8b855\lua-populate-configure.rule">
+    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\0ebf7499c9b8716238d345fde05c1f84\lua-populate-configure.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\b6e092ee95615be1134f1f4edcf8b855\lua-populate-build.rule">
+    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\0ebf7499c9b8716238d345fde05c1f84\lua-populate-build.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\b6e092ee95615be1134f1f4edcf8b855\lua-populate-install.rule">
+    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\0ebf7499c9b8716238d345fde05c1f84\lua-populate-install.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\b6e092ee95615be1134f1f4edcf8b855\lua-populate-test.rule">
+    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\0ebf7499c9b8716238d345fde05c1f84\lua-populate-test.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\b1de65ebc8ca750ffb1b3d8fc3085345\lua-populate-complete.rule">
+    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\ebfc97c7262216536438fadb86070176\lua-populate-complete.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\6a099d130ef9aa243530d397c9d5b34e\lua-populate.rule">
+    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\6a144b257276a6f0db853898e36d528d\lua-populate.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
-    <CustomBuild Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Users\Bruger\Skrivebord\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\lua-populate" />
+    <None Include="C:\Users\Asger\Desktop\programming\LuaSimple\build\_deps\lua-subbuild\CMakeFiles\lua-populate" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{B9EC106B-84C0-3D85-AC09-C06533E95EA8}</UniqueIdentifier>
+      <UniqueIdentifier>{B61C1714-9C3F-363F-9086-8BDBA802C8EF}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
