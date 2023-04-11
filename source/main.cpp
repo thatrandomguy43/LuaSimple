@@ -214,6 +214,7 @@ test_udata_object.object = &wrapped_cpp_object;
 LUA_INST.SetGlobal(test_udata_object, "cpp_object");
 LUA_INST.DoFile("..\\..\\source\\UsingUserdata.lua");
 
+cout << "this work?" << endl;
 if (get<lua_Integer>(LUA_INST.lua_return_values[0]) != 16){
     throw "Test 6 failed!";
 }
