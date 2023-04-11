@@ -170,8 +170,8 @@ if (get<lua_Number>(LUA_INST.lua_return_values[0]) != 25.75){
 LUA_INST.SetGlobal(&DigitSequenceNumber, "DigitSequenceNumber");
 LUA_INST.SetGlobal(&IsAlphabetical, "IsAlphabetical");
 LUA_INST.SetGlobal(&CallLuaOnContents, "CallLuaOnContents");
-LUA_INST.DoFile("..\\..\\source\\CFunctionCalls.lua");
-
+//LUA_INST.DoFile("..\\..\\source\\CFunctionCalls.lua");
+LUA_INST.DoFile("C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\source\\CFunctionCalls.lua");
 shared_ptr<lua_Table> expected_table = make_shared<lua_Table>();
 expected_table->table_contents[true] = true;
 expected_table->table_contents["score"] = false;
@@ -212,8 +212,8 @@ test_udata_object.metatable_name = "TestUserdata";
 test_udata_object.object = &wrapped_cpp_object;
 
 LUA_INST.SetGlobal(test_udata_object, "cpp_object");
-LUA_INST.DoFile("..\\..\\source\\UsingUserdata.lua");
-
+//LUA_INST.DoFile("..\\..\\source\\UsingUserdata.lua");
+LUA_INST.DoFile("C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\source\\UsingUserdata.lua");
 cout << "this work?" << endl;
 if (get<lua_Integer>(LUA_INST.lua_return_values[0]) != 16){
     throw "Test 6 failed!";
