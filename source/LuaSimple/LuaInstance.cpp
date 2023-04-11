@@ -179,7 +179,7 @@ lua_Value LuaInstance::PopValue() {
 }
 
 void LuaInstance::HandleReturn(int response) {
-    if (response != 0)
+    if (response != LUA_OK)
     {
         this->lua_return_values.resize(1);
         this->lua_return_values[0] = static_cast<string>(luaL_tolstring(this->lua_ptr, -1, NULL));
