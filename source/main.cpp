@@ -7,8 +7,7 @@
 #include <iostream>
 #include <vector>
 #include "LuaSimple/LuaTypeClasses.hpp"
-#include <array>
-#include <locale>
+#include <cmath>
 using namespace std;
 
 LuaInstance LUA_INST;
