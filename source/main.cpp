@@ -31,14 +31,17 @@ int StringOfAs(lua_State* lua_ptr){
 class TestUserdata
 {
 private:
-int funny_number = 13;
+lua_Integer some_number;
 public:
+TestUserdata(lua_Integer number) : some_number(number) {
+}
 
-static int GetFunnyNumber (lua_State* lua_ptr){
+static int Increment (lua_State* lua_ptr){
     LuaInstance& current_lua = LuaInstance::GetLuaData(lua_ptr, {LUA_TUSERDATA});
     lua_Userdata userdata_self = get<lua_Userdata>(current_lua.lua_argument_values[0]);
-    TestUserdata* self = any_cast<TestUserdata>(userdata_self.object);
-    current_lua.ReturnResults({self->funny_number});
+    TestUserdata& self = any_cast<TestUserdata&>(*(userdata_self.object));
+    self.some_number++;
+    current_lua.ReturnResults({self.some_number});
     return 1;
 }
 
@@ -167,7 +170,7 @@ if (get<lua_Number>(LUA_INST.lua_return_values[0]) != 25.75){
 LUA_INST.SetGlobal(&DigitSequenceNumber, "DigitSequenceNumber");
 LUA_INST.SetGlobal(&IsAlphabetical, "IsAlphabetical");
 LUA_INST.SetGlobal(&CallLuaOnContents, "CallLuaOnContents");
-LUA_INST.DoFile("C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\source\\CFunctionCalls.lua");
+LUA_INST.DoFile("..\\..\\source\\CFunctionCalls.lua");
 
 shared_ptr<lua_Table> expected_table = make_shared<lua_Table>();
 expected_table->table_contents[true] = true;
@@ -182,7 +185,7 @@ if ((get<lua_Integer>(LUA_INST.lua_return_values[0]) != 1234567890) or (get<bool
 
 LUA_INST.DoString(
 "function TracebackTest3()\n"
-"error(\"Attempeted to write a program without errors\")\n"
+"error(\"Missing error declaration\")\n"
 "end\n"
 "function TracebackTest2()\n"
 "TracebackTest3()\n"
@@ -195,6 +198,25 @@ auto traceback_tester = LUA_INST.GetGlobal("TracebackTest1");
 LUA_INST.DoFunction(get<lua_Function>(traceback_tester), {}, "TracebackTester");
 
 
+shared_ptr<lua_Table> member_functions_metatable = make_shared<lua_Table>();
+shared_ptr<lua_Table> index_metamethod = make_shared<lua_Table>();
+index_metamethod->table_contents.insert({string{"Increment"}, &TestUserdata::Increment});
+member_functions_metatable->table_contents.insert({"__index", index_metamethod});
+
+LUA_INST.SetMetatable(member_functions_metatable, "TestUserdata");
+
+lua_Userdata test_udata_object;
+TestUserdata test_cpp_object{7};
+any wrapped_cpp_object = make_any<TestUserdata>(test_cpp_object);
+test_udata_object.metatable_name = "TestUserdata";
+test_udata_object.object = &wrapped_cpp_object;
+
+LUA_INST.SetGlobal(test_udata_object, "cpp_object");
+LUA_INST.DoFile("..\\..\\source\\UsingUserdata.lua");
+
+if (get<lua_Integer>(LUA_INST.lua_return_values[0]) != 16){
+    throw "Test 6 failed!";
+}
 
 return 0;
 }
