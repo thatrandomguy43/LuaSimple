@@ -70,7 +70,8 @@
 			"optional": "cpp",
 		},
 		"Lua.diagnostics.globals": [
-			"DigitSequenceNumber"
+			"DigitSequenceNumber",
+			"NumberWords"
 		]
 	}
 }

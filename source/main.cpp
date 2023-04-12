@@ -170,8 +170,8 @@ LUA_INST.SetGlobal(&DigitSequenceNumber, "DigitSequenceNumber");
 LUA_INST.SetGlobal(&IsAlphabetical, "IsAlphabetical");
 LUA_INST.SetGlobal(&CallLuaOnContents, "CallLuaOnContents");
 //LUA_INST.DoFile("..\\..\\source\\CFunctionCalls.lua");
-//LUA_INST.DoFile("C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\source\\CFunctionCalls.lua");
-LUA_INST.DoFile("C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\source\\CFunctionCalls.lua");
+LUA_INST.DoFile("C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\source\\CFunctionCalls.lua");
+//LUA_INST.DoFile("C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\source\\CFunctionCalls.lua");
 
 shared_ptr<lua_Table> expected_table = make_shared<lua_Table>();
 expected_table->table_contents[true] = true;
@@ -179,14 +179,16 @@ expected_table->table_contents["score"] = false;
 expected_table->table_contents["team"] = true;
 expected_table->table_contents[20LL] = false;
 
-if ((get<lua_Integer>(LUA_INST.lua_return_values[0]) != 1234567890) or (get<bool>(LUA_INST.lua_return_values[1]) != false) or (get<shared_ptr<lua_Table>>(LUA_INST.lua_return_values[2])->table_contents != expected_table->table_contents)){
+if ((get<lua_Integer>(LUA_INST.lua_return_values[0]) != 1234567890) or 
+(get<bool>(LUA_INST.lua_return_values[1]) != false) or 
+(get<shared_ptr<lua_Table>>(LUA_INST.lua_return_values[2])->table_contents != expected_table->table_contents)){
     throw "Test 5 failed!";
 }
 
 
 LUA_INST.DoString(
 "function TracebackTest3()\n"
-"error(\"Missing error declaration\")\n"
+"error(\"Attempted to fix a bug value\")\n"
 "end\n"
 "function TracebackTest2()\n"
 "TracebackTest3()\n"
@@ -214,36 +216,31 @@ test_udata_object.object = &wrapped_cpp_object;
 
 LUA_INST.SetGlobal(test_udata_object, "cpp_object");
 //LUA_INST.DoFile("..\\..\\source\\UsingUserdata.lua");
-//LUA_INST.DoFile("C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\source\\UsingUserdata.lua");
-LUA_INST.DoFile("C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\source\\UsingUserdata.lua");
-cout << "this work?" << endl;
+LUA_INST.DoFile("C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\source\\UsingUserdata.lua");
+//LUA_INST.DoFile("C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\source\\UsingUserdata.lua");
 if (get<lua_Integer>(LUA_INST.lua_return_values[0]) != 16){
     throw "Test 6 failed!";
 }
 
+
+LuaInstance LUA_INST_2;
+lua_Value should_be_empty = LUA_INST_2.GetGlobal("funny_quote");
+LUA_INST.SetGlobal("OnefivenineThreeTwo", "NumberWords");
+LUA_INST_2.SetGlobal("twoEighttwothree", "NumberWords");
+
+//LUA_INST.DoFile("..\\..\\source\\TwoInstances.lua");
+LUA_INST.DoFile("C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\source\\TwoInstances.lua");
+//LUA_INST.DoFile("C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\source\\TwoInstances.lua");
+//LUA_INST_2.DoFile("..\\..\\source\\TwoInstances.lua");
+LUA_INST_2.DoFile("C:\\Users\\Bruger\\Skrivebord\\LuaSimple\\source\\TwoInstances.lua");
+//LUA_INST_2.DoFile("C:\\Users\\Asger\\Desktop\\programming\\LuaSimple\\source\\TwoInstances.lua");
+
+if ((get<lua_Integer>(LUA_INST.lua_return_values[0]) != 15932) or 
+(get<lua_Integer>(LUA_INST_2.lua_return_values[0]) != 2823) or 
+(get<nullptr_t>(should_be_empty) != nullptr)){
+    throw "Test 7 failed!";
+}
 return 0;
 }
 
 
-
-
-
-/*
-
-lua.DoString(
-"function TracebackTest3()\n"
-"local z = 3\n"
-"error(\"skill issue\")\n"
-"end\n"
-"function TracebackTest2()\n"
-"local y = 2\n"
-"TracebackTest3()\n"
-"end\n"
-"function TracebackTest1()\n"
-"local x = 1\n"
-"TracebackTest2()\n"
-"end\n"
-);
-auto traceback_tester = lua.GetGlobal("TracebackTest1");
-lua.DoFunction(get<lua_Function>(traceback_tester), {}, "TracebackTester");
-*/

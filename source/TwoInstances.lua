@@ -1,0 +1,12 @@
+local NumberDigits = NumberWords
+NumberDigits = NumberDigits:gsub("[Zz]ero", "0")
+NumberDigits = NumberDigits:gsub("[Oo]ne", "1")
+NumberDigits = NumberDigits:gsub("[Tt]wo", "2")
+NumberDigits = NumberDigits:gsub("[Tt]hree", "3")
+NumberDigits = NumberDigits:gsub("[Ff]our", "4")
+NumberDigits = NumberDigits:gsub("[Ff]ive", "5")
+NumberDigits = NumberDigits:gsub("[Ss]ix", "6")
+NumberDigits = NumberDigits:gsub("[Ss]even", "7")
+NumberDigits = NumberDigits:gsub("[Ee]ight", "8")
+NumberDigits = NumberDigits:gsub("[Nn]ine", "9")
+return math.tointeger(NumberDigits)
