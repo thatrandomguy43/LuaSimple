@@ -69,3 +69,5 @@ public:
 
    
 };
+
+typedef std::variant<nullptr_t, bool, void*, lua_Integer, lua_Number, std::string, std::shared_ptr<lua_Table>, lua_CFunction, lua_Function, lua_Userdata> lua_Value;
