@@ -226,12 +226,12 @@ int LuaInstance::DoString(const string& code)
     return response_code;
 }
 
-int LuaInstance::DoFile(const string& filename)
+int LuaInstance::DoFile(const string& filepath)
 {
     lua_getglobal(this->lua_ptr, "debug");
     lua_getfield(this->lua_ptr, -1, "traceback");
     lua_remove(this->lua_ptr, -2);
-    luaL_loadfile(this->lua_ptr, filename.c_str());
+    luaL_loadfile(this->lua_ptr, filepath.c_str());
     //check the height of the stack before the call, deducting two for the error handler and file  
     int return_value_count = lua_gettop(this->lua_ptr)-2;
     int response_code = lua_pcall(this->lua_ptr, 0, LUA_MULTRET, -2);
