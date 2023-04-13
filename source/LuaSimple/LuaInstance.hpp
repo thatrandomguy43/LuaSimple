@@ -37,7 +37,7 @@ public:
     LuaInstance();
     ~LuaInstance();
 
-    int DoFunction(const lua_Function&, const std::vector<lua_Value>);
+    int DoFunction(const lua_Function&, const std::vector<lua_Value>&);
 
     int DoString(const std::string&);
 

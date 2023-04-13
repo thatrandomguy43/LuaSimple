@@ -91,7 +91,7 @@ static int Increment (lua_State* lua_ptr){
     if (holds_alternative<lua_Function>(current_lua.lua_argument_values[1])){
         lua_Function input_function = get<lua_Function>(current_lua.lua_argument_values[1]);
         for (auto kv_pair : table_to_call_on->table_contents){
-            current_lua.DoFunction(input_function, {kv_pair.first, kv_pair.second}, nullopt);
+            current_lua.DoFunction(input_function, {kv_pair.first, kv_pair.second});
             results_table->table_contents.insert({kv_pair.first, current_lua.lua_return_values[0]});
             current_lua.lua_return_values.clear();
         }
@@ -131,7 +131,7 @@ LUA_INST.DoString("ToKVpair = function(key, value)\n"
 "return result_table\n"
 "end\n");
 lua_Function key_value_function = get<lua_Function>(LUA_INST.GetGlobal("ToKVpair"));
-LUA_INST.DoFunction(key_value_function, {false, "Nope!"}, nullopt);
+LUA_INST.DoFunction(key_value_function, {false, "Nope!"});
 
 lua_Value table_pair = LUA_INST.lua_return_values[0];
 
@@ -198,7 +198,7 @@ LUA_INST.DoString(
 "end\n"
 );
 auto traceback_tester = LUA_INST.GetGlobal("TracebackTest1");
-LUA_INST.DoFunction(get<lua_Function>(traceback_tester), {}, "TracebackTester");
+LUA_INST.DoFunction(get<lua_Function>(traceback_tester), {});
 
 
 shared_ptr<lua_Table> member_functions_metatable = make_shared<lua_Table>();
