@@ -13,3 +13,5 @@ The code has been tested on 2 computers of mine with MSVC on C++23 (or whatever 
 
 ### CMake
 CMake is used to build the test application, and a CMake file in included in the library directory. CMake automatically downloads a CMake-buildable fork of Lua as part of the build process. The usabillity of the library with any alternative build systems is not known to me.
+
+## I am open to questions, just leave an issue on this repository!
